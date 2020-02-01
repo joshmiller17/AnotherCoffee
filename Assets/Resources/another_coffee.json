@@ -1,0 +1,231 @@
+{
+"comments":"
+#######
+README
+Assumptions baked into this JSON:
+- for choices, if no option is picked after the timeout time, goto <event_id>_0
+- for dialogue options chosen, goto <event_id>_<index> UNLESS there is an explicit goto
+- effects like awkward and tension are deltas, as in += x
+#######",
+
+
+"events":[
+	{
+	"event_id":"0_opening",
+	"type":"choice",
+	"timeout":5,
+	"options":[
+			{
+			"index":1,
+			"internal":"Am I really doing this?",
+			"external":"Hey!"
+			},
+			{
+			"index":2,
+			"internal":"Am I really about to talk to him again?",
+			"external":"It's been so long! What's up, man?"
+			}
+		]
+	},
+	
+	{
+	"event_id":"0_opening_0",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"Um... hi."
+	],
+	"timeout":5,
+	"goto":"0_tutorial1"
+	},
+	
+	{
+	"event_id":"0_opening_0",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"Oh, uh, hey."
+	],
+	"timeout":5,
+	"goto":"0_tutorial1"
+	},
+	
+	{
+	"event_id":"0_opening_0",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"Heyyyyyyyyy.........."
+	],
+	"timeout":5,
+	"goto":"0_tutorial1"
+	},
+	
+	
+	{
+	"event_id":"0_tutorial1",
+	"type":"choice",
+	"timeout":{
+		"time_to_think":5,
+		},
+	"options":[
+			{
+			"index":1,
+			"internal":"Thanks for reaching out.",
+			"external":"Thanks for reaching out, it was really, uh… unexpected.",
+			"goto":"0_tutorial1_0",
+			}
+		]
+	},
+	
+	{
+	"event_id":"0_tutorial1_0",
+	"type":"dialogue",
+	"dialogue": [
+		"animation":{
+			"target":"dreamer",
+			"expression":"awkward"
+		}
+		"dreamer":"Oh, haha… yeah, of course. I mean, I haven’t seen you in forever and, like, we haven’t talked since high school, and I thought that maybe, well, I thought if we met up we could catch up, y’know, like old times or whatever, and talk about, I dunno, stuff, and… well, ughhh, I dunno,",
+		"effect":{
+			"awkward":1
+		},
+		"effect":{
+			"trigger_event":"0_tutorial2",
+		},
+		"dreamer":"I’m bad at this whole small talk thing and now you’re just making me nervous and it’s super awkward and I don’t know where this is going.",
+		"effect":{
+			"awkward":1
+		},
+		"dreamer":"Maybe this was a bad idea, maybe I shouldn’t have reached out.... maybe this was all meant to be left in the past… uh… yeah.",
+		"effect":{
+			"awkward":1
+		},
+		"dreamer": "Look, I’m sorry, this was a mistake. I’m just going to see myself out, okay?",
+	],
+	"timeout":30,
+	"goto":"endgame"
+	},
+	
+	{
+	"event_id":"0_tutorial2",
+	"type":"choice",
+	"options":[
+			{
+			"index":1,
+			"interrupt":1,
+			"internal":"Oh no, that's a classic nervous ramble. I gotta stop this.",
+			"external":"Hey, I'm kinda nervous too. Need a second?",
+			},
+			{
+			"index":2,
+			"interrupt":1,
+			"internal":"This is never gonna end if I don't say something.",
+			"external":"YEAH SO... What did you want to talk about?",
+			"effect":{
+				"tension":1
+			}
+			}
+		]
+	},
+	
+	{
+	"event_id":"0_tutorial2_1",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"Actually, yeah... just, uh, gimme a sec..."
+	],
+	"goto":"0_tutorial3"
+	},
+	
+	{
+	"event_id":"0_tutorial2_2",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":{
+		"speed":2,
+		"text":"!...",
+		"pause":1,
+		},
+		"dreamer":"...Right... sorry, uhh......"
+	],
+	"timeout":5,
+	"goto":"0_tutorial3"
+	},
+	
+	{
+	"event_id":"0_tutorial3",
+	"type":"choice",
+	"options":[
+			{
+			"index":1,
+			"interrupt":1,
+			"internal":"Are you okay?",
+			"external":"...You good?",
+			}
+			}
+		]
+	},
+	
+	{
+	"event_id":"0_tutorial3_failure",
+	"type":"choice",
+	"options":[
+			{
+			"index":1,
+			"interrupt":1,
+			"internal":"Are you...?",
+			"external":"...Are you... ready yet... or...?",
+			}
+			}
+		],
+	"timeout":1,
+	"goto":"0_tutorial3_0"
+	},
+	
+	{
+	"event_id":"0_tutorial3_0",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"...",
+		"dreamer":{
+		"speed":0.5,
+		"text":"...",
+		},
+		"dreamer":{
+		"speed":0.25,
+		"text":"...",
+		},
+		"dreamer":{
+		"speed":0.25,
+		"text":"*hhhooo* ...",
+		},
+		"dreamer":"...Alright, thanks. I'm good."
+	],
+	"goto":"1_opening"
+	},
+	
+	{
+	"event_id":"0_tutorial3_1",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"Jeez! I said gimme a sec!"
+		"effect":{
+		"tension":1
+		}
+	],
+	"goto":"0_tutorial3_failure"
+	},
+	
+	{
+	"event_id":"0_tutorial3_failure_1",
+	"type":"dialogue",
+	"dialogue": [
+		"dreamer":"!! Fine, I guess we'll just keep talking!!"
+		"effect":{
+		"tension":1
+		}
+	],
+	"goto":"1_opening"
+	},
+	
+	
+]
+}
