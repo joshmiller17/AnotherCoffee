@@ -1,0 +1,68 @@
+/* values passed in from the Vertex Shader */
+varying vec2 UV;
+varying vec4 Color;
+
+/* Uniforms are values passed to the shader at run-time by the CPU / Game Logic side of things */
+uniform float displacement_seed;	/* a value for modifying displacement. Can be anything */
+uniform sampler2D displacement_map; /* a texture containing red and blue noise */
+
+/* config */
+const float shift_intensity = 0.045;
+const float offset_amount = 0.2; /* Probably doesn't need to be changed. A value too high may cause clipping */
+
+
+/* method for displacing a UV */
+vec2 displace( vec2 uv, float seed )
+{
+	/* 'offset' here is an XY pair that shifts the currently selected 'anchor point'
+		on the displacement map. Shifting this anchor via an external value (called 'seed' here)
+		will change what each XY of the on-screen pixels map to which XY on the displacement map,
+		effectively creating a shake/jitter effect. */
+	vec2 offset = vec2(
+		sin( seed )			* offset_amount,
+		cos( seed + 0.2 )	* offset_amount );
+
+
+	/* 'map_uv' retrieves the RGBA value from the color map at the provided XY */
+	/* In this case, we're feeding [ uv.x + offset.x,  uv.y + offset.y ] as the XY to pull from */
+	vec4 map_uv = texture2D( displacement_map,  uv + offset );
+
+
+	/* 'new_uv' is what we will return. It is the provided unmodifed UV values, PLUS a nifty little use
+		of the values we got above. The displacement map is primarily made of BLUEs and REDs of
+		different intensities, and so we're using the intensity of the currently-grabbed RED as an X offset,
+		and the intensity of the currently-grabbed BLUE as a y offset */
+	vec2 new_uv = vec2(
+		uv.x + ( map_uv.r * shift_intensity ),
+		uv.y + ( map_uv.b * shift_intensity )
+	);
+	return new_uv;
+}
+
+
+/* main program */
+void main()
+{
+	vec2 displaced_uv = displace( UV, displacement_seed );
+    gl_FragColor = Color * texture2D( gm_BaseTexture, displaced_uv );
+}
+
+
+/* NOTES
+
+** The way this is used is like this:
+	> Text is pre-drawn to a texture that matches the resolution of the game window
+	> This shader gets applied to the aforementioned texture
+	> A displacement map (just a square image of a noisy blue-and-red texture) is passed in
+	> The displacement map + a periodically changing seed will result in different Blue and Red values
+		being grabbed. These color values (floats between 0. and 1.) are used to displace the Text-texture,
+		resulting in a wiggle effect
+
+** On the CPU side, i've been running at 60fps and upping 'displacement_seed' by 0.5 every 8 frames.
+
+** 'shift_intensity' should scale with resolution without needing to be changed really, but it is important
+	to be mindful of how strong it comes across at different font sizes. For smaller fonts, I would recommend
+	bringing this number down
+
+*/
+
