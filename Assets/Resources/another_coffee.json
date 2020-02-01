@@ -156,7 +156,6 @@ Assumptions baked into this JSON:
 	"options":[
 			{
 			"index":1,
-			"interrupt":1,
 			"internal":"Are you okay?",
 			"external":"...You good?",
 			}
@@ -170,7 +169,6 @@ Assumptions baked into this JSON:
 	"options":[
 			{
 			"index":1,
-			"interrupt":1,
 			"internal":"Are you...?",
 			"external":"...Are you... ready yet... or...?",
 			}
