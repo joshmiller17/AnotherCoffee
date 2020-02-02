@@ -64,8 +64,8 @@ public class music_system : MonoBehaviour
 
         parameters.Add(new float[] {
                 //safety first
-                Mathf.Clamp(character, 0, 3),
-                Mathf.Clamp(topic, 0, 1),
+                Mathf.Clamp(character, 0, 1),
+                Mathf.Clamp(topic, 0, 3),
                 Mathf.Clamp(tension, 0, 100),
                 Mathf.Clamp(awkwardness, 0, 100),
                 Mathf.Clamp(resolution, 0, 100),
@@ -100,11 +100,11 @@ public class music_system : MonoBehaviour
         audiosources = GetComponents<AudioSource>();
         audiosources[0].loop = true;
         audiosources[1].loop = true;
-        // updateMusic(0, 0, 0, 1, 0, false);
-        // updateMusic(1, 0, 0, 0, 0, false);
-        // updateMusic(0, 0, 1, 0, 0, false);
-        // updateMusic(1, 0, 0, 1, 0, false);
-        // updateMusic(0, 0, 0, 0, 0, false);
+        // updateMusic(0, 2, 0, 0, 1, false);
+        // updateMusic(1, 2, 0, 1, 0, false);
+        // updateMusic(0, 2, 0, 0, 1, false);
+        // updateMusic(1, 2, 0, 0, 1, false);
+        // updateMusic(0, 2, 0, 0, 1, false);
         prevTime = -10;
     }
 
