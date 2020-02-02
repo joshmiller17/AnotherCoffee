@@ -97,6 +97,29 @@ public class display_state_controller : MonoBehaviour
         fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
     	handle_display(game_event.display_state, game_event.dialogue);
         handle_thoughts(game_event.choices);
+        handle_effects(game_event.effects);
+    }
+
+    void handle_effects(EffectJSON[] effects){
+    	if(effects != null){
+    		foreach(EffectJSON effect in effects){
+    			if(effect != null){
+    				handle_effect(effect);
+    			}
+    		}
+    	}
+    }
+
+    void handle_effect(EffectJSON effect){
+    	if(effect.awkward != null){
+    		awkward += effect.awkward;
+    	}
+    	if(effect.tension != null){
+    		awkward += effect.tension;
+    	}
+    	if(effect.resolution != null){
+    		awkward += effect.resolution;
+    	}
     }
 
     void handle_display(DisplayState maybe_display_state, string dialogue){
@@ -283,6 +306,14 @@ public class GameEvent{
 }
 
 [System.Serializable]
+public class EffectJSON
+{
+	public int awkward;
+	public int tension;
+	public int resolution;
+}
+
+[System.Serializable]
 public class DisplayStateJSON
 {
 	//public string bg_panel;
@@ -296,6 +327,7 @@ public class DisplayStateJSON
 public class GameEventJSON
 {
 	public DisplayStateJSON display_state;
+	public EffectJSON[] effects;
 	public string dialogue;
 	public string[] next_event;
     public string[] choices;
