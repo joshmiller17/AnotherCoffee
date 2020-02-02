@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class display_state_controller : MonoBehaviour
 {
 	public GameObject bg_panel;
-	public GameObject character_A_panel;
-	public GameObject character_B_panel;
+	public GameObject dreamer_animation;
+	public GameObject realist_animation;
 	public GameObject speech_A;
 	public GameObject speech_B;
 	public GameObject dialogue_A;
@@ -20,7 +20,7 @@ public class display_state_controller : MonoBehaviour
     private DisplayState current_display;
 
     private static double text_to_time_ratio = 1.0/15.0;
-    private static double fade_time = 3.0;
+    private static double fade_time = 1.0;
 
 	public double next_event_timer = 10000;
     public double fade_timer = 10000;
@@ -47,7 +47,7 @@ public class display_state_controller : MonoBehaviour
     void Start()
     {
         initialize_displays();
-        process_json_game_event("init_event");
+        process_json_game_event("0_opening");
     }
 
     // Update is called once per frame
@@ -80,8 +80,8 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_event(GameEvent game_event){
-    	next_event_timer = Time.time + fade_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
-        fade_timer = Time.time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
+    	next_event_timer = Time.time + fade_time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
+        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
     	handle_display(game_event.display_state, game_event.dialogue);
         handle_thoughts(game_event.choices);
     }
@@ -92,10 +92,10 @@ public class display_state_controller : MonoBehaviour
             display_state = current_display;
         }
         current_display = display_state;
-    	update_image(character_A_panel, display_state.character_A_panel);
-    	update_image(character_B_panel, display_state.character_B_panel);
-    	update_image(bg_panel, display_state.bg_panel);
-    	handle_speech_bubbles(display_state.speech_bubble, display_state.active_speech_bubble, dialogue);
+    	if(display_state.dreamer_animation != null) update_image(dreamer_animation, display_state.dreamer_animation);
+    	if(display_state.realist_animation != null) update_image(realist_animation, display_state.realist_animation);
+    	//update_image(bg_panel, display_state.bg_panel);
+    	handle_bubbles(display_state.bubble, display_state.talking, dialogue);
     }
 
     void handle_thoughts(string[] choices){
@@ -117,15 +117,15 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
-    void handle_speech_bubbles(Sprite speech_bubble, string active_speech_bubble, string dialogue){
-    	if(active_speech_bubble.Equals("realist")){
-    		//update_image(speech_A, speech_bubble);
+    void handle_bubbles(Sprite bubble, string talking, string dialogue){
+    	if(talking.Equals("realist")){
+    		//update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
     		show_bubble(speech_A);
     		hide_bubble(speech_B);
     	}
-        else if(active_speech_bubble.Equals("dreamer")){
-            //update_image(speech_B, speech_bubble);
+        else if(talking.Equals("dreamer")){
+            //update_image(speech_B, bubble);
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
             hide_bubble(speech_A);
@@ -169,11 +169,11 @@ public class display_state_controller : MonoBehaviour
     }
 
     void start_fade(){
-        string active_speech_bubble = current_event.display_state.active_speech_bubble;
-        if(active_speech_bubble.Equals("realist")){
+        string talking = current_event.display_state.talking;
+        if(talking.Equals("realist")){
             fade_bubble(speech_A);
         }
-        else if(active_speech_bubble.Equals("dreamer")){
+        else if(talking.Equals("dreamer")){
             fade_bubble(speech_B);
         }
         else{
@@ -209,6 +209,7 @@ public class display_state_controller : MonoBehaviour
     string read_json_file(string path){
  		string filePath = "Events/" + path.Replace(".json", "");
 		TextAsset targetFile = Resources.Load<TextAsset>(filePath);
+		Debug.Log(targetFile.text);
   		return targetFile.text;
    	}
 
@@ -216,25 +217,26 @@ public class display_state_controller : MonoBehaviour
 
 public class DisplayState{
 	public Sprite bg_panel;
-	public Sprite character_A_panel;
-	public Sprite character_B_panel;
-	public Sprite speech_bubble;
-	public string active_speech_bubble;
+	public Sprite dreamer_animation;
+	public Sprite realist_animation;
+	public Sprite bubble;
+	public string talking;
 
 	static Sprite load_art(string path){
-		string filePath = "realistrt/" + path.Replace(".jpg", "").Replace(".png", "");
+		string filePath = "Art/" + path.Replace(".jpg", "").Replace(".png", "");
 		return Resources.Load<Sprite>(filePath);
 	}
 
 	public DisplayState(DisplayStateJSON js){
+		//Debug.Log("display state made");
 		//if(js==null){
 		//	return null;
 		//}
-		bg_panel =  load_art(js.bg_panel);
-		character_A_panel =  load_art(js.character_A_panel);
-		character_B_panel =  load_art(js.character_B_panel);
-		speech_bubble =  load_art(js.speech_bubble);
-		active_speech_bubble =  js.active_speech_bubble;
+		//bg_panel =  load_art(js.bg_panel);
+		dreamer_animation =  load_art("dreamer_"+js.dreamer_animation);
+		realist_animation =  load_art("realist_"+js.realist_animation);
+		bubble =  load_art("bubble_"+js.bubble);
+		talking =  js.talking;
 	}
 
 }
@@ -246,11 +248,14 @@ public class GameEvent{
 	public int event_time;
 	public string dialogue;
 	public bool is_interrupt;
+	public int wait_time;
 
 	public GameEvent(GameEventJSON js){
+		Debug.Log("game event made");
+		wait_time = js.wait_time;
 		next_event = js.next_event;
         choices = js.choices;
-		event_time = js.event_time;
+		event_time = 1;//s.event_time;
 		if(event_time == null){
 			event_time = 1;
 		}
@@ -266,11 +271,11 @@ public class GameEvent{
 [System.Serializable]
 public class DisplayStateJSON
 {
-	public string bg_panel;
-	public string character_A_panel;
-	public string character_B_panel;
-	public string speech_bubble;
-	public string active_speech_bubble;
+	//public string bg_panel;
+	public string dreamer_animation;
+	public string realist_animation;
+	public string bubble;
+	public string talking;
 }
 
 [System.Serializable]
@@ -280,6 +285,7 @@ public class GameEventJSON
 	public string dialogue;
 	public string[] next_event;
     public string[] choices;
-	public int event_time;
+	//public int event_time;
+	public int wait_time;
 	public bool is_interrupt;
 }
