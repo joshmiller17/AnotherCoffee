@@ -20,8 +20,8 @@ public class display_state_controller : MonoBehaviour
 	private GameEvent current_event;
     private DisplayState current_display;
 
-    private static double text_to_time_ratio = 1.0/15.0;
-    private static double fade_time = 1.0;
+    private static double text_to_time_ratio = 1.0/17.0;
+    private static double fade_time = 0.5;
 
 	public double next_event_timer = 10000;
     public double fade_timer = 10000;
@@ -220,6 +220,7 @@ public class display_state_controller : MonoBehaviour
     }
 
     string read_json_file(string path){
+        Debug.Log(path);
  		string filePath = "Events/" + path.Replace(".json", "");
 		TextAsset targetFile = Resources.Load<TextAsset>(filePath);
 		Debug.Log(targetFile.text);
