@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"So what did you want to talk about?",
+		
+	"next_event":[
+		"1_opening_0",
+		"1_opening_1",
+		"1_opening_2"
+	],
+	
+	"choices":[
+		"Ask what he's doing",
+		"Ask about his work"
+	]
+
+}

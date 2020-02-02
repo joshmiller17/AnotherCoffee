@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"Yeah landlords suck. Do you still write?",
+		
+	"next_event":[
+		"1_opening_2_0"
+	]
+
+
+}
