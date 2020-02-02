@@ -4,7 +4,7 @@
 		"dreamer_animation":"normal"
 	},
 		
-		"dialogue": "Hey...!",
+	"dialogue": "Hey...!",
 		
 	"next_event":[
 		"0_opening_0",
