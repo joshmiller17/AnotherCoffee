@@ -40,7 +40,7 @@ public class display_state_controller : MonoBehaviour
         	process_json_game_event(current_event.next_event[choice_id + 1]);
         }
         else{
-        	choise_selected = choice_id;
+        	choise_selected = choice_id + 1;
         }
     }
 
@@ -264,7 +264,7 @@ public class GameEvent{
 	public int wait_time;
 
 	public GameEvent(GameEventJSON js){
-		Debug.Log("game event made");
+		Debug.Log("game event made: " + js.dialogue);
 		wait_time = js.wait_time;
 		next_event = js.next_event;
         choices = js.choices;
