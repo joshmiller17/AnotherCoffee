@@ -5,12 +5,7 @@
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"...Right... sorry, uhh......",
+	"dialogue": "...kthnxbai",
 		
-	"next_event":[
-		"0_tutorial3"
-	],
-	
-	"wait_time":2
 
 }

@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I don’t know if you care, but, I actually brought the comic book we made in high school.",
+		
+	"next_event":[
+		"2_opening_0",
+		"2_opening_1",
+		"2_opening_2"
+	]
+	
+	"choices":[
+	"Wow, you still have that old thing?",
+	"Ha! I can't believe you still think about that."
+	]
+
+}

@@ -5,19 +5,19 @@
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"...",
+	"dialogue": "...",
 		
 	"next_event":[
-		"0_tutorial3_0",
-		"0_tutorial3_1",
-		"0_tutorial3_1"
+		"0_tutorial1_0_0",
+		"0_tutorial1_1"
 	],
 	
+	"effects":[{
+	"awkward":1
+	}],
+
 	"choices":[
-	"Are you okay?",
-	"Are you...?"
-	],
-	
-	"wait_time":1
+		"Thanks for reaching out."
+	]
 
 }
