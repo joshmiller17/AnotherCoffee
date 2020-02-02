@@ -1,0 +1,26 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+	},
+
+	"dialogue":" and I thought that maybe, well, I thought if we met up we could catch up, y’know, like old times or whatever, and talk about, I dunno, stuff, and… well, ughhh, I dunno,",
+		
+	"next_event":[
+		"0_tutorial1_1d",
+		"0_tutorial2",
+	],
+	
+	"effects":[
+	"awkward":1
+	],
+
+	
+	"is_interrupt":true,
+	
+	"choices":[
+		"Oh no, he's rambling. I should stop this."
+	],
+
+}

@@ -1,0 +1,27 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+		"dreamer_animation":"awkward"
+	},
+
+	"dialogue":"I’m bad at this whole small talk thing and now you’re just making me nervous and it’s super awkward and I don’t know where this is going.",
+		
+	"next_event":[
+		"0_tutorial1_1e",
+		"0_tutorial2",
+	],
+	
+	"effects":[
+	"awkward":1
+	],
+
+	
+	"is_interrupt":true,
+	
+	"choices":[
+		"Oh no, he's rambling. I should stop this."
+	],
+
+}

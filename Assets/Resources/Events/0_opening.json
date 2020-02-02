@@ -1,4 +1,10 @@
 {
+	"display_state":{
+		"talking":"dreamer",
+		"dreamer_animation":"normal",
+	},
+		
+		"dialogue": "Hey...!",
 		
 	"next_event":[
 		"0_opening_0",
@@ -9,5 +15,7 @@
 	"choices":[
 		"Am I really doing this?",
 		"Am I really about talk to him again?"
-	]
+	],
+	
+	"wait": 6
 }

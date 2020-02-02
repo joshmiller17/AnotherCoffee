@@ -5,14 +5,10 @@
 		"realist_animation":"normal"
 	},
 
+	"dialogue":"Thanks for reaching out, it was really, uh… unexpected.",
 		
 	"next_event":[
-		"0_tutorial1_0",
-		"0_tutorial1_1",
+		"0_tutorial1_1b",
 	],
-
-	"choices":[
-		"Thanks for reaching out.",
-	]
 
 }

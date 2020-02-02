@@ -1,52 +1,5 @@
 {
-	"events": [{
-			"event_id": "0_opening",
-			"type": "choice",
-			"timeout": 5,
-			"options": [{
-					"index": 1,
-					"internal": "Am I really doing this?",
-					"external": "Hey!"
-				},
-				{
-					"index": 2,
-					"internal": "Am I really about to talk to him again?",
-					"external": "It's been so long! What's up, man?"
-				}
-			]
-		},
-
-		{
-			"event_id": "0_opening_0",
-			"type": "dialogue",
-			"dialogue": [{
-				"dreamer": "Um... hi."
-			}],
-			"timeout": 5,
-			"goto": "0_tutorial1"
-		},
-
-		{
-			"event_id": "0_opening_0",
-			"type": "dialogue",
-			"dialogue": [{
-				"dreamer": "Oh, uh, hey."
-			}],
-			"timeout": 5,
-			"goto": "0_tutorial1"
-		},
-
-		{
-			"event_id": "0_opening_0",
-			"type": "dialogue",
-			"dialogue": [{
-				"dreamer": "Heyyyyyyyyy.........."
-			}],
-			"timeout": 5,
-			"goto": "0_tutorial1"
-		},
-
-
+	
 		{
 			"event_id": "0_tutorial1",
 			"type": "choice",

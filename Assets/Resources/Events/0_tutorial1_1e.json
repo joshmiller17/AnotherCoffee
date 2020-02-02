@@ -1,0 +1,27 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+		"dreamer_animation":"awkward"
+	},
+
+	"dialogue":"Maybe this was a bad idea, maybe I shouldn’t have reached out.... maybe this was all meant to be left in the past… uh… yeah.",
+		
+	"next_event":[
+		"0_tutorial1_1f",
+		"0_tutorial2",
+	],
+	
+	"effects":[
+	"awkward":1
+	],
+
+	
+	"is_interrupt":true,
+	
+	"choices":[
+		"Oh no, he's rambling. I should stop this."
+	],
+
+}

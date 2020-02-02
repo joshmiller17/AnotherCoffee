@@ -1,0 +1,14 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+	},
+
+	"dialogue":"Oh, haha… yeah, of course. I mean, I haven’t seen you in forever and, like, we haven’t talked since high school,",
+		
+	"next_event":[
+		"0_tutorial1_1c",
+	],
+
+}
