@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"How is it even possible for a studio apartment to cost $2000?",
+		
+	"next_event":[
+		"1_opening_1_0_0",
+		"1_opening_1_0_1",
+		"1_opening_1_0_2"
+	],
+	
+	
+	"choices":[
+	"I’m stressed just hearing that... Let’s not talk rent.",
+	"Yikes, my mortgage isn’t that bad."
+	]
+
+}

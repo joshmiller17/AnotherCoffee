@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+		"dreamer_animation":"awkward"
+	},
+
+	"dialogue":"Look, I’m sorry, this was a mistake. I’m just going to see myself out, okay?",
+		
+	"next_event":[
+		"endgame",
+	]
+
+}
