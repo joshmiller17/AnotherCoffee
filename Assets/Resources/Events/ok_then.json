@@ -4,23 +4,11 @@
 		"character_A_panel":"dude_placeholder.png",
 		"character_B_panel":"lady_placeholder.png",
 		"speech_bubble":"test_speech_bubble.png",
-		"active_speech_bubble":"B"
+		"active_speech_bubble":"A"
 	},
 
 	"dialogue":
-		"My name is inego montoya. You killed my father. Prepare to die!",
+		"...Ok then...",
 
-	"next_event":[
-		"ok_then",
-		"hi_bob",
-		"ok_then"
-	],
-
-	"choices":[
-		"Hi bob",
-		"Ok then..."
-	],
-
-
-	"event_time":5
+	"event_time":3
 }
