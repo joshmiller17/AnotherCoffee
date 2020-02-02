@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStartSize: 1
-  characterAnimateSpeed: 2500
+  characterAnimateSpeed: 1600
   bubbleBackground: {fileID: 505486213}
   backgroundMinimumHeight: 100
   backgroundVerticalMargin: 64
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f554da2df3f6354a8555497ada31c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 0}
   bg_panel: {fileID: 455970731}
   dreamer_animation: {fileID: 1464802734}
   realist_animation: {fileID: 1252527465}
@@ -1825,7 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStartSize: 1
-  characterAnimateSpeed: 2500
+  characterAnimateSpeed: 1600
   bubbleBackground: {fileID: 276321713}
   backgroundMinimumHeight: 100
   backgroundVerticalMargin: 64
