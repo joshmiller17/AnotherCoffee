@@ -5,11 +5,16 @@
 		"dreamer_animation":"normal"
 	},
 
-	"dialogue":"Got any fun projects in the works?",
+	"dialogue":"Oh, uh. Well..."
+	
+	"effects":[
+	"tension":-1
+	],
 		
 	"next_event":[
-		"1_opening_2_0"
+		"1_opening_2_0_0"
 	]
 	
-
+	
+	
 }
