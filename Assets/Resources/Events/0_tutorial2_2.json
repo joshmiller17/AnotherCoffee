@@ -8,12 +8,12 @@
 	"dialogue":"YEAH SO... What did you want to talk about?",
 		
 	"next_event":[
-		"0_tutorial2_4",
+		"0_tutorial2_4"
 	],
 	
-	"effects":[
-	"tension":1,
-	"awkward":-1
+	"effects":[{
+	"tension":1},{
+	"awkward":-1}
 	]
 	
 

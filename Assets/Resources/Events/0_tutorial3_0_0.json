@@ -14,9 +14,9 @@
 	],
 	
 		"choices":[
-	"Are you okay?"
+	"Are you okay?",
 	"Are you...?"
-	]
+	],
 	
 	"wait_time":6
 

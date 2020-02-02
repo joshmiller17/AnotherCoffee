@@ -7,8 +7,8 @@
 
 	"dialogue":"Ah man, you could get like… 400 coffees for that much. You’d get so much writing done. Do you still write?",
 		
-	"effects":[
-	"tension":-1
+	"effects":[{
+	"tension":-1}
 	],
 		
 	"next_event":[

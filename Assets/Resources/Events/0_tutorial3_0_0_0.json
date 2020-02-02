@@ -11,8 +11,8 @@
 		"1_opening"
 	],
 	
-	"effects"[
-	"tension":-1
+	"effects":[{
+	"tension":-1}
 	]
 
 }

@@ -1,7 +1,7 @@
 {
 	"display_state":{
 		"talking":"dreamer",
-		"dreamer_animation":"normal",
+		"dreamer_animation":"normal"
 	},
 		
 		"dialogue": "Hey...!",

@@ -13,9 +13,9 @@
 		"1_opening_2"
 	],
 	
-	"effects":[
-	"awkward":1
-	},
+	"effects":[{
+	"awkward":1}
+	],
 	
 	"choices":[
 		"Ask what he's doing",

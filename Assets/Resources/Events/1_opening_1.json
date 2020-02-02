@@ -9,13 +9,13 @@
 		
 	"next_event":[
 		"1_opening_1_0",
-		"1_opening_1_1",
+		"1_opening_1_1"
 	],
 	
 	"is_interrupt": true,
 	
 	"choices":[
-	"I’m stressed just hearing that... Let’s not talk rent.",
+	"I’m stressed just hearing that... Let’s not talk rent."
 	]
 
 }

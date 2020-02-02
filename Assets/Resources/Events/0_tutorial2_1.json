@@ -8,12 +8,12 @@
 	"dialogue":"Hey, I'm kinda nervous too. Need a second?",
 		
 	"next_event":[
-		"0_tutorial2_0",
+		"0_tutorial2_0"
 	],
 	
-	"effects":[
-	"awkward":-1
-	],
+	"effects":[{
+	"awkward":-1}
+	]
 	
 
 }

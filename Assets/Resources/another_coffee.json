@@ -1,31 +1,4 @@
 
-		{
-			"event_id": "1_apartment_3",
-			"type": "dialogue",
-			"dialogue": [{
-					"dreamer": {
-					"text":"Ha, yeah, right. On my budget, maybe I could get some nice fuzzy blankets for when I crash on my parent’s couch. ...",
-					"pause":1
-				}},
-				{
-					"dreamer": {
-					"text":"That... was a joke. Obviously.",
-					"pause":1
-				}},
-				{
-				"dreamer":"I'd stay in my old room."
-				},
-				{
-				"realist":"Oh, jeeze. I could never do that."
-				},
-				{
-				"effect":{
-				"tension":1,
-				}
-				}
-			],
-			"goto": "1_roommates"
-		},
 		
 			{
 			"event_id": "1_roommates",
@@ -43,18 +16,7 @@
 					"external": "UGH anyway, do you still write?",
 					"goto": "1_apartment_1"
 				},
-				{
-					"index": 3,
-					"internal": "$2000 is way too much for one freelance writer.",
-					"external": "Do you have any roommates?"
-					"goto": "1_roommates_1"
-				},
-				{
-					"index": 4,
-					"internal": "Stop talking about his apartment.",
-					"external": "UGH anyway, do you still write?",
-					"goto": "1_apartment_1"
-				}
+				
 
 			]
 		},

@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sip",
+		"realist_animation":"sip"
+	},
+
+	"dialogue":"...",
+	
+		
+	"next_event":[
+		"1_roommates_0",
+		"1_roommates_1",
+		"1_roommates_2"
+	]
+	
+}

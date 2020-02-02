@@ -5,16 +5,14 @@
 		"dreamer_animation":"normal"
 	},
 
-	"dialogue":"That’s brutal! It would be cheaper to try to buy a house.",
+	"dialogue":"Oh, jeeze. I could never do that.",
 	
 	"effects":[{
-	"tension":1
+	"tension":0.2
 	}
 	],
 		
 	"next_event":[
-		"1_opening_1_2_0_0"
+		"1_roommates"
 	]
-
-
 }
