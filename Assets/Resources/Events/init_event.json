@@ -18,10 +18,14 @@
 
 	"choices":[
 		"Hi bob",
-		"Ok then..."
+		"Ok then...",
+		"OOOHHHHH NOOOOOOOO!!!"
 	],
 
 	"effects":[
+	],
+
+	"conditions":[
 	],
 
 

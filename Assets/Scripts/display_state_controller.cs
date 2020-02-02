@@ -64,8 +64,8 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_event(GameEvent game_event){
-    	next_event_timer = Time.time + fade_time + (text_to_time_ratio * game_event.dialogue.Length);
-        fade_timer = Time.time + (text_to_time_ratio * game_event.dialogue.Length);
+    	next_event_timer = Time.time + fade_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
+        fade_timer = Time.time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
     	handle_display(game_event.display_state, game_event.dialogue);
         handle_thoughts(game_event.choices);
     }
