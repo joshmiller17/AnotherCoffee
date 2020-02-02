@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry"
+	},
+
+	"dialogue":"Jeez! I said gimme a sec! Fine, I guess we'll just keep talking!!",
+		
+	"next_event":[
+		"1_opening"
+	],
+	
+	"effects"[
+	"tension":1
+	]
+
+}

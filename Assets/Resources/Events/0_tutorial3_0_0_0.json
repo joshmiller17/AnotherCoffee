@@ -5,15 +5,14 @@
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Actually, yeah... just, uh, gimme a sec...",
+	"dialogue":"...Alright, thanks. I'm good.",
 		
 	"next_event":[
-		"0_tutorial3",
+		"1_opening"
 	],
 	
-	"effects":[
-	"awkward":-1
-	],
-	
+	"effects"[
+	"tension":-1
+	]
 
 }

@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"*hhhooo* . . . . . . . .",
+		
+	"next_event":[
+		"0_tutorial3_0_0_0",
+		"0_tutorial3_1",
+		"0_tutorial3_1"
+	],
+	
+		"choices":[
+	"Are you okay?"
+	"Are you...?"
+	]
+	
+	"wait_time":6
+
+}
