@@ -9,7 +9,7 @@
 	"dialogue": "Oh, uh, hey.",
 		
 	"next_event":[
-		"0_opening_1_b"
+		"0_tutorial1"
 	]
 
 }
