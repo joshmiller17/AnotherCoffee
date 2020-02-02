@@ -520,14 +520,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -649,6 +649,7 @@ GameObject:
   - component: {fileID: 604231373}
   - component: {fileID: 604231372}
   - component: {fileID: 604231371}
+  - component: {fileID: 604231374}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -721,6 +722,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &604231374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604231370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d3c325028242242b388239bc20edbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
+  timer_max: 0
+  offset_amount: 0
+  shift_intensity: 0
 --- !u!1 &606556678
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,14 +820,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -896,14 +913,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -938,6 +955,7 @@ GameObject:
   - component: {fileID: 963120221}
   - component: {fileID: 963120220}
   - component: {fileID: 963120224}
+  - component: {fileID: 963120225}
   m_Layer: 5
   m_Name: game_display
   m_TagString: Untagged
@@ -1059,6 +1077,22 @@ MonoBehaviour:
   current_event_name: 
   next_event_timer: 10000
   fade_timer: 10000
+--- !u!114 &963120225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963120219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d3c325028242242b388239bc20edbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
+  timer_max: 40
+  offset_amount: 0.2
+  shift_intensity: 0.015
 --- !u!1 &1252259310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,14 +1652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -1808,14 +1842,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
