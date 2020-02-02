@@ -1,14 +1,14 @@
 {
 "display_state":{
-		"talking":"dreamer",
+		"talking":"realist",
 		"bubble":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Actually, yeah... just, uh, gimme a sec...",
+	"dialogue":"Hey, I'm kinda nervous too. Need a second?",
 		
 	"next_event":[
-		"0_tutorial3",
+		"0_tutorial2_0",
 	],
 	
 	"effects":[

@@ -9,7 +9,8 @@
 		
 	"next_event":[
 		"0_tutorial1_1d",
-		"0_tutorial2",
+		"0_tutorial2_1",
+		"0_tutorial2_2"
 	],
 	
 	"effects":[
@@ -20,7 +21,8 @@
 	"is_interrupt":true,
 	
 	"choices":[
-		"Oh no, he's rambling. I should stop this."
-	],
+		"Oh no, he's rambling. I should stop this.",
+		"This is never going to end if I don't say something."
+	]
 
 }
