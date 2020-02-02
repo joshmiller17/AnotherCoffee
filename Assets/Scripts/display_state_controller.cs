@@ -51,7 +51,7 @@ public class display_state_controller : MonoBehaviour
     	update_image(character_A_panel, display_state.character_A_panel);
     	update_image(character_B_panel, display_state.character_B_panel);
     	update_image(bg_panel, display_state.bg_panel);
-    	//handle_speech_bubbles(display_state.speech_bubble, display_state.active_speech_bubble);
+    	handle_speech_bubbles(display_state.speech_bubble, display_state.active_speech_bubble);
     }
 
     void handle_speech_bubbles(Sprite speech_bubble, string active_speech_bubble){
@@ -77,8 +77,7 @@ public class display_state_controller : MonoBehaviour
     }
 
     void update_image(GameObject obj, Sprite img){
-    	obj. = obj.GetComponent<Image>();
-    	obj_img.sprite = img;
+    	obj.GetComponent<Image>().sprite = img;
 
     }
 
@@ -103,7 +102,7 @@ public class DisplayState{
 
 	static Sprite load_art(string path){
 		string filePath = "Art/" + path.Replace(".jpg", "").Replace(".png", "");
-		return Resources.Load("path") as Sprite;
+		return Resources.Load<Sprite>(filePath);
 	}
 
 	public DisplayState(DisplayStateJSON js){
