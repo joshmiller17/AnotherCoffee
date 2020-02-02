@@ -1,6 +1,7 @@
 {
 	"display_state":{
 		"talking":"dreamer",
+		"bubble":"normal",
 		"dreamer_animation":"normal"
 	},
 		

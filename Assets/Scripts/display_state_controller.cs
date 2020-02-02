@@ -107,6 +107,7 @@ public class display_state_controller : MonoBehaviour
     				handle_effect(effect);
     			}
     		}
+    		handle_music();
     	}
     }
 
@@ -155,13 +156,13 @@ public class display_state_controller : MonoBehaviour
 
     void handle_bubbles(Sprite bubble, string talking, string dialogue){
     	if(talking.Equals("realist")){
-    		//update_image(speech_A, bubble);
+    		update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
     		show_bubble(speech_A);
     		hide_bubble(speech_B);
     	}
         else if(talking.Equals("dreamer")){
-            //update_image(speech_B, bubble);
+            update_image(speech_B, bubble);
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
             hide_bubble(speech_A);
@@ -265,15 +266,15 @@ public class DisplayState{
 	}
 
 	public DisplayState(DisplayStateJSON js){
-		//Debug.Log("display state made");
 		//if(js==null){
 		//	return null;
 		//}
 		//bg_panel =  load_art(js.bg_panel);
-		dreamer_animation =  load_art("dreamer_"+js.dreamer_animation);
-		realist_animation =  load_art("realist_"+js.realist_animation);
-		bubble =  load_art("bubble_"+js.bubble);
-		talking =  js.talking;
+		dreamer_animation = load_art("dreamer_"+js.dreamer_animation);
+		realist_animation = load_art("realist_"+js.realist_animation);
+		talking = js.talking;
+		Debug.Log("bubble_"+talking+"_"+js.bubble);
+		bubble = load_art("bubble_"+talking+"_"+js.bubble);
 	}
 
 }
@@ -286,6 +287,7 @@ public class GameEvent{
 	public string dialogue;
 	public bool is_interrupt;
 	public int wait_time;
+	public EffectJSON[] effects;
 
 	public GameEvent(GameEventJSON js){
 		Debug.Log("game event made: " + js.dialogue);
@@ -302,6 +304,7 @@ public class GameEvent{
 		if(is_interrupt == null){
 			is_interrupt = false;
 		}
+		effects = js.effects;
 	}
 }
 
