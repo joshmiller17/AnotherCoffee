@@ -21,7 +21,7 @@ public class display_state_controller : MonoBehaviour
     private DisplayState current_display;
 
     private static double text_to_time_ratio = 1.0/15.0;
-    private static double fade_time = 1.5;
+    private static double fade_time = 0.7;
 
 	public double next_event_timer = 10000;
     public double fade_timer = 10000;
