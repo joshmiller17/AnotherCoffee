@@ -1092,7 +1092,7 @@ MonoBehaviour:
   text_material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   timer_max: 40
   offset_amount: 0.2
-  shift_intensity: 0.015
+  shift_intensity: 0.03
 --- !u!1 &1252259310
 GameObject:
   m_ObjectHideFlags: 0
