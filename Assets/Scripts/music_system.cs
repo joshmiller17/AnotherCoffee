@@ -13,7 +13,7 @@ public class music_system : MonoBehaviour
 
     List<float[]> parameters = new List<float[]>();
 
-    float[] phraseLen = {6.99F, 4.66F}; //this determines how long the tracks run for each phrase
+    float[] phraseLen = {6.99F, 6.99F}; //this determines how long the tracks run for each phrase
     float phraseNum = 0;
     int prevSource = 1;
     // 0 = dreamer
@@ -92,17 +92,24 @@ public class music_system : MonoBehaviour
         }
 
         index += (int)newParams[1];
-        print("playing index " + index.ToString());
+        // print("playing index " + index.ToString());
         return index;
     }
 
     void Start() {
         audiosources = GetComponents<AudioSource>();
+        audiosources[0].loop = true;
+        audiosources[1].loop = true;
+        // updateMusic(0, 0, 0, 1, 0, false);
+        // updateMusic(1, 0, 0, 0, 0, false);
+        // updateMusic(0, 0, 1, 0, 0, false);
+        // updateMusic(1, 0, 0, 1, 0, false);
         // updateMusic(0, 0, 0, 0, 0, false);
-        prevTime = 0;
+        prevTime = -10;
     }
 
     void Update() {
+        float delay = 1.2F;
         if (parameters.Count > 0){
             if (interrupt){
                 int currentSource = (int)parameters[parameters.Count - 1][0];
@@ -117,7 +124,8 @@ public class music_system : MonoBehaviour
                 MasterMixer.FindSnapshot(snapshots[currentSource]).TransitionTo(0.5F);
             }else{
                 //if the previous cue is at the end of its phrase
-                if (Time.time - prevTime >= phraseLen[prevSource] - 0.5){
+
+                if (Time.time - prevTime >= phraseLen[prevSource] - delay){
                     int currentSource = (int)parameters[0][0];
                     int currentClip = fetchCue(parameters[0]);
                     if (currentSource == prevSource && currentClip == prevClip){
@@ -125,19 +133,23 @@ public class music_system : MonoBehaviour
                         parameters.RemoveAt(0);
                     }else{
                         audiosources[currentSource].clip = stingers[fetchCue(parameters[0])];
-                        audiosources[currentSource].time = Mathf.Clamp((phraseLen[currentSource]*phraseNum) - 0.5F, 0, 100);
+                        float tempTime = (phraseLen[currentSource]*phraseNum) - delay;
+                        if (tempTime < 0){
+                            tempTime += audiosources[currentSource].clip.length;
+                        }
+                        audiosources[currentSource].time = tempTime;
                         phraseNum = (phraseNum + 1) % 4;
                         audiosources[currentSource].Play();
                         prevSource = currentSource;
                         parameters.RemoveAt(0);
-                        prevTime = Time.time;
-                        MasterMixer.FindSnapshot(snapshots[currentSource]).TransitionTo(0.5F);
+                        prevTime = Time.time + delay;
+                        MasterMixer.FindSnapshot(snapshots[currentSource]).TransitionTo(delay);
                     }
                 }
             }
         }else{
-            if (Time.time - prevTime >= phraseLen[prevSource] - 0.5){
-                MasterMixer.FindSnapshot("noMusic").TransitionTo(0.5F);
+            if (Time.time - prevTime >= phraseLen[prevSource] - delay){
+                MasterMixer.FindSnapshot("noMusic").TransitionTo(delay);
             }
         }
     }
