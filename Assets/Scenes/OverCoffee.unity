@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 602616556}
   - component: {fileID: 602616558}
   m_Layer: 5
-  m_Name: text
+  m_Name: text_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +771,11 @@ MonoBehaviour:
   character_B_panel: {fileID: 1252527465}
   speech_A: {fileID: 1186741557}
   speech_B: {fileID: 276321710}
+  dialogue_A: {fileID: 602616556}
+  dialogue_B: {fileID: 1817217981}
   dialogue: 
+  current_event_name: 
+  next_event_timer: 10000
 --- !u!1 &1186741557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1329,7 @@ GameObject:
   - component: {fileID: 1817217981}
   - component: {fileID: 1817217980}
   m_Layer: 5
-  m_Name: text
+  m_Name: text_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
