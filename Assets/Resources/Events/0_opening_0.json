@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"awkward"
+	},
+
+
+	"dialogue": "Um... hi.",
+		
+	"next_event":[
+		"0_tutorial1"
+	],
+
+}

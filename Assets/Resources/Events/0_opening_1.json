@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Hey!",
+		
+	"next_event":[
+		"0_opening_1_b"
+	],
+
+}

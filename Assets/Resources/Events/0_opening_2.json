@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "It's been so long! What's up, man?",
+		
+	"next_event":[
+		"0_opening_2b"
+	],
+
+}
