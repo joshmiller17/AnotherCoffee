@@ -25,6 +25,10 @@ public class display_state_controller : MonoBehaviour
 	public double next_event_timer = 10000;
     public double fade_timer = 10000;
 
+    public int awkward;
+    public int tension;
+    public int resolution;
+
     public void choose(int choice_id){
         process_json_game_event(current_event.next_event[choice_id + 1]);
     }
@@ -177,6 +181,7 @@ public class display_state_controller : MonoBehaviour
         hide_bubble_instant(speech_B);
         for(int i=0; i<thoughts.Length; i++){
             thoughts[i].GetComponent<thought_behaviors>().choice_id = i;
+            thoughts[i].GetComponent<thought_behaviors>().hide_instant();
         }
     }
 
@@ -230,6 +235,9 @@ public class GameEvent{
 		next_event = js.next_event;
         choices = js.choices;
 		event_time = js.event_time;
+		if(event_time == null){
+			event_time = 1;
+		}
 		dialogue = js.dialogue;
 		display_state = new DisplayState(js.display_state);
 	}

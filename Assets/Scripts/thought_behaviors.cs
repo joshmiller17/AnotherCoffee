@@ -11,20 +11,14 @@ public class thought_behaviors : MonoBehaviour, IPointerEnterHandler, IPointerEx
     //private static double growth_scale = 1.07;
     private static float base_alpha = 0.8f;
 
-    private Vector3 min_scale;
-    private Vector3 max_scale;
-    private Color deselected_color;
-    private Color selected_color;
     private bool hidden;
     private bool selected;
 
     // Start is called before the first frame update
     void Start()
     {
-        hidden = true;
+        hidden = false;
         selected = false;
-
-        hide();
     }
 
     // Update is called once per frame
@@ -59,6 +53,12 @@ public class thought_behaviors : MonoBehaviour, IPointerEnterHandler, IPointerEx
         hidden = true;
         gameObject.GetComponent<Image>().CrossFadeAlpha(0, 0.2f, false);
         gameObject.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0, 0.2f, false);
+    }
+
+    public void hide_instant(){
+        hidden = true;
+        gameObject.GetComponent<Image>().CrossFadeAlpha(0, 0.0f, false);
+        gameObject.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0, 0.0f, false);
     }
 
     public void show(){
