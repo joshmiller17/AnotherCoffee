@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class display_state_controller : MonoBehaviour
 {
+	public music_system music;
 	public GameObject bg_panel;
 	public GameObject dreamer_animation;
 	public GameObject realist_animation;
@@ -59,6 +60,18 @@ public class display_state_controller : MonoBehaviour
         else if(Time.time > fade_timer){
             start_fade();
         }
+    }
+
+    void handle_music(){
+    	int topic = int.Parse(current_event_name.Substring(0,1));
+    	int character = 0;
+    	if(current_event.display_state.talking.Equals("dreamer")){
+    		character = 1;
+    	}
+    	float temp_tension = (float)(tension)/2.0f;
+    	float temp_resolution = (float)(resolution)/1.0f;
+    	float temp_awkwardness = (float)(awkward)/1.0f;
+    	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
     }
 
     string get_next_event_string(){
