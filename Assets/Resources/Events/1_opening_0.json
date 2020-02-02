@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"...uhh....",
+		
+	"next_event":[
+		"1_opening_0_0",
+		"1_opening_1",
+		"1_opening_2"
+	],
+	
+	"effects":[
+	"awkward":1
+	},
+	
+	"choices":[
+		"Ask what he's doing",
+		"Ask about his work"
+	]
+
+}
