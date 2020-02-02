@@ -29,8 +29,18 @@ public class display_state_controller : MonoBehaviour
     public int tension;
     public int resolution;
 
+    private int choise_selected = 0;
+
     public void choose(int choice_id){
-        process_json_game_event(current_event.next_event[choice_id + 1]);
+    	foreach(GameObject thought in thoughts){
+        		hide_thought(thought);
+        	}
+        if(current_event.is_interrupt){
+        	process_json_game_event(current_event.next_event[choice_id + 1]);
+        }
+        else{
+        	choise_selected = choice_id;
+        }
     }
 
     // Start is called before the first frame update
@@ -53,7 +63,9 @@ public class display_state_controller : MonoBehaviour
 
     string get_next_event_string(){
         if(current_event.next_event != null){
-            return current_event.next_event[0];
+            string temp = current_event.next_event[choise_selected];
+            choise_selected = 0;
+            return temp;
         }
         else{
             return get_next_event_from_name();
@@ -106,13 +118,13 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_speech_bubbles(Sprite speech_bubble, string active_speech_bubble, string dialogue){
-    	if(active_speech_bubble.Equals("A")){
+    	if(active_speech_bubble.Equals("realist")){
     		//update_image(speech_A, speech_bubble);
             set_dialogue(dialogue_A, dialogue);
     		show_bubble(speech_A);
     		hide_bubble(speech_B);
     	}
-        else if(active_speech_bubble.Equals("B")){
+        else if(active_speech_bubble.Equals("dreamer")){
             //update_image(speech_B, speech_bubble);
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
@@ -158,10 +170,10 @@ public class display_state_controller : MonoBehaviour
 
     void start_fade(){
         string active_speech_bubble = current_event.display_state.active_speech_bubble;
-        if(active_speech_bubble.Equals("A")){
+        if(active_speech_bubble.Equals("realist")){
             fade_bubble(speech_A);
         }
-        else if(active_speech_bubble.Equals("B")){
+        else if(active_speech_bubble.Equals("dreamer")){
             fade_bubble(speech_B);
         }
         else{
@@ -210,11 +222,14 @@ public class DisplayState{
 	public string active_speech_bubble;
 
 	static Sprite load_art(string path){
-		string filePath = "Art/" + path.Replace(".jpg", "").Replace(".png", "");
+		string filePath = "realistrt/" + path.Replace(".jpg", "").Replace(".png", "");
 		return Resources.Load<Sprite>(filePath);
 	}
 
 	public DisplayState(DisplayStateJSON js){
+		//if(js==null){
+		//	return null;
+		//}
 		bg_panel =  load_art(js.bg_panel);
 		character_A_panel =  load_art(js.character_A_panel);
 		character_B_panel =  load_art(js.character_B_panel);
@@ -230,6 +245,7 @@ public class GameEvent{
     public string[] choices;
 	public int event_time;
 	public string dialogue;
+	public bool is_interrupt;
 
 	public GameEvent(GameEventJSON js){
 		next_event = js.next_event;
@@ -240,6 +256,10 @@ public class GameEvent{
 		}
 		dialogue = js.dialogue;
 		display_state = new DisplayState(js.display_state);
+		is_interrupt = js.is_interrupt;
+		if(is_interrupt == null){
+			is_interrupt = false;
+		}
 	}
 }
 
@@ -261,4 +281,5 @@ public class GameEventJSON
 	public string[] next_event;
     public string[] choices;
 	public int event_time;
+	public bool is_interrupt;
 }
