@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Oh... Noooo... I’ve been trying to rest my arm...",
+	
+	"effects":[{
+	"tension":0.1
+	}
+	],
+		
+	"next_event":[
+		"1_liar",
+		"1_lie_ramble"
+	]
+	
+	"choices":[
+	"Quick, ramble to defend your lies!"
+	]
+
+}

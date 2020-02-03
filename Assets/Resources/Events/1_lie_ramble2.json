@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"They wanted me to do a huge mural of a giraffe and I sprained my arm trying to get to the top of the neck, you understand. So I've been resting it for a week but it hasn't healed yet and...",
+	
+	"effects":[{
+	"tension":0.2
+	}
+	],
+	
+	"interrupted":true,
+		
+	"next_event":[
+		"1_liar"
+	]
+
+
+}

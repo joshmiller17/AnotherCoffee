@@ -39,14 +39,15 @@ public class thought_behaviors : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //
+        if (selected && !hidden)
+        {
+            controller.choose(choice_id);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(selected && !hidden){
-            controller.choose(choice_id);
-        }
+        
     }
 
     public void hide(){

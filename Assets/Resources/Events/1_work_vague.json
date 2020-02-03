@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Oh... Yeah, kinda, nothing interesting...",
+	
+	"effects":[{
+	"tension":0.1
+	}
+	],
+		
+	"next_event":[
+		"1_liar"
+	]
+
+}

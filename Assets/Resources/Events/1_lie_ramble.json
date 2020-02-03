@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I hurt it earlier when I was rushing to finish this huge project I was doing for charity at a hospital",
+	
+	"effects":[{
+	"tension":0.1
+	}
+	],
+		
+	"next_event":[
+		"1_liar",
+		"1_lie_ramble2"
+	],
+	
+	"choices":[
+	"Keep rambling, he's buying it!"
+	]
+
+}
