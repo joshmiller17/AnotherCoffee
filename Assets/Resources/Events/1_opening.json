@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"dreamer_animation":"normal"
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
 	},
 
 	"dialogue":"So what did you want to talk about?",

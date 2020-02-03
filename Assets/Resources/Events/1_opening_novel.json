@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"dreamer_animation":"normal"
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
 	},
 
 	"dialogue":"Got any fun projects in the works?",

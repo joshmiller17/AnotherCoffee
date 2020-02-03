@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"realist_animation":"awkward"
+		"realist_animation":"awkward",
+		"dreamer_animation":"awkward"
 	},
 
 

@@ -2,7 +2,9 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"realist_animation":"normal"
+		"realist_animation":"normal",
+		"dreamer_animation":"normal"
+		
 	},
 
 	"dialogue":"Hey, I'm kinda nervous too. Need a second?",

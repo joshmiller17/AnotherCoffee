@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"dreamer_animation":"normal"
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
 	},
 
 	"dialogue":"Do you really think that? That means a lot!!",

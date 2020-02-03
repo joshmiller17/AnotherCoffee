@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"shout",
-		"dreamer_animation":"angry"
+		"dreamer_animation":"angry",
+		"dreamer_animation":"sad"
 	},
 
 	"dialogue":"Jeez! I said gimme a sec! Fine, I guess we'll just keep talking!!",

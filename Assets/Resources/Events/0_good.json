@@ -2,17 +2,22 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"realist_animation":"normal"
+		"realist_animation":"happy",
+		"dreamer_animation":"happy"
 	},
 
 	"dialogue":"...Alright, thanks. I'm good.",
+	
+	
 		
 	"next_event":[
 		"1_opening"
 	],
 	
 	"effects":[{
-	"tension":-1}
+	"tension":-1,
+	"awkward":-1
+	}
 	]
 
 }

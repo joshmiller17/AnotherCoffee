@@ -2,7 +2,8 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"realist_animation":"normal"
+		"realist_animation":"normal",
+		"dreamer_animation":"happy"
 	},
 
 	"dialogue":"Thanks for reaching out, it was really, uh… unexpected.",
