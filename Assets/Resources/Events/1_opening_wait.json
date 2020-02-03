@@ -5,13 +5,17 @@
 		"dreamer_animation":"normal"
 	},
 
-	"dialogue":"So what did you want to talk about?",
+	"dialogue":"...uhh....",
 		
 	"next_event":[
-		"1_opening_wait",
+		"1_opening_wait_wait",
 		"1_opening_rent",
 		"1_opening_novel"
 	],
+	
+	"effects":[{
+	"awkward":1
+	}],
 	
 	"choices":[
 		"Ask what he's doing",

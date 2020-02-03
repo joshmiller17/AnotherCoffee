@@ -1,16 +1,16 @@
 {
 "display_state":{
-		"talking":"realist",
+		"talking":"dreamer",
 		"bubble":"normal",
 		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Do you have any roommates?",
+	"dialogue":"Are you working on anything?",
+",
 	
 		
 	"next_event":[
-		"1_roommates2"
+		"1_work"
 	]
-	
 }

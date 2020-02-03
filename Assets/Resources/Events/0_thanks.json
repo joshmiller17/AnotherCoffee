@@ -2,15 +2,13 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Do you have any roommates?",
-	
+	"dialogue":"Thanks for reaching out, it was really, uh… unexpected.",
 		
 	"next_event":[
-		"1_roommates2"
+		"0_ramble"
 	]
-	
+
 }

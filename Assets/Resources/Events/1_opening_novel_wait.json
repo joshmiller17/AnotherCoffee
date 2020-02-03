@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"awkward"
+	},
+
+	"dialogue":"I know it sounds kinda dumb when I put it that way, but... ~g a h~, I'm not explaining it well!",
+",
+	
+		
+	"next_event":[
+		"1_opening_novel_wait2"
+	]
+}

@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Yeah, two! They're a couple. That's... A whole different conversation though...",
+	
+		
+	"next_event":[
+		"1_roommates3"
+	]
+}

@@ -2,15 +2,19 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Do you have any roommates?",
-	
+	"dialogue":"YEAH SO... What did you want to talk about?",
 		
 	"next_event":[
-		"1_roommates2"
+		"0_uhh"
+	],
+	
+	"effects":[{
+	"tension":1},{
+	"awkward":-1}
 	]
 	
+
 }

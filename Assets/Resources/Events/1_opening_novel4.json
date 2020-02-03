@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"This could finally be the big one!",
+	
+	"effects":[{
+	"tension":-0.2}
+	],
+		
+	"next_event":[
+		"1_opening_novel5",
+		"1_opening_novel_interrupt"
+	],
+	
+	"is_interrupt":true,
+	
+	"choices":[
+	"Where does he find the willpower to keep creating?"
+	]
+	
+}

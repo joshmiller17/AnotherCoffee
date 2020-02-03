@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"Got any fun projects in the works?",
+		
+	"next_event":[
+		"1_opening_novel2"
+	]
+	
+
+}

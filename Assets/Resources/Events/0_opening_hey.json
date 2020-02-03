@@ -2,15 +2,16 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Do you have any roommates?",
-	
+
+	"dialogue": "Hey!",
 		
 	"next_event":[
-		"1_roommates2"
-	]
+		"0_opening_hey2"
+	],
 	
+	"wait_time":1
+
 }

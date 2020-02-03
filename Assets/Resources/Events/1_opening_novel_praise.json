@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"That sounds like a huge undertaking, but if anyone can make it happen, it’s you.",
+	
+	"effects":{
+	"tension":-1
+	},
+	
+	"next_event":[
+		"1_opening_novel_praise2"
+	]
+	
+}

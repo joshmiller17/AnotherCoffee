@@ -2,15 +2,18 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Do you have any roommates?",
-	
+	"dialogue":"Hey, I'm kinda nervous too. Need a second?",
 		
 	"next_event":[
-		"1_roommates2"
+		"0_gimme"
+	],
+	
+	"effects":[{
+	"awkward":-1}
 	]
 	
+
 }

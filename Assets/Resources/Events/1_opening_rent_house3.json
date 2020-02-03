@@ -1,0 +1,27 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"That... was a joke. Obviously.",
+	
+	"effects":[{
+	"tension":0.2
+	}
+	],
+		
+	"next_event":[
+		"1_opening_rent_house4",
+		"1_roommates",
+		"1_opening_novel2"
+	],
+	
+	"choices":[
+		"$2000 is way too much for one freelance writer.",
+		"Stop talking about his apartment."
+	],
+
+	"wait_time":3
+}

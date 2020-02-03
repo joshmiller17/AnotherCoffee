@@ -1,0 +1,26 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"and the last remaining humans need to repair the crumbling ruins before they’re  suffocated in ash!",
+	
+	"effects":[{
+	"tension":-0.2}
+	],
+		
+	"next_event":[
+		"1_opening_novel8",
+		"1_opening_novel_interrupt"
+	],
+	
+	"is_interrupt":true,
+	
+	"choices":[
+	"Where does he find the willpower to keep creating?"
+	],
+	
+	"wait_time":2
+}

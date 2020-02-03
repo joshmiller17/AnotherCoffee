@@ -2,15 +2,19 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"dreamer_animation":"normal"
+		"dreamer_animation":"awkward"
 	},
 
-	"dialogue":"So what did you want to talk about?",
+	"dialogue":"...soooooo.........",
 		
 	"next_event":[
-		"1_opening_wait",
+		"3_awkward_exit",
 		"1_opening_rent",
 		"1_opening_novel"
+	],
+	
+	"effects":[{
+	"awkward":1}
 	],
 	
 	"choices":[

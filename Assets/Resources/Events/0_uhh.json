@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"...Right... sorry, uhh......",
+		
+	"next_event":[
+		"0_breathe"
+	],
+	
+	"wait_time":2
+
+}

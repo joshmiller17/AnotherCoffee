@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sip",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"*s l u r p*",
+	
+		
+	"next_event":[
+		"2_opening_wait",
+		"1_opening_novel",
+		"2_opening"
+	]
+	
+	"choices":[
+	"Ask about his work",
+	"C'mon, say something interesting!"
+	]
+}

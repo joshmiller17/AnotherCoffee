@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue": "...",
+		
+	"next_event":[
+		"endgame",
+		"0_thanks"
+	],
+	
+	"effects":[{
+	"awkward":1
+	}],
+
+	"choices":[
+		"Thanks for reaching out."
+	]
+
+}

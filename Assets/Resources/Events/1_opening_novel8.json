@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"It's a metaphor for, like, politics and stuff.",
+	
+		
+	"next_event":[
+		"1_opening_novel_wait",
+		"1_business"
+	],
+		
+	"choices":[
+	"Where does he find the willpower to keep creating?",
+	"What does he really want to talk about?"
+	]
+}

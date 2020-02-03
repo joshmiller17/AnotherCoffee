@@ -1,0 +1,27 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"Ha, yeah, right. On my budget, maybe I could get some nice fuzzy blankets for when I crash on my parent’s couch. ...",
+	
+	"effects":[{
+	"tension":0.2
+	}
+	],
+		
+	"next_event":[
+		"1_opening_rent_house3",
+		"1_roommates",
+		"1_opening_novel2"
+	],
+	
+	"choices":[
+		"$2000 is way too much for one freelance writer.",
+		"Stop talking about his apartment."
+	],
+
+	"wait_time":2
+}

@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"So, the world is like, *super* old, right? And humans have been living on the planet for so long that… um... You know what? Nevermind.",
+",
+	
+		
+	"next_event":[
+		"1_opening_novel_wait3"
+	]
+}

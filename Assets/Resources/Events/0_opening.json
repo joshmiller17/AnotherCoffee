@@ -8,9 +8,9 @@
 	"dialogue": "Hey...!",
 		
 	"next_event":[
-		"0_opening_0",
-		"0_opening_1",
-		"0_opening_2"
+		"0_opening_wait",
+		"0_opening_hey",
+		"0_opening_sup"
 	],
 
 	"choices":[

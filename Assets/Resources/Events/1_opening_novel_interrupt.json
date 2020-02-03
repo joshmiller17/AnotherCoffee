@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"Wooow, yeah, I don't know how you do it.",
+	
+		
+	"next_event":[
+		"1_opening_novel_wait",
+	]
+	
+}

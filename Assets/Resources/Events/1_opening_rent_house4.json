@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"I'd stay in my old room.",
+	
+	"effects":[{
+	"tension":0.2
+	}
+	],
+		
+	"next_event":[
+		"1_opening_rent_house5",
+		"1_roommates",
+		"1_opening_novel2"
+	],
+	
+	"choices":[
+		"$2000 is way too much for one freelance writer.",
+		"Stop talking about his apartment."
+	]
+}
