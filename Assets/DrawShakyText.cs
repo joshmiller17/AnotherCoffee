@@ -28,16 +28,16 @@ public class DrawShakyText : MonoBehaviour
             timer = 0.0f;
             seed += 0.3f; /* This is an arbitrary increase, any amount that isn't too small will produce equally 'jittery' results */
         }
+
+        /* Set values to the shader/material at run-time */
+        text_material.SetFloat("_DisplacementSeed", seed);
+        text_material.SetFloat("_OffsetAmount", offset_amount);
+        text_material.SetFloat("_ShiftIntensity", shift_intensity);
     }
 
     void OnGUI()
     {
-        /* Set values to the shader/material at run-time */
-        text_material.SetFloat("_DisplacementSeed", seed);
-        text_material.SetFloat("_OffsetAmount", .02f);//offset_amount); //TODO FIXME
-        Debug.Log("Shaky offset" + offset_amount.ToString());
-        text_material.SetFloat("_ShiftIntensity", .035f);//shift_intensity); //TODO FIXME
-        Debug.Log("Shaky intense" + shift_intensity.ToString());
+        
 
     }
 }
