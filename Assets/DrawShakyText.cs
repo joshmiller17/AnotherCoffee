@@ -34,7 +34,10 @@ public class DrawShakyText : MonoBehaviour
     {
         /* Set values to the shader/material at run-time */
         text_material.SetFloat("_DisplacementSeed", seed);
-        text_material.SetFloat("_OffsetAmount", offset_amount);
-        text_material.SetFloat("_ShiftIntensity", shift_intensity);
+        text_material.SetFloat("_OffsetAmount", .02f);//offset_amount); //TODO FIXME
+        Debug.Log("Shaky offset" + offset_amount.ToString());
+        text_material.SetFloat("_ShiftIntensity", .035f);//shift_intensity); //TODO FIXME
+        Debug.Log("Shaky intense" + shift_intensity.ToString());
+
     }
 }

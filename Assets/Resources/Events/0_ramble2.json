@@ -21,8 +21,8 @@
 	"is_interrupt":true,
 	
 	"choices":[
-		"Oh no, he's rambling. I should stop this.",
-		"This is never going to end if I don't say something."
+		"Oh no, he's rambling again.",
+		"This won't end unless I say something."
 	]
 
 }
