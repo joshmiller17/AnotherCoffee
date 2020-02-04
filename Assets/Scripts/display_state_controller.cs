@@ -14,23 +14,25 @@ public class display_state_controller : MonoBehaviour
 	public GameObject dialogue_A;
 	public GameObject dialogue_B;
     public GameObject[] thoughts;
+    public GameObject DebugInfo;
 	public string dialogue;
 
 	public string current_event_name;
 	private GameEvent current_event;
     private DisplayState current_display;
 
-    private static double text_to_time_ratio = 1.0/15.0;
-    private static double fade_time = 0.7;
+    private static double text_to_time_ratio = 1.0 / 20.0;
+    private static double fade_time = 1.0;
 
 	public double next_event_timer = 10000;
     public double fade_timer = 10000;
+    public double fade_rate = 1.5;
 
     public int awkward;
     public int tension;
     public int resolution;
 
-    private int choise_selected = 0;
+    private int choice_selected = 0;
 
     public void choose(int choice_id){
     	foreach(GameObject thought in thoughts){
@@ -40,7 +42,7 @@ public class display_state_controller : MonoBehaviour
         	process_json_game_event(current_event.next_event[choice_id + 1]);
         }
         else{
-        	choise_selected = choice_id + 1;
+        	choice_selected = choice_id + 1;
         }
     }
 
@@ -60,6 +62,11 @@ public class display_state_controller : MonoBehaviour
         else if(Time.time > fade_timer){
             start_fade();
         }
+
+        Text debugInfo = DebugInfo.GetComponent<Text>();
+        debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}",
+            awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"));
+
     }
 
     void handle_music(){
@@ -76,8 +83,8 @@ public class display_state_controller : MonoBehaviour
 
     string get_next_event_string(){
         if(current_event.next_event != null){
-            string temp = current_event.next_event[choise_selected];
-            choise_selected = 0;
+            string temp = current_event.next_event[choice_selected];
+            choice_selected = 0;
             return temp;
         }
         else{
@@ -220,7 +227,6 @@ public class display_state_controller : MonoBehaviour
     }
 
     void fade_bubble(GameObject speech){
-        double fade_rate = 1.5;
         speech.GetComponent<Image>().CrossFadeAlpha(0, (float) (fade_time/fade_rate), false);
         speech.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0, (float) (fade_time/fade_rate), false);
     }

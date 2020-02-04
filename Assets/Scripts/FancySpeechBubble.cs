@@ -16,7 +16,7 @@ public class FancySpeechBubble : MonoBehaviour {
     /// Character size animate speed.
     /// Unit: delta font size / second
     /// </summary>
-    public float characterAnimateSpeed = 1000f;
+    public float characterAnimateSpeed;
 
     /// <summary>
     /// The bubble background (OPTIONAL).
@@ -82,7 +82,7 @@ public class FancySpeechBubble : MonoBehaviour {
 
         // change label alpha to zero to hide test fit
         float alpha = label.color.a;
-        label.color = new Color(label.color.r, label.color.g, label.color.b, 0f);
+        //label.color = new Color(label.color.r, label.color.g, label.color.b, 0f);
 
         // configure fitter and set label text so label can auto resize height
         fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
@@ -129,6 +129,7 @@ public class FancySpeechBubble : MonoBehaviour {
         label.text = "";
         label.rectTransform.sizeDelta = new Vector2(label.rectTransform.sizeDelta.x, totalHeight);
         label.color = new Color(label.color.r, label.color.g, label.color.b, alpha);
+        label.enabled = true;
     }
 
     private IEnumerator CharacterAnimation () 
