@@ -18,19 +18,24 @@ public class display_state_controller : MonoBehaviour
 	public string dialogue;
 
 	public string current_event_name;
-	private GameEvent current_event;
-    private DisplayState current_display;
-
-    private static double text_to_time_ratio = 1.0 / 20.0;
-    private static double fade_time = 1.0;
-
-	public double next_event_timer = 10000;
+    public double next_event_timer = 10000;
     public double fade_timer = 10000;
     public double fade_rate = 1.5;
 
     public int awkward;
     public int tension;
     public int resolution;
+
+    public float realist_talking_speed;
+    public float dreamer_talking_speed;
+
+    private GameEvent current_event;
+    private DisplayState current_display;
+
+    private static double text_to_time_ratio = 1.0 / 20.0;
+    private static double fade_time = 1.0;
+
+	
 
     private int choice_selected = 0;
 
@@ -100,9 +105,11 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_event(GameEvent game_event){
-    	next_event_timer = Time.time + fade_time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
-        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length * game_event.event_time);
-    	handle_display(game_event.display_state, game_event.dialogue);
+        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length);
+        next_event_timer = fade_timer + fade_time;
+        Debug.Log("Fade timer: " + (fade_timer - Time.time).ToString());
+        Debug.Log("next event: " + (next_event_timer - Time.time).ToString());
+        handle_display(game_event.display_state, game_event.dialogue, game_event.text_speed);
         handle_thoughts(game_event.choices);
         handle_effects(game_event.effects);
     }
@@ -130,7 +137,7 @@ public class display_state_controller : MonoBehaviour
     	}
     }
 
-    void handle_display(DisplayState maybe_display_state, string dialogue){
+    void handle_display(DisplayState maybe_display_state, string dialogue, float text_speed){
         DisplayState display_state = maybe_display_state;
         if(maybe_display_state==null){
             display_state = current_display;
@@ -139,7 +146,7 @@ public class display_state_controller : MonoBehaviour
     	if(display_state.dreamer_animation != null) update_image(dreamer_animation, display_state.dreamer_animation);
     	if(display_state.realist_animation != null) update_image(realist_animation, display_state.realist_animation);
     	//update_image(bg_panel, display_state.bg_panel);
-    	handle_bubbles(display_state.bubble, display_state.talking, dialogue);
+    	handle_bubbles(display_state.bubble, display_state.talking, dialogue, text_speed);
     }
 
     void handle_thoughts(string[] choices){
@@ -161,14 +168,16 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
-    void handle_bubbles(Sprite bubble, string talking, string dialogue){
+    void handle_bubbles(Sprite bubble, string talking, string dialogue, float text_speed){
     	if(talking.Equals("realist")){
-    		update_image(speech_A, bubble);
+            speech_A.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = realist_talking_speed * text_speed;
+            update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
     		show_bubble(speech_A);
     		hide_bubble(speech_B);
     	}
         else if(talking.Equals("dreamer")){
+            speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
             update_image(speech_B, bubble);
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
@@ -289,7 +298,7 @@ public class GameEvent{
 	public DisplayState display_state;
 	public string[] next_event;
     public string[] choices;
-	public int event_time;
+	public float text_speed;
 	public string dialogue;
 	public bool is_interrupt;
 	public int wait_time;
@@ -300,9 +309,9 @@ public class GameEvent{
 		wait_time = js.wait_time;
 		next_event = js.next_event;
         choices = js.choices;
-		event_time = 1;//s.event_time;
-		if(event_time == null){
-			event_time = 1;
+		text_speed = js.text_speed;
+		if(text_speed == null || text_speed == 0){
+            text_speed = 1;
 		}
 		dialogue = js.dialogue;
 		display_state = new DisplayState(js.display_state);
@@ -343,4 +352,6 @@ public class GameEventJSON
 	//public int event_time;
 	public int wait_time;
 	public bool is_interrupt;
+    public bool interrupted;
+    public float text_speed;
 }

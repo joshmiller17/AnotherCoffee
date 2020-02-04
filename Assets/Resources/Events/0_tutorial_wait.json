@@ -18,6 +18,8 @@
 
 	"choices":[
 		"Thanks for reaching out."
-	]
+	],
+	
+	"wait_time":2
 
 }

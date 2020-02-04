@@ -21,6 +21,8 @@
 	"choices":[
 		"Ask what he's doing",
 		"Ask about his work"
-	]
+	],
+	
+	"wait_time":2
 
 }
