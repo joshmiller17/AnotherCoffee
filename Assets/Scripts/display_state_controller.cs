@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class display_state_controller : MonoBehaviour
 {
 	public music_system music;
+    public GameObject SFXSystem;
 	public GameObject bg_panel;
 	public GameObject dreamer_animation;
 	public GameObject realist_animation;

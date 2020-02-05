@@ -62,6 +62,12 @@ public class music_system : MonoBehaviour
                             float tension, float awkwardness,
                             float resolution, bool newInterrupt){
 
+        if (topic == 1)
+        {
+            Debug.Log("Missing Topic 1 music, using Topic 0 instead");
+            topic = 0; //FIXME no music for topic 1 yet, so repurpose topic 0
+        }
+
         parameters.Add(new float[] {
                 //safety first
                 Mathf.Clamp(character, 0, 1),

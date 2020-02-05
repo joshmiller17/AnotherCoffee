@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 893534120}
   - component: {fileID: 893534119}
   m_Layer: 0
-  m_Name: SFX
+  m_Name: SFXSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 1797416500}
+  SFXSystem: {fileID: 893534116}
   bg_panel: {fileID: 455970731}
   dreamer_animation: {fileID: 1464802734}
   realist_animation: {fileID: 1252527465}
@@ -1732,7 +1733,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1c6cf498331b8524eb0c6e2df771921f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
