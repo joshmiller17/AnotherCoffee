@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"You mean, how do I pay the bills?",
+	
+			
+	"next_event":[
+		"1_drawing3_misunderstanding",
+		"1_drawing2_do",
+		"1_nevermind"
+	],
+	
+	"choices":[
+	"That's not what I meant",
+	"...Nevermind."
+	]
+
+}

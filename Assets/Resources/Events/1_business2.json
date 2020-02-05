@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Oh, yeah, right down to business, huh? Well...",
+	
+			
+	"next_event":[
+		"2_opening"
+	]
+
+
+}

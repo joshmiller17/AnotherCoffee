@@ -2,16 +2,17 @@
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
+		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
 
 	"dialogue": "I don’t know if you care, but, I actually brought the comic book we made in high school.",
-		
+	
 	"next_event":[
-		"2_opening_0",
-		"2_opening_1",
-		"2_opening_2"
+		"2_opening_wait",
+		"2_opening_wow",
+		"2_opening_dumb"
 	]
 	
 	"choices":[

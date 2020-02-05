@@ -1,0 +1,27 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"...?",
+	
+	"effects":[{
+	"awkward":0.5
+	}
+	],
+	
+		
+	"next_event":[
+		"1_work_wait_wait",
+		"1_work_vague",
+		"1_work_lie"
+	],
+	
+	"choices":[
+	"I was afraid he'd ask that... Be vague.",
+	"He doesn't need to know that.... Lie."
+	]
+}

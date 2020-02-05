@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I’m glad to hear that you’re still chugging away at the whole writing thing, but... What did you want to talk about?",
+	
+			
+	"next_event":[
+		"1_business2"
+	]
+
+
+}

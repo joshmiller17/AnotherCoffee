@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"You’ve always been a bad liar but fine, fine, I’ll drop it.",
+	
+			
+	"next_event":[
+		"1_liar2"
+	]
+
+
+}

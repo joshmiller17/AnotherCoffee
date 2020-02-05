@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Huh? Do what?",
+	
+			
+	"next_event":[
+		"1_drawing3",
+		"1_drawing2_do",
+		"1_nevermind"
+	],
+	
+	"choices":[
+	"How can you do it???",
+	"...Nevermind."
+	]
+
+}

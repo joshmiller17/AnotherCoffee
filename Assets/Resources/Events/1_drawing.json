@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"sad"
+	},
+
+	"dialogue":"Honestly? It’s been a long time since I felt that way... How do you do it?",
+	
+			
+	"next_event":[
+		"1_drawing2"
+	]
+
+}

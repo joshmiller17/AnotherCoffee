@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I get it. You can't talk about it. Some secret project, right? Haha, that's cool!",
+	
+	"effects":[{
+	"tension":-0.5
+	}
+	],
+	
+	
+	"next_event":[
+		"1_business"
+	]
+}

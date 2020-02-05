@@ -1,0 +1,24 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"But is it at least something you’re excited about making? Something that lights a fire in your soul?",
+	
+			
+	"next_event":[
+		"1_liar2_wait",
+		"1_drawing",
+		"1_business"
+	],
+	
+	"choices":[
+	"Drawing hasn’t felt good in a long time.",
+	"What does he really want to talk about?"
+	]
+
+
+}
