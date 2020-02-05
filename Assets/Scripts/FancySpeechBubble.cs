@@ -65,7 +65,7 @@ public class FancySpeechBubble : MonoBehaviour {
     public IEnumerator SetRoutine (string text) 
     {
         _rawText = text;
-        yield return StartCoroutine(TestFit());
+        TestFit();
         yield return StartCoroutine(CharacterAnimation());
     }
 
@@ -74,7 +74,7 @@ public class FancySpeechBubble : MonoBehaviour {
     /// set intended label height,
     /// generate processed version of the text.
     /// </summary>
-    private IEnumerator TestFit () 
+    private void TestFit () 
     {
         // prepare targets
         Text label = GetComponent<Text>();
@@ -89,8 +89,10 @@ public class FancySpeechBubble : MonoBehaviour {
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         label.text = _rawText;
 
+        Canvas.ForceUpdateCanvases(); //this replaces old need for waiting for end of frame
+
         // need to wait for a frame before label's height is updated
-        yield return new WaitForEndOfFrame();
+        // yield return new WaitForEndOfFrame();
         // make sure label is anchored to center to measure the correct height
         float totalHeight = label.rectTransform.sizeDelta.y;
 
@@ -110,7 +112,7 @@ public class FancySpeechBubble : MonoBehaviour {
         foreach (string word in _rawText.Split(' ')) {
             buffer += word + " ";
             label.text = buffer;
-            yield return new WaitForEndOfFrame();
+            //yield return new WaitForEndOfFrame();
             if (currentHeight < 0f) {
                 currentHeight = label.rectTransform.sizeDelta.y;
             }
