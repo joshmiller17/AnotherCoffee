@@ -7,6 +7,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ContentSizeFitter))]
 public class FancySpeechBubble : MonoBehaviour {
 
+    const int NORMAL_WIDTH = 550;
+    const int SMALL_WIDTH = 225;
+    const int NORMAL_HEIGHT = 250;
+    const int FONT_SIZE_BIG = 100;
+    const int FONT_SIZE_NORMAL = 50;
+
     /// <summary>
     /// Character start font size.
     /// </summary>
@@ -89,6 +95,17 @@ public class FancySpeechBubble : MonoBehaviour {
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         label.text = _rawText;
 
+        if (_rawText.Length < 9 || (_rawText.Length < 15 && !System.Text.RegularExpressions.Regex.IsMatch(_rawText, "[a-z][A-Z][0-9]")))
+        {
+            label.alignment = TextAnchor.UpperCenter;
+            label.fontSize = FONT_SIZE_BIG;
+        }
+        else
+        {
+            label.alignment = TextAnchor.UpperLeft;
+            label.fontSize = FONT_SIZE_NORMAL;
+        }
+
         Canvas.ForceUpdateCanvases(); //this replaces old need for waiting for end of frame
 
         // need to wait for a frame before label's height is updated
@@ -107,24 +124,30 @@ public class FancySpeechBubble : MonoBehaviour {
         _processedText = "";
         string buffer = "";
         string line = "";
-        float currentHeight = -1f;
+        int lineCount = 1;
         // yes, sorry multiple spaces
-        foreach (string word in _rawText.Split(' ')) {
+        foreach (string word in _rawText.Split(' '))
+        {
+            
             buffer += word + " ";
-            label.text = buffer;
-            //yield return new WaitForEndOfFrame();
-            if (currentHeight < 0f) {
-                currentHeight = label.rectTransform.sizeDelta.y;
+            label.text = _processedText + buffer;
+            Canvas.ForceUpdateCanvases(); //this replaces old need for waiting for end of frame
+            if (lineCount != label.cachedTextGenerator.lineCount)
+            {
+                //wraps to new line
+                lineCount = label.cachedTextGenerator.lineCount + 1;
+                if (line != "")
+                {
+                    _processedText += line.TrimEnd() + "\n";
+                }
+                line = word + " ";
             }
-            if (currentHeight != label.rectTransform.sizeDelta.y) {
-                currentHeight = label.rectTransform.sizeDelta.y;
-                _processedText += line.TrimEnd(' ') + "\n";
-                line = "";
+            else
+            {
+                line += word + " ";
             }
-            line += word + " ";
         }
-        _processedText += line;
-
+        _processedText += line.TrimEnd();
         // prepare fitter and label for character animation
         fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
         fitter.verticalFit = ContentSizeFitter.FitMode.Unconstrained;
