@@ -19,9 +19,9 @@ public class display_state_controller : MonoBehaviour
 	public string dialogue;
 
 	public string current_event_name;
-    public double next_event_timer = 10000;
-    public double fade_timer = 10000;
-    public double fade_rate = 1.5;
+    public double next_event_timer;
+    public double fade_timer;
+    public double fade_rate = 1.0;
 
     public int awkward;
     public int tension;

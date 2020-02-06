@@ -10,7 +10,7 @@ public class FancySpeechBubble : MonoBehaviour {
     const int NORMAL_WIDTH = 550;
     const int SMALL_WIDTH = 225;
     const int NORMAL_HEIGHT = 250;
-    const int FONT_SIZE_BIG = 100;
+    const int FONT_SIZE_BIG = 80;
     const int FONT_SIZE_NORMAL = 50;
 
     /// <summary>

@@ -98,7 +98,7 @@ public class music_system : MonoBehaviour
         }
 
         index += (int)newParams[1];
-        // print("playing index " + index.ToString());
+        Debug.Log("Now playing music " + index.ToString());
         return index;
     }
 
