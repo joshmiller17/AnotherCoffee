@@ -103,6 +103,8 @@ public class music_system : MonoBehaviour
     }
 
     void Start() {
+        DontDestroyOnLoad(this.gameObject);
+
         audiosources = GetComponents<AudioSource>();
         audiosources[0].loop = true;
         audiosources[1].loop = true;

@@ -57,6 +57,7 @@ public class display_state_controller : MonoBehaviour
     {
         initialize_displays();
         process_json_game_event("0_opening");
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
