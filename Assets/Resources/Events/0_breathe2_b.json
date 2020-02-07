@@ -5,10 +5,17 @@
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"...Right... sorry, uhh......just lemme...",
+	"dialogue":". . . . . . . .",
 		
 	"next_event":[
-		"0_breathe_b"
+		"0_breathe3_b",
+		"0_interrupt_b",
+		"0_interrupt_b"
+	],
+	
+		"choices":[
+	"Are you okay?",
+	"Are you...?"
 	],
 	
 	"wait_time":2

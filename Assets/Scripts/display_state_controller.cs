@@ -153,6 +153,11 @@ public class display_state_controller : MonoBehaviour
         {
             SFXSystem.GetComponent<SFX>().playSlurp();
         }
+        else
+        {
+            Debug.Log("Dreamer state: " + display_state.dreamer_state);
+            Debug.Log("Realist state: " + display_state.realist_state);
+        }
         //update_image(bg_panel, display_state.bg_panel);
         handle_bubbles(display_state.bubble, display_state.talking, dialogue, text_speed);
     }

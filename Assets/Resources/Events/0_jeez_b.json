@@ -6,10 +6,10 @@
 		"dreamer_animation":"sad"
 	},
 
-	"dialogue":"C'mon! I said gimme a sec! Fine, I guess we'll just keep talking!!",
+	"dialogue":"Jeez! Just wait a sec! You're always so fast to get straight to business! Can't you calm down for like, a second??",
 		
 	"next_event":[
-		"1_opening"
+		"0_breathe"
 	],
 	
 	"effects":[{

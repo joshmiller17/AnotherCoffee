@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal"
+	},
+
+	"dialogue":"Are you... um... ready?",
+		
+	"next_event":[
+		"0_jeez_b"
+	],
+	
+	"effects":[{
+	"tension":1}
+	]
+
+}

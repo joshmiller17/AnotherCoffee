@@ -10,6 +10,9 @@
 		
 	"next_event":[
 		"0_tutorial"
-	]
+	],
+
+	"wait_time":2
+
 
 }
