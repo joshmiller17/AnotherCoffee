@@ -788,6 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa0fb8be61dcf847a045b26a5538e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXSystem: {fileID: 893534116}
   characterStartSize: 1
   characterAnimateSpeed: 5
   bubbleBackground: {fileID: 505486213}
@@ -951,6 +952,7 @@ GameObject:
   - component: {fileID: 893534117}
   - component: {fileID: 893534120}
   - component: {fileID: 893534119}
+  - component: {fileID: 893534121}
   m_Layer: 0
   m_Name: SFXSystem
   m_TagString: Untagged
@@ -1081,8 +1083,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690021403512e664598cb15b50069e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 963120224}
   sfxSource: {fileID: 893534120}
   ambSource: {fileID: 893534117}
+  typingSource: {fileID: 893534121}
   sips:
   - {fileID: 8300000, guid: 516aa7d6de0e0044e93b0456df18878a, type: 3}
   - {fileID: 8300000, guid: 067f673fa4a3f44458d5389b6e575203, type: 3}
@@ -1106,13 +1110,109 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f88aa179d0a95a44a9314b172413f3bb, type: 3}
   ambience: {fileID: 8300000, guid: 6fa086c749b39be419c19a5f8bf9fb05, type: 3}
   ambienceLoud: {fileID: 8300000, guid: 61040373246dccf41afd26f9f7a026f1, type: 3}
-  menuAccept: {fileID: 8300000, guid: cf92f0900aaaca64e8d5f21359739310, type: 3}
-  mouseover: {fileID: 8300000, guid: 9a8355b264b2a5743bea4195feabcfd6, type: 3}
   dialogueAppear: {fileID: 8300000, guid: 8dc84e17d21f2434b805e4235454e16c, type: 3}
   dialogueDisappear: {fileID: 8300000, guid: 99c77f1f0b7023545802db43a0b5a900, type: 3}
   interrupt: {fileID: 8300000, guid: f7a25f69021c14b44b5d4652c4f5f156, type: 3}
   select: {fileID: 8300000, guid: 712d5c7d96bdc1740b919485b0bd1084, type: 3}
+  menuAccept: {fileID: 8300000, guid: cf92f0900aaaca64e8d5f21359739310, type: 3}
+  mouseover: {fileID: 8300000, guid: 9a8355b264b2a5743bea4195feabcfd6, type: 3}
 --- !u!82 &893534120
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893534116}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &893534121
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1913,7 +2013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 20.7, y: -5.7}
+  m_AnchoredPosition: {x: 20.699997, y: -5.7}
   m_SizeDelta: {x: -101, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817217981
@@ -1968,6 +2068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa0fb8be61dcf847a045b26a5538e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXSystem: {fileID: 893534116}
   characterStartSize: 1
   characterAnimateSpeed: 100
   bubbleBackground: {fileID: 276321713}

@@ -10,13 +10,15 @@
 		
 	"next_event":[
 		"1_opening_rent_wait",
+		"1_opening_rent_interrupt",
 		"1_opening_rent_interrupt"
 	],
 	
 	"is_interrupt": true,
 	
 	"choices":[
-	"I’m stressed just hearing that... Let’s not talk rent."
+	"Let’s not talk rent.",
+	"I’m stressed just hearing that..."
 	]
 
 }

@@ -7,6 +7,8 @@
 	},
 
 	"dialogue":"Oh, haha… yeah, of course. I mean, I haven’t seen you in forever and, like, we haven’t talked since high school,",
+	
+	"text_speed":1.1,
 		
 	"next_event":[
 		"0_ramble2"

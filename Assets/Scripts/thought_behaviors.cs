@@ -30,6 +30,7 @@ public class thought_behaviors : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         this.make_selected();
+        controller.SFXSystem.GetComponent<SFX>().playMouseover();
     }
  
     public void OnPointerExit(PointerEventData eventData)

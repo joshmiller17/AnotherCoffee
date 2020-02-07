@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ContentSizeFitter))]
 public class FancySpeechBubble : MonoBehaviour {
 
+    public GameObject SFXSystem;
+
     const int NORMAL_WIDTH = 550;
     const int SMALL_WIDTH = 225;
     const int NORMAL_HEIGHT = 250;
@@ -174,6 +176,7 @@ public class FancySpeechBubble : MonoBehaviour {
                 yield return new WaitForEndOfFrame();
             }
             prefix += c;
+            SFXSystem.GetComponent<SFX>().playTypingSound(c);
         }
 
         // set processed text

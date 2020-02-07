@@ -23,9 +23,9 @@ public class display_state_controller : MonoBehaviour
     public double fade_timer;
     public double fade_rate = 1.0;
 
-    public int awkward;
-    public int tension;
-    public int resolution;
+    public float awkward;
+    public float tension;
+    public float resolution;
 
     public float realist_talking_speed;
     public float dreamer_talking_speed;
@@ -46,9 +46,11 @@ public class display_state_controller : MonoBehaviour
         	}
         if(current_event.is_interrupt){
         	process_json_game_event(current_event.next_event[choice_id + 1]);
+            SFXSystem.GetComponent<SFX>().playInterrupt();
         }
         else{
         	choice_selected = choice_id + 1;
+            SFXSystem.GetComponent<SFX>().playMenuAccept();
         }
     }
 
@@ -132,10 +134,10 @@ public class display_state_controller : MonoBehaviour
     		awkward += effect.awkward;
     	}
     	if(effect.tension != null){
-    		awkward += effect.tension;
+    		tension += effect.tension;
     	}
     	if(effect.resolution != null){
-    		awkward += effect.resolution;
+    		resolution += effect.resolution;
     	}
     }
 
@@ -147,8 +149,12 @@ public class display_state_controller : MonoBehaviour
         current_display = display_state;
     	if(display_state.dreamer_animation != null) update_image(dreamer_animation, display_state.dreamer_animation);
     	if(display_state.realist_animation != null) update_image(realist_animation, display_state.realist_animation);
-    	//update_image(bg_panel, display_state.bg_panel);
-    	handle_bubbles(display_state.bubble, display_state.talking, dialogue, text_speed);
+        if (display_state.dreamer_state == "awkward" || display_state.realist_state == "awkward")
+        {
+            SFXSystem.GetComponent<SFX>().playSlurp();
+        }
+        //update_image(bg_panel, display_state.bg_panel);
+        handle_bubbles(display_state.bubble, display_state.talking, dialogue, text_speed);
     }
 
     void handle_thoughts(string[] choices){
@@ -177,6 +183,7 @@ public class display_state_controller : MonoBehaviour
             set_dialogue(dialogue_A, dialogue);
     		show_bubble(speech_A);
     		hide_bubble(speech_B);
+            SFXSystem.GetComponent<SFX>().playBubbleAppear();
     	}
         else if(talking.Equals("dreamer")){
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
@@ -184,11 +191,13 @@ public class display_state_controller : MonoBehaviour
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
             hide_bubble(speech_A);
+            SFXSystem.GetComponent<SFX>().playBubbleAppear();
         }
     	else{
     		hide_bubble(speech_A);
     		hide_bubble(speech_B);
-    	}
+            SFXSystem.GetComponent<SFX>().playBubbleDisappear();
+        }
     	
     }
 
@@ -274,6 +283,8 @@ public class DisplayState{
 	public Sprite bg_panel;
 	public Sprite dreamer_animation;
 	public Sprite realist_animation;
+    public string dreamer_state;
+    public string realist_state;
 	public Sprite bubble;
 	public string talking;
 
@@ -289,7 +300,9 @@ public class DisplayState{
 		//bg_panel =  load_art(js.bg_panel);
 		dreamer_animation = load_art("dreamer_"+js.dreamer_animation);
 		realist_animation = load_art("realist_"+js.realist_animation);
-		talking = js.talking;
+        dreamer_state = js.dreamer_animation;
+        realist_state = js.realist_animation;
+        talking = js.talking;
 		Debug.Log("bubble_"+talking+"_"+js.bubble);
 		bubble = load_art("bubble_"+talking+"_"+js.bubble);
 	}

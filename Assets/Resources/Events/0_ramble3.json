@@ -17,6 +17,8 @@
 	"effects":[{
 	"awkward":1}
 	],
+	
+	"text_speed":1.35,
 
 	
 	"is_interrupt":true,
