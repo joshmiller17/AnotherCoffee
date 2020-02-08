@@ -7,8 +7,8 @@
 	},
 
 	"dialogue":"So, the world is like, *super* old, right? And humans have been living on the planet for so long that… um... You know what? Nevermind.",
-",
 	
+	"text_speed":1.2,
 		
 	"next_event":[
 		"1_opening_novel_wait3"

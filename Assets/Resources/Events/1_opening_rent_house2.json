@@ -14,13 +14,15 @@
 		
 	"next_event":[
 		"1_opening_rent_house3",
-		"1_roommates",
-		"1_opening_novel2"
+		"",
+		"1_opening_novel2",
+		"1_roommates"
 	],
 	
 	"choices":[
-		"$2000 is way too much for one freelance writer.",
-		"Stop talking about his apartment."
+		"",
+		"Stop talking about his apartment.",
+		"$2000 is way too much for one freelance writer."
 	],
 
 	"wait_time":2

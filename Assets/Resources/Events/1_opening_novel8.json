@@ -10,11 +10,14 @@
 		
 	"next_event":[
 		"1_opening_novel_wait",
-		"1_business"
+		"",
+		"1_business",
+		"1_opening_novel_wait"
 	],
 		
 	"choices":[
-	"Where does he find the willpower to keep creating?",
-	"What does he really want to talk about?"
+	"",
+	"What does he really want to talk about?",
+	"Where does he find the willpower to keep creating?"
 	]
 }

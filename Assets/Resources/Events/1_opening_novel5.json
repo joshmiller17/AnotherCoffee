@@ -14,12 +14,16 @@
 		
 	"next_event":[
 		"1_opening_novel6",
+		"",
+		"",
 		"1_opening_novel_interrupt"
 	],
 	
 	"is_interrupt":true,
 	
 	"choices":[
+	"",
+	"",
 	"Where does he find the willpower to keep creating?"
 	]
 	

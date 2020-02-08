@@ -1,21 +1,19 @@
 {
 "display_state":{
-		"talking":"realist",
+		"talking":"dreamer",
 		"bubble":"normal",
 		"dreamer_animation":"awkward",
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Oh, uh. Well..."
+	"dialogue":"Oh, uh. Well...",
 	
-	"effects":[
+	"effects":[{
 	"tension":-1
-	],
+	}],
 		
 	"next_event":[
 		"1_opening_novel3"
 	]
-	
-	
-	
+		
 }

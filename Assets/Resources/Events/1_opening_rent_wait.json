@@ -11,13 +11,17 @@
 	"next_event":[
 		"1_opening_rent_wait_wait",
 		"1_opening_rent_coffees",
-		"1_opening_rent_house"
+		"1_opening_rent_house",
+		"1_opening_rent_coffees"
 	],
 	
 	
 	"choices":[
-	"I’m stressed just hearing that... Let’s not talk rent.",
-	"Yikes, my mortgage isn’t that bad."
-	]
+	"Let’s not talk rent.",
+	"Yikes, my mortgage isn’t that bad.",
+	"I’m stressed just hearing that..."
+	],
+	
+	"wait_time":1
 
 }

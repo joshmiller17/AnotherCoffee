@@ -7,20 +7,25 @@
 	},
 
 	"dialogue":"... ... *cough*",
-		
-	"next_event":[
-		"awkward_end",
-		"1_opening_rent_coffees",
-		"1_opening_rent_house"
-	],
+	
 	
 	"effects":[{
 	"awkward":1}
 	],
 	
+	"next_event":[
+		"awkward_end",
+		"1_opening_rent_coffees",
+		"1_opening_rent_house",
+		"1_opening_rent_coffees"
+	],
+	
+	
 	"choices":[
-	"I’m stressed just hearing that... Let’s not talk rent.",
-	"Yikes, my mortgage isn’t that bad."
-	]
+	"Let’s not talk rent.",
+	"Yikes, my mortgage isn’t that bad.",
+	"I’m stressed just hearing that..."
+	],
 
+	"wait_time":1
 }

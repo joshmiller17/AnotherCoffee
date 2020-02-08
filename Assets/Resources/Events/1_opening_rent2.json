@@ -1,0 +1,24 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"Oh, uh. Well... My landlord just raised the rent on me again.",
+		
+	"next_event":[
+		"1_opening_rent_wait",
+		"1_opening_rent_interrupt",
+		"1_opening_rent_interrupt"
+	],
+	
+	"is_interrupt": true,
+	
+	"choices":[
+	"Let’s not talk rent.",
+	"I’m stressed just hearing that..."
+	]
+
+}

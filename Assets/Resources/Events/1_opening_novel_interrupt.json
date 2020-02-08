@@ -8,9 +8,9 @@
 
 	"dialogue":"Wooow, yeah, I don't know how you do it.",
 	
-		
+	
 	"next_event":[
-		"1_opening_novel_wait",
+		"1_opening_novel_wait"
 	]
 	
 }
