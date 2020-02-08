@@ -16,7 +16,9 @@ public class display_state_controller : MonoBehaviour
 	public GameObject dialogue_B;
     public GameObject[] thoughts;
     public GameObject DebugInfo;
-	public string dialogue;
+    public string opening_script;
+
+    public string dialogue;
 
 	public string current_event_name;
     public double next_event_timer;
@@ -30,7 +32,8 @@ public class display_state_controller : MonoBehaviour
     public float realist_talking_speed;
     public float dreamer_talking_speed;
 
-    private GameEvent current_event;
+    public GameEvent current_event;
+
     private DisplayState current_display;
 
     private static double text_to_time_ratio = 1.0 / 20.0;
@@ -58,7 +61,7 @@ public class display_state_controller : MonoBehaviour
     void Start()
     {
         initialize_displays();
-        process_json_game_event("0_opening");
+        process_json_game_event(opening_script);
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -73,8 +76,11 @@ public class display_state_controller : MonoBehaviour
         }
 
         Text debugInfo = DebugInfo.GetComponent<Text>();
-        debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}",
-            awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"));
+        if (!debugInfo.text.Contains("Invalid") && !debugInfo.text.Contains("Error"))
+        {
+            debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}\nScript={3}",
+                awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"), current_event_name);
+        }
 
     }
 
@@ -84,9 +90,9 @@ public class display_state_controller : MonoBehaviour
     	if(current_event.display_state.talking.Equals("dreamer")){
     		character = 1;
     	}
-    	float temp_tension = (float)(tension)/2.0f;
-    	float temp_resolution = (float)(resolution)/1.0f;
-    	float temp_awkwardness = (float)(awkward)/1.0f;
+    	float temp_tension = (float)(Mathf.Max(tension,0))/2.0f;
+    	float temp_resolution = (float)(Mathf.Max(resolution, 0)) /1.0f;
+    	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
     	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
     }
 
@@ -103,16 +109,27 @@ public class display_state_controller : MonoBehaviour
 
     void process_json_game_event(string path){
     	current_event_name = path;
-    	GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
-    	current_event = new GameEvent(json);
-    	handle_event(new GameEvent(json));
+        try
+        {
+            GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
+            current_event = new GameEvent(json);
+            handle_event(new GameEvent(json));
+        }
+        catch (System.Exception e)
+        {
+            Text debugInfo = DebugInfo.GetComponent<Text>();
+            debugInfo.text = "Invalid JSON script: " + path;
+            Canvas.ForceUpdateCanvases();
+            Debug.Log(e);
+            return;
+        }
     }
 
     void handle_event(GameEvent game_event){
         fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length);
         next_event_timer = fade_timer + fade_time;
-        Debug.Log("Fade timer: " + (fade_timer - Time.time).ToString());
-        Debug.Log("next event: " + (next_event_timer - Time.time).ToString());
+        //Debug.Log("Fade timer: " + (fade_timer - Time.time).ToString());
+        //Debug.Log("next event: " + (next_event_timer - Time.time).ToString());
         handle_display(game_event.display_state, game_event.dialogue, game_event.text_speed);
         handle_thoughts(game_event.choices);
         handle_effects(game_event.effects);
@@ -155,8 +172,8 @@ public class display_state_controller : MonoBehaviour
         }
         else
         {
-            Debug.Log("Dreamer state: " + display_state.dreamer_state);
-            Debug.Log("Realist state: " + display_state.realist_state);
+            //Debug.Log("Dreamer state: " + display_state.dreamer_state);
+            //Debug.Log("Realist state: " + display_state.realist_state);
         }
         //update_image(bg_panel, display_state.bg_panel);
         handle_bubbles(display_state.bubble, display_state.talking, dialogue, text_speed);
@@ -171,8 +188,11 @@ public class display_state_controller : MonoBehaviour
         else{
             for(int i=0; i<thoughts.Length; i++){
                 if(i < choices.Length){
-                    set_thought(thoughts[i], choices[i]);
-                    show_thought(thoughts[i]);
+                    if (choices[i] != "")
+                    {
+                        set_thought(thoughts[i], choices[i]);
+                        show_thought(thoughts[i]);
+                    }
                 }
                 else{
                     hide_thought(thoughts[i]);

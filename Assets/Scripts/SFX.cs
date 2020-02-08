@@ -9,10 +9,12 @@ public class SFX : MonoBehaviour
     public AudioSource sfxSource;
     public AudioSource ambSource;
     public AudioSource typingSource;
+    public AudioSource coffeeSource;
 
     public AudioClip[] sips;
     public AudioClip[] slurps;
     public AudioClip[] typing;
+    public AudioClip[] dreamerTyping;
 
     public AudioClip ambience; //CURRENTLY UNUSED
     public AudioClip ambienceLoud;
@@ -27,6 +29,12 @@ public class SFX : MonoBehaviour
     private Queue<AudioClip> bagOfSips = new Queue<AudioClip>();
     private Queue<AudioClip> bagOfSlurps = new Queue<AudioClip>();
 
+    public int dreamerTypingRate;
+    private int lettersTilNextDreamerType;
+
+    public int realistTypingRate;
+    private int lettersTilNextRealistType;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +43,8 @@ public class SFX : MonoBehaviour
         ambSource.clip = ambienceLoud;
         ambSource.volume = 0.9f;
         ambSource.Play();
+        lettersTilNextDreamerType = dreamerTypingRate;
+        lettersTilNextRealistType = realistTypingRate;
     }
 
     // Update is called once per frame
@@ -69,8 +79,8 @@ public class SFX : MonoBehaviour
             bagOfSips = fillClipQueueShuffled(sips);
         }
         AudioClip chosenClip = bagOfSips.Dequeue();
-        sfxSource.clip = chosenClip;
-        sfxSource.Play();
+        coffeeSource.clip = chosenClip;
+        coffeeSource.Play();
     }
 
     public void playSlurp()  //use bag to control variance
@@ -80,29 +90,57 @@ public class SFX : MonoBehaviour
             bagOfSlurps = fillClipQueueShuffled(slurps);
         }
         AudioClip chosenClip = bagOfSlurps.Dequeue();
-        sfxSource.clip = chosenClip;
-        sfxSource.Play();
+        coffeeSource.clip = chosenClip;
+        coffeeSource.Play();
     }
 
     public void playTypingSound(char letter)
     {
+
         int index = letter % 26;
-        index = index % typing.Length;
-        typingSource.clip = typing[index];
-        typingSource.volume = Mathf.Clamp(0.25f + 0.30f * controller.tension, 0, 1);
-        typingSource.Play();
-    }
+        typingSource.volume = Mathf.Clamp(0.25f + 0.30f * Mathf.Max(controller.tension, 0), 0, 1);
+        if (controller.current_event.display_state.talking.Equals("realist"))
+        {
+            lettersTilNextRealistType -= 1;
+            if (lettersTilNextRealistType < 1)
+            {
+                index = index % typing.Length;
+                typingSource.clip = typing[index];
+                typingSource.Play();
+                lettersTilNextRealistType = realistTypingRate;
+            }
+
+        }
+        else
+        {
+            lettersTilNextDreamerType -= 1;
+            if (lettersTilNextDreamerType < 1)    //(!System.Text.RegularExpressions.Regex.IsMatch(letter.ToString(), "[a-z][A-Z][0-9]"))
+            {
+                index = Random.Range(0, dreamerTyping.Length);
+                typingSource.clip = dreamerTyping[index];
+                typingSource.Play();
+                lettersTilNextDreamerType = dreamerTypingRate;
+            }
+
+        }
+}
 
     public void playBubbleAppear()
     {
         sfxSource.clip = dialogueAppear;
-        sfxSource.Play();
+        if (!sfxSource.isPlaying)
+        {
+            sfxSource.Play();
+        }
     }
 
     public void playBubbleDisappear()
     {
         sfxSource.clip = dialogueDisappear;
-        sfxSource.Play();
+        if (!sfxSource.isPlaying)
+        {
+            sfxSource.Play();
+        }
     }
      public void playInterrupt()
     {
@@ -119,7 +157,10 @@ public class SFX : MonoBehaviour
     public void playMouseover()
     {
         sfxSource.clip = mouseover;
-        sfxSource.Play();
+        if (!sfxSource.isPlaying)
+        {
+            sfxSource.Play();
+        }
     }
 
     public void playMenuAccept()
