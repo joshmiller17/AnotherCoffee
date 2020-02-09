@@ -39,7 +39,7 @@ public class SFX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         ambSource.clip = ambienceLoud;
         ambSource.volume = 0.9f;
         ambSource.Play();
@@ -116,8 +116,8 @@ public class SFX : MonoBehaviour
             lettersTilNextDreamerType -= 1;
             if (lettersTilNextDreamerType < 1)    //(!System.Text.RegularExpressions.Regex.IsMatch(letter.ToString(), "[a-z][A-Z][0-9]"))
             {
-                index = Random.Range(0, dreamerTyping.Length);
-                typingSource.clip = dreamerTyping[index];
+                index = Random.Range(0, typing.Length); //FIXME return to dreamerTyping for other SFX
+                typingSource.clip = typing[index]; //FIXME return to dreamerTyping for other SFX
                 typingSource.Play();
                 lettersTilNextDreamerType = dreamerTypingRate;
             }

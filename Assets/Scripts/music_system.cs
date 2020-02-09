@@ -7,13 +7,14 @@ public class music_system : MonoBehaviour
 {
     public AudioMixer MasterMixer;
     public AudioClip[] stingers;
+    public string[] MusicNames;
 
     AudioSource[] audiosources;
-    string[] snapshots = {"Dreamer", "Realist"};
+    string[] snapshots = { "Dreamer", "Realist" };
 
     List<float[]> parameters = new List<float[]>();
 
-    float[] phraseLen = {6.99F, 6.99F}; //this determines how long the tracks run for each phrase
+    float[] phraseLen = { 6.99F, 6.99F }; //this determines how long the tracks run for each phrase
     float phraseNum = 0;
     int prevSource = 1;
     // 0 = dreamer
@@ -22,6 +23,8 @@ public class music_system : MonoBehaviour
     int prevClip = 0;
 
     bool interrupt = false;
+
+    private int currentIndex;
     /*
     Each parameter is represented by these variables.
 
@@ -81,6 +84,12 @@ public class music_system : MonoBehaviour
         interrupt = newInterrupt;
     }
 
+    public string getMusicPlaying()
+    {
+        return stingers[currentIndex].name;
+        //return MusicNames[currentIndex];
+    }
+
     int fetchCue(float[] newParams) {
         int index = 0;
         index += (int)newParams[0]*16;
@@ -98,12 +107,13 @@ public class music_system : MonoBehaviour
         }
 
         index += (int)newParams[1];
+        currentIndex = index;
         Debug.Log("Now playing music " + index.ToString());
         return index;
     }
 
     void Start() {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
         audiosources = GetComponents<AudioSource>();
         audiosources[0].loop = true;

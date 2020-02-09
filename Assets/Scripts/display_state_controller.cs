@@ -36,8 +36,8 @@ public class display_state_controller : MonoBehaviour
 
     private DisplayState current_display;
 
-    private static double text_to_time_ratio = 1.0 / 20.0;
-    private static double fade_time = 1.0;
+    private static double text_to_time_ratio = 1.0 / 15.0;
+    private static double fade_time = 1.5;
 
 	
 
@@ -62,7 +62,7 @@ public class display_state_controller : MonoBehaviour
     {
         initialize_displays();
         process_json_game_event(opening_script);
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -78,8 +78,8 @@ public class display_state_controller : MonoBehaviour
         Text debugInfo = DebugInfo.GetComponent<Text>();
         if (!debugInfo.text.Contains("Invalid") && !debugInfo.text.Contains("Error"))
         {
-            debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}\nScript={3}",
-                awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"), current_event_name);
+            debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}\nScript={3}\nMusic={4}",
+                awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"), current_event_name, music.getMusicPlaying());
         }
 
     }
@@ -91,7 +91,7 @@ public class display_state_controller : MonoBehaviour
     		character = 1;
     	}
     	float temp_tension = (float)(Mathf.Max(tension,0))/2.0f;
-    	float temp_resolution = (float)(Mathf.Max(resolution, 0)) /1.0f;
+    	float temp_resolution = (float)(Mathf.Max(resolution * 5, 0)) /1.0f;
     	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
     	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
     }
@@ -108,7 +108,11 @@ public class display_state_controller : MonoBehaviour
     }
 
     void process_json_game_event(string path){
-    	current_event_name = path;
+        current_event_name = path;
+        if (current_event_name == "endgame")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+        }
         try
         {
             GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
@@ -272,8 +276,8 @@ public class display_state_controller : MonoBehaviour
     }
 
     void fade_bubble(GameObject speech){
-        speech.GetComponent<Image>().CrossFadeAlpha(0, (float) (fade_time/fade_rate), false);
-        speech.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0, (float) (fade_time/fade_rate), false);
+        speech.GetComponent<Image>().CrossFadeAlpha(0.0f, (float) (fade_time/fade_rate), false);
+        speech.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0.0f, (float) (fade_time/fade_rate), false);
     }
 
     void initialize_displays(){
