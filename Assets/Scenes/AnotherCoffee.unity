@@ -528,11 +528,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -737,6 +737,7 @@ MonoBehaviour:
   timer_max: 0
   offset_amount: 0.02
   shift_intensity: 0.035
+  easy_mode: 0
 --- !u!1 &606556678
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,11 +829,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 75
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -920,11 +921,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -1576,8 +1577,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   timer_max: 40
-  offset_amount: 0.2
-  shift_intensity: 0.03
+  offset_amount: 0.3
+  shift_intensity: 0.2
+  easy_mode: 0
 --- !u!1 &1252259310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2088,39 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ed74de92f5ec4e4987654f896dbbd88, type: 3}
   - {fileID: 8300000, guid: d84aa8dfc8046fc4288b4a10fc65aa4b, type: 3}
   - {fileID: 8300000, guid: a31359810beba164688e715e07a2f5d3, type: 3}
+  MusicNames:
+  - 0 Dreamer Neutral Intro
+  - 1 Dreamer Neutral Intro
+  - 2 Dreamer Neutral Childhood
+  - 3 Dreamer Neutral Relationships
+  - 4 Dreamer Tense Intro
+  - 5 Dreamer Tense Intro
+  - 6 Dreamer Tense Intro
+  - 7 Dreamer Tense Intro
+  - 8 Dreamer Awkward Intro
+  - 9 Dreamer Awkward Intro
+  - 10 Dreamer Awkward Intro
+  - 11 Dreamer Awkward Intro
+  - 12 Dreamer Resolved Intro
+  - 13 Dreamer Resolved Intro
+  - 14 Dreamer Resolved Childhood
+  - 15 Dreamer Resolved Relationships
+  - 16 Realist Neutral Intro
+  - 17 Realist Neutral Intro
+  - 18 Realist Resolved Childhood
+  - 19 Realist Neutral Relationships
+  - 20 Realist Tense Intro
+  - 21 Realist Tense Intro
+  - 22 Realist Tense Intro
+  - 23 Realist Tense Intro
+  - 24 Realist Awkward Intro
+  - 25 Realist Awkward Intro
+  - 26 Realist Awkward Intro
+  - 27 Realist Awkward Intro
+  - 28 Realist Resolved Intro
+  - 29 Realist Resolved Intro
+  - 30 Realist Resolved Childhood
+  - 31 Dreamer Resolved Relationships
 --- !u!1 &1817217978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,11 +2180,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 75
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -2335,11 +2370,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 50
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 75
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -2393,7 +2428,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2429,6 +2464,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -695.8, y: 434.1}
-  m_SizeDelta: {x: 528.21, y: 210.7}
+  m_AnchoredPosition: {x: -683, y: 434.44}
+  m_SizeDelta: {x: 502.6, y: 211.37}
   m_Pivot: {x: 0.5, y: 0.5}
