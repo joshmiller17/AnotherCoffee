@@ -1,0 +1,16 @@
+ {
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"sad"
+	},
+
+	"dialogue":"...Nevermind. Can we just talk about something else, please?",
+	
+			
+	"next_event":[
+		"2_opening"
+	]
+
+}

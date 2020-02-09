@@ -1,0 +1,15 @@
+  {
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I guess I think of Cat Detective.",
+	
+			
+	"next_event":[
+		"2_opening"
+	]
+}

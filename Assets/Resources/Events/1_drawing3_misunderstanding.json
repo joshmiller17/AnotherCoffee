@@ -1,0 +1,27 @@
+ {
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I mean, shittily if I'm being completely honest. But at least I still make time for following my dreams. It sounds like that's more than you've done in the last decade.",
+	
+	"effects":{
+	"tension":0.2
+	},
+	
+			
+	"next_event":[
+		"1_drawing3_misunderstanding2",
+		"1_drawing2_do",
+		"1_nevermind"
+	],
+	
+	"choices":[
+	"That's not what I meant",
+	"...Nevermind."
+	]
+
+}

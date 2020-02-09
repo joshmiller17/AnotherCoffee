@@ -1,0 +1,25 @@
+ {
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"God, can't you face reality? Dreams don't keep the lights on, you can't *sell* dreams!",
+	
+	"effects":{
+	"tension":0.4
+	},
+	
+			
+	"next_event":[
+		"1_drawing3_misunderstanding3",
+		"1_nevermind"
+	],
+	
+	"choices":[
+	"...Nevermind."
+	]
+
+}

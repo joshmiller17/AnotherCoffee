@@ -1,0 +1,35 @@
+  {
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"sad"
+	},
+
+	"dialogue":"... ... ... ... ... ... ...",
+	
+	"effects":{
+	"tension":0.1
+	},
+	
+			
+	"next_event":[
+		"1_nevermind",
+		"1_nevermind",
+		"",
+		"1_drawing2_do5"
+		
+	],
+	
+	"is_interrupt":true,
+	
+	"choices":[
+	"...Nevermind.",
+	"",
+	"And some nights I cry at how soul-sucking it is but it's stable and it's there and I never go hungry."
+	
+	]
+	
+	"wait_time":10,
+
+}

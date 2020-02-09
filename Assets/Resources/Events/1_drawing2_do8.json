@@ -1,0 +1,22 @@
+  {
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"... I understand.",
+	
+	"effects":{
+	"resolution":1
+	},
+	
+			
+	"next_event":[
+		"1_drawing2_do9"
+		
+	],
+	
+	"wait_time":2.0
+}

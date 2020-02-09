@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"realist_animation":"angry",
+		"dreamer_animation":"angry"
+	},
+
+	"dialogue":"Look, I’m sorry, this was a mistake. I shouldn't have assumed things would be like they were before. We're just... too different people now. Good luck with your life, or whatever.",
+		
+	"next_event":[
+		"endgame"
+	]
+
+}

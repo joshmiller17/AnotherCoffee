@@ -1,0 +1,27 @@
+  {
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+	"dialogue":"I mean, how can you focus on creating when you have bills to pay?",
+	
+	"effects":{
+	"tension":0.1
+	},
+	
+			
+	"next_event":[
+		"1_drawing2_do2",
+		"1_drawing2_do2",
+		"1_nevermind"
+	],
+	
+	"choices":[
+	"I need to explain this better",
+	"...Nevermind."
+	]
+
+}

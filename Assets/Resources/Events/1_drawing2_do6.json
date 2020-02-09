@@ -1,4 +1,4 @@
-{
+  {
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
@@ -6,16 +6,17 @@
 		"realist_animation":"normal"
 	},
 
-	"dialogue":"Got any fun projects in the works?",
+	"dialogue":"...",
 	
-	"effects":[{
-	"awkward": -1
-	}
-	],
-		
+	"effects":{
+	"tension":-0.3
+	},
+	
+			
 	"next_event":[
-		"1_opening_novel2"
-	]
+		"1_drawing2_do7"
+		
+	],
 	
-
+	"wait_time":1.5
 }
