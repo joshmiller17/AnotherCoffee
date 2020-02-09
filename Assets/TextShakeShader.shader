@@ -1,86 +1,108 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Unlit alpha-blended shader.
-// - no lighting
-// - no lightmap support
-// - no per-material color
+﻿// shaky text shader for Unity, feb 2020
 
 Shader "Unlit/TextShakeShader" {
-	Properties{
-		_MainTex("Base (RGB) Trans (A)", 2D) = "white" {}
-		_DisplacementTex("Displacement Texture", 2D) = "white" {}
-	}
+    Properties {
+        _MainTex ("Font Texture", 2D) = "white" {}
+        _Color ("Text Color", Color) = (1,1,1,1)
+        _DisplacementTex("Displacement Texture", 2D) = "white" {}
+    }
 
-		SubShader{
-			Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
-			LOD 100
+    SubShader {
 
-			ZWrite Off
-			Blend SrcAlpha OneMinusSrcAlpha
+        Tags {
+            "Queue"="Transparent"
+            "IgnoreProjector"="True"
+            "RenderType"="Transparent"
+            "PreviewType"="Plane"
+        }
+        Lighting Off Cull Off ZTest Always ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
 
-			Pass {
-				CGPROGRAM
-					#pragma vertex vert
-					#pragma fragment frag
-					#pragma multi_compile_fog
+        Pass {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile _ UNITY_SINGLE_PASS_STEREO STEREO_INSTANCING_ON STEREO_MULTIVIEW_ON
+            #include "UnityCG.cginc"
 
-					#include "UnityCG.cginc"
+            struct appdata_t {
+                float4 vertex : POSITION;
+                fixed4 color : COLOR;
+                float2 texcoord : TEXCOORD0;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
 
-					struct appdata_t {
-						float4 vertex : POSITION;
-						float2 texcoord : TEXCOORD0;
-					};
+            struct v2f {
+                float4 vertex : SV_POSITION;
+                fixed4 color : COLOR;
+                float2 texcoord : TEXCOORD0;
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
 
-					struct v2f {
-						float4 vertex : SV_POSITION;
-						half2 texcoord : TEXCOORD0;
-						UNITY_FOG_COORDS(1)
-					};
+            /* Textures */
+            sampler2D _MainTex;
+            sampler2D _DisplacementTex;
 
-					sampler2D _MainTex;
-					sampler2D _DisplacementTex;
-					float4 _MainTex_ST;
+            /* Uniforms managed by Unity */
+            uniform float4 _MainTex_ST;
+            uniform fixed4 _Color;
+            uniform float4 _MainTex_TexelSize;
 
-					/* Uniforms are values passed to the shader by the program/CPU */
-					uniform float _DisplacementSeed;
-					uniform half _OffsetAmount; // = 0.2;
-					uniform half _ShiftIntensity; // = 0.035;
+            /* Uniforms manually passed in by developer */
+  					uniform float _DisplacementSeed;
+  					uniform half _OffsetAmount;
+  					uniform half _ShiftIntensity;
+                    uniform float _SafeMode;
 
-					/* method for displacing a UV */
-					half2 displace(half2 uv, float seed)
-					{
-						half2 offset = half2(
-							sin(seed)		* _OffsetAmount,
-							cos(seed + 0.2)	* _OffsetAmount
-						);
+            /* Method for displacing a UV */
+  					half2 displace(half2 uv, float seed)
+  					{
+  						half2 offset = half2(
+  							sin(seed)  * _OffsetAmount,
+  							cos(seed)  * _OffsetAmount
+  						);
 
-						half4 map_uv = tex2D(_DisplacementTex, uv + offset);
+  						half4 map_uv = tex2D(_DisplacementTex, uv + offset);
 
-						half2 new_uv = half2(
-							uv.x + (map_uv[0] * _ShiftIntensity),
-							uv.y + (map_uv[2] * _ShiftIntensity)
-						);
-						return new_uv;
-					}
+              /* Reduce jitter at incredibly low map_UV levels to reduce font-wide offsetting */
+              map_uv[0] = map_uv[0] * map_uv[0];
+              map_uv[2] = map_uv[2] * map_uv[2];
 
+  						half2 new_uv = half2(
+  							uv.x + (map_uv[0] * _ShiftIntensity * (_MainTex_TexelSize.w*0.003) ),
+  							uv.y + (map_uv[2] * _ShiftIntensity * (_MainTex_TexelSize.z*0.003) )
+  						);
+  						return new_uv;
+  					}
 
-					v2f vert(appdata_t v)
-					{
-						v2f o;
-						o.vertex = UnityObjectToClipPos(v.vertex);
-						o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
-						UNITY_TRANSFER_FOG(o,o.vertex);
-						return o;
-					}
+            /* Vertex Shader */
+            v2f vert (appdata_t v)
+            {
+                v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.color = v.color * _Color;
+                o.texcoord = TRANSFORM_TEX(v.texcoord,_MainTex);
+                return o;
+            }
 
-					fixed4 frag(v2f i) : SV_Target
-					{
-						fixed4 col = tex2D(_MainTex, displace( i.texcoord, _DisplacementSeed ) );
-						UNITY_APPLY_FOG(i.fogCoord, col);
-						return col;
-					}
-				ENDCG
-			}
-	}
-
+            /* Fragment Shader */
+            fixed4 frag (v2f i) : SV_Target
+            {
+                fixed4 col = i.color;
+                /* Safe mode "clamps" the shake to be within the bounds of the original UV */
+                if (_SafeMode > 0.5) {
+                  col.a *= (
+                    tex2D(_MainTex, displace(i.texcoord, _DisplacementSeed)).a
+                    * tex2D(_MainTex, i.texcoord).a
+                  );
+                } else { // Without safe mode, there is no clamping, and clipping of neighboring glyphs may occur
+                  col.a *= ( tex2D(_MainTex, displace(i.texcoord, _DisplacementSeed)).a );
+                }
+                return col;
+            }
+            ENDCG
+        }
+    }
 }

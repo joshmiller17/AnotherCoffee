@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/OverCoffee.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: a4a8157b414c3d048b01a2652acead49
   - enabled: 1
     path: Assets/Scenes/AnotherCoffee.unity
     guid: 4fa49e2e19828db4998939b474afe4d7
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: b4e094bcc30e3b044a855363368d5cb3
   m_configObjects: {}
