@@ -8,9 +8,9 @@
 
 	"dialogue":"... ... erm... ...",
 	
-	"effects":{
+	"effects":[{
 	"tension":0.1
-	},
+	}],
 	
 			
 	"next_event":[
@@ -26,10 +26,10 @@
 	"choices":[
 	"...Nevermind.",
 	"",
-	"And if I went back a hundred times I'd always choose this over the uncertainty of dreams and I don't know how to explain that to you!!"
+	"And I'd choose this every time over the uncertainty of dreams and I don't know how to explain that to you!!"
 	
-	]
+	],
 	
-	"wait_time":10,
+	"wait_time":10
 
 }

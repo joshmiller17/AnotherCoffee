@@ -18,6 +18,8 @@
 	"choices":[
 	"How can you do it???",
 	"...Nevermind."
-	]
+	],
+	
+	"wait_time":2
 
 }

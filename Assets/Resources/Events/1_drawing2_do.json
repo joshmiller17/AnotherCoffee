@@ -1,4 +1,4 @@
-  {
+{
 "display_state":{
 		"talking":"realist",
 		"bubble":"normal",
@@ -8,9 +8,9 @@
 
 	"dialogue":"I mean, how can you focus on creating when you have bills to pay?",
 	
-	"effects":{
+	"effects":[{
 	"tension":0.1
-	},
+	}],
 	
 			
 	"next_event":[

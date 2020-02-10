@@ -37,6 +37,7 @@ public class display_state_controller : MonoBehaviour
     private DisplayState current_display;
 
     private static double text_to_time_ratio = 1.0 / 15.0;
+    private static int min_speech_length = 10;
     private static double fade_time = 1.5;
 
 	
@@ -69,7 +70,14 @@ public class display_state_controller : MonoBehaviour
     void Update()
     {
         if(Time.time > next_event_timer){
-        	process_json_game_event(get_next_event_string());
+            string eventName = get_next_event_string();
+            if (eventName == "endgame" || eventName == "2_opening")
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+            }
+            else { 
+            process_json_game_event(eventName);
+            }
         }
         else if(Time.time > fade_timer){
             start_fade();
@@ -109,10 +117,6 @@ public class display_state_controller : MonoBehaviour
 
     void process_json_game_event(string path){
         current_event_name = path;
-        if (current_event_name == "endgame")
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
-        }
         try
         {
             GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
@@ -130,7 +134,7 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_event(GameEvent game_event){
-        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * game_event.dialogue.Length);
+        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * Mathf.Max(game_event.dialogue.Length, min_speech_length));
         next_event_timer = fade_timer + fade_time;
         //Debug.Log("Fade timer: " + (fade_timer - Time.time).ToString());
         //Debug.Log("next event: " + (next_event_timer - Time.time).ToString());

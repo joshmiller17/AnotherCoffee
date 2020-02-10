@@ -8,10 +8,6 @@
 
 	"dialogue":"I guess... I guess - ... heh. This, this is super cheesy, but...",
 	
-	"effects":{
-	"resolution":-4
-	},
-	
 			
 	"next_event":[
 		"1_drawing2_do10"

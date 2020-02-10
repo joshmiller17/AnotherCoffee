@@ -8,9 +8,9 @@
 
 	"dialogue":"...",
 	
-	"effects":{
+	"effects":[{
 	"tension":-0.3
-	},
+	}],
 	
 			
 	"next_event":[

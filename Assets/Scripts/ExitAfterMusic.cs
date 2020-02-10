@@ -6,6 +6,8 @@ public class ExitAfterMusic : MonoBehaviour
 {
     public GameObject MusicSystem;
 
+    private bool played = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,11 @@ public class ExitAfterMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!MusicSystem.GetComponent<AudioSource>().isPlaying && !played)
+        {
+            played = true;
+            MusicSystem.GetComponent<AudioSource>().Play();
+        }
     }
 
     void doQuit()

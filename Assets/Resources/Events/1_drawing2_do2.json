@@ -8,9 +8,9 @@
 
 	"dialogue":"Like... so...",
 	
-	"effects":{
+	"effects":[{
 	"tension":0.1
-	},
+	}],
 	
 			
 	"next_event":[
@@ -28,8 +28,8 @@
 	"",
 	"I can't believe I'm saying this, but I took a crappy job at a corporate firm."
 	
-	]
+	],
 	
-	"wait_time":10,
+	"wait_time":10
 
 }

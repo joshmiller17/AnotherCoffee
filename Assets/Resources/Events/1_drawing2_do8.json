@@ -8,9 +8,9 @@
 
 	"dialogue":"... I understand.",
 	
-	"effects":{
+	"effects":[{
 	"resolution":1
-	},
+	}],
 	
 			
 	"next_event":[
