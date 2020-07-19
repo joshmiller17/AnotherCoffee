@@ -40,6 +40,8 @@ public class display_state_controller : MonoBehaviour
     private static int min_speech_length = 10;
     private static double fade_time = 1.5;
 
+    private bool debug_verbose = false;
+
 	
 
     private int choice_selected = 0;
@@ -61,7 +63,10 @@ public class display_state_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        debug_verbose = false;
+        validate_scripts(opening_script, new Hashtable()); //debug only, comment out of final game
         initialize_displays();
+        debug_verbose = true;
         process_json_game_event(opening_script);
         //DontDestroyOnLoad(this.gameObject);
     }
@@ -92,6 +97,38 @@ public class display_state_controller : MonoBehaviour
 
     }
 
+    // recursive checks that all script paths are valid
+    void validate_scripts(string script, Hashtable seen)
+    {
+        if (seen.Contains(script))
+        {
+            Debug.Log("--- WARNING: Script reachable from multiple paths: " + script);
+            return;
+        }
+
+        seen.Add(script, null);
+
+        GameEvent gameEvent;
+
+        try
+        {
+            GameEventJSON gameEventJSON = JsonUtility.FromJson<GameEventJSON>(read_json_file(script));
+            gameEvent = new GameEvent(gameEventJSON);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("---------- ERROR: INVALID JSON SCRIPT: " + script);
+            //Debug.Log(e);
+            return;
+        }
+
+
+        foreach (string s in gameEvent.next_event)
+        {
+            validate_scripts(s, seen);
+        }
+    }
+
     void handle_music(){
     	int topic = int.Parse(current_event_name.Substring(0,1));
     	int character = 0;
@@ -120,6 +157,7 @@ public class display_state_controller : MonoBehaviour
         try
         {
             GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
+            Debug.Log("game event made: " + json.dialogue);
             current_event = new GameEvent(json);
             handle_event(new GameEvent(json));
         }
@@ -303,10 +341,16 @@ public class display_state_controller : MonoBehaviour
     }
 
     string read_json_file(string path){
-        Debug.Log(path);
+        if (debug_verbose)
+        {
+            Debug.Log(path);
+        }
  		string filePath = "Events/" + path.Replace(".json", "");
 		TextAsset targetFile = Resources.Load<TextAsset>(filePath);
-		Debug.Log(targetFile.text);
+        if (debug_verbose)
+        {
+            Debug.Log(targetFile.text);
+        }
   		return targetFile.text;
    	}
 
@@ -336,7 +380,7 @@ public class DisplayState{
         dreamer_state = js.dreamer_animation;
         realist_state = js.realist_animation;
         talking = js.talking;
-		Debug.Log("bubble_"+talking+"_"+js.bubble);
+        Debug.Log("bubble_" + talking + "_" + js.bubble);
 		bubble = load_art("bubble_"+talking+"_"+js.bubble);
 	}
 
@@ -353,7 +397,6 @@ public class GameEvent{
 	public EffectJSON[] effects;
 
 	public GameEvent(GameEventJSON js){
-		Debug.Log("game event made: " + js.dialogue);
 		wait_time = js.wait_time;
 		next_event = js.next_event;
         choices = js.choices;

@@ -9,9 +9,9 @@
 	"dialogue":"... ... ...",
 	
 	"effects":[{
-	"tension":0.3,
+	"tension":0.3
 	}
-	]
+	],
 			
 	"next_event":[
 		"1_liar2_wait_wait",
