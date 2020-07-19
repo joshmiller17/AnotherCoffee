@@ -47,6 +47,16 @@ public class display_state_controller : MonoBehaviour
     private int choice_selected = 0;
 
     public void choose(int choice_id){
+        
+        //play particles
+        foreach (Transform child in thoughts[choice_id].transform)
+        {
+            if (child.GetComponentInParent<ParticleSystem>())
+            {
+                child.GetComponentInParent<ParticleSystem>().Play();
+            }
+        }
+        
     	foreach(GameObject thought in thoughts){
         		hide_thought(thought);
         	}
@@ -118,7 +128,7 @@ public class display_state_controller : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.Log("---------- ERROR: INVALID JSON SCRIPT: " + script);
-            //Debug.Log(e);
+            Debug.Log(e);
             return;
         }
 
