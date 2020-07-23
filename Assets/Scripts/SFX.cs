@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SFX : MonoBehaviour
 {
@@ -26,8 +27,13 @@ public class SFX : MonoBehaviour
     public AudioClip menuAccept;
     public AudioClip mouseover;
 
+    public GameObject soundToggle;
+
     private Queue<AudioClip> bagOfSips = new Queue<AudioClip>();
     private Queue<AudioClip> bagOfSlurps = new Queue<AudioClip>();
+
+    public bool soundEnabled = true;
+
 
     public int dreamerTypingRate;
     private int lettersTilNextDreamerType;
@@ -50,7 +56,28 @@ public class SFX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void toggleSoundEnabled()
+    {
+        soundEnabled = !soundEnabled;
+
+        if (soundEnabled)
+        {
+            sfxSource.volume = 0.5f;
+            ambSource.volume = 0.5f;
+            typingSource.volume = 0.5f;
+            coffeeSource.volume = 0.5f;
+            soundToggle.GetComponent<Text>().text = "Sound ON";
+        }
+        else
+        {
+            sfxSource.volume = 0.0f;
+            ambSource.volume = 0.0f;
+            typingSource.volume = 0.0f;
+            coffeeSource.volume = 0.0f;
+            soundToggle.GetComponent<Text>().text = "Sound OFF";
+        }
     }
 
     private Queue<AudioClip> fillClipQueueShuffled(AudioClip[] clips) //this shuffles the clips, but I think that's okay

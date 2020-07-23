@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class music_system : MonoBehaviour
 {
     public AudioMixer MasterMixer;
     public AudioClip[] stingers;
     public string[] MusicNames;
+    public bool musicEnabled = true;
+    public GameObject musicToggle;
 
     AudioSource[] audiosources;
     string[] snapshots = { "Dreamer", "Realist" };
@@ -126,7 +129,26 @@ public class music_system : MonoBehaviour
         prevTime = -10;
     }
 
+    public void toggleMusicEnabled()
+    {
+        musicEnabled = !musicEnabled;
+
+        if (musicEnabled)
+        {
+            audiosources[0].volume = 0.5f;
+            audiosources[1].volume = 0.5f;
+            musicToggle.GetComponent<Text>().text = "Music ON";
+        }
+        else
+        {
+            audiosources[0].volume = 0.0f;
+            audiosources[1].volume = 0.0f;
+            musicToggle.GetComponent<Text>().text = "Music OFF";
+        }
+    }
+
     void Update() {
+
         float delay = 1.2F;
         if (parameters.Count > 0){
             if (interrupt){

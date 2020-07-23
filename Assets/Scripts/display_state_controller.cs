@@ -16,13 +16,15 @@ public class display_state_controller : MonoBehaviour
 	public GameObject dialogue_B;
     public GameObject[] thoughts;
     public GameObject DebugInfo;
+    public GameObject OptionsMenu;
+    public GameObject textSpeedButton;
     public string opening_script;
-
+    public float[] thought_color; //FFE7C9
+    public float[] interrupt_color; //FD8B8C
     public string dialogue;
+    public bool game_paused = false;
 
 	public string current_event_name;
-    public double next_event_timer;
-    public double fade_timer;
     public double fade_rate = 1.0;
 
     public float awkward;
@@ -36,9 +38,25 @@ public class display_state_controller : MonoBehaviour
 
     private DisplayState current_display;
 
-    private static double text_to_time_ratio = 1.0 / 15.0;
+    enum TextSpeed { SLOW, NORMAL, FAST };
+    private TextSpeed textSpeed = TextSpeed.NORMAL;
+    private double text_to_time_ratio = 1.0 / 15.0;
+    private static double slow_text_speed = 1.0 / 30.0;
+    private static double normal_text_speed = 1.0 / 15.0;
+    private static double fast_text_speed = 1.0 / 5.0;
     private static int min_speech_length = 10;
+    private double global_wait_time = 1.25;
+    private static double global_choice_time = 4.0;
     private static double fade_time = 1.5;
+    private static double fade_time_with_choice = 3.0;
+    private double talk_timer; //time at which talking finishes
+    private double wait_timer; //time at which to waiting finishes
+    private double choice_timer; //time at which to choosing finishes
+    private double fade_timer; //time at which to fading finishes
+
+    private enum TimerState { TALKING, WAITING, CHOOSING, FADING };
+    private TimerState dialogueState = TimerState.TALKING;
+
 
     private bool debug_verbose = false;
 
@@ -46,8 +64,39 @@ public class display_state_controller : MonoBehaviour
 
     private int choice_selected = 0;
 
+    public void change_text_speed()
+    {
+        switch (textSpeed)
+        {
+            case TextSpeed.SLOW:
+                textSpeed = TextSpeed.NORMAL;
+                textSpeedButton.GetComponent<Text>().text = "Text Speed NORMAL";
+                text_to_time_ratio = normal_text_speed;
+                global_wait_time -= 0.3;
+                break;
+            case TextSpeed.NORMAL:
+                textSpeed = TextSpeed.FAST;
+                textSpeedButton.GetComponent<Text>().text = "Text Speed FAST";
+                text_to_time_ratio = fast_text_speed;
+                global_wait_time -= 0.3;
+                break;
+            case TextSpeed.FAST:
+                textSpeed = TextSpeed.SLOW;
+                textSpeedButton.GetComponent<Text>().text = "Text Speed SLOW";
+                text_to_time_ratio = slow_text_speed;
+                global_wait_time += 0.6;
+                break;
+            default:
+                textSpeed = TextSpeed.NORMAL;
+                break;
+        }
+    }
+
     public void choose(int choice_id){
-        
+
+        game_paused = false;
+        OptionsMenu.SetActive(false);
+
         //play particles
         foreach (Transform child in thoughts[choice_id].transform)
         {
@@ -67,6 +116,35 @@ public class display_state_controller : MonoBehaviour
         else{
         	choice_selected = choice_id + 1;
             SFXSystem.GetComponent<SFX>().playMenuAccept();
+
+            //made our choice, move on
+            dialogueState = TimerState.FADING;
+            fade_timer = Time.time + 0.5;
+        }
+    }
+
+    public void exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
+    }
+
+    public void toggle_options_menu()
+    {
+        game_paused = !game_paused;
+
+        if (game_paused)
+        {
+            OptionsMenu.SetActive(true);
+        }
+        else
+        {
+            OptionsMenu.SetActive(false);
         }
     }
 
@@ -84,25 +162,77 @@ public class display_state_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > next_event_timer){
-            string eventName = get_next_event_string();
-            if (eventName == "endgame" || eventName == "2_opening")
+        string speech_state = "";
+
+
+        if (game_paused)
+        {
+            talk_timer += Time.deltaTime;
+            wait_timer += Time.deltaTime;
+            choice_timer += Time.deltaTime;
+            fade_timer += Time.deltaTime;
+        }
+        else
+        {
+
+            switch (dialogueState)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
-            }
-            else { 
-            process_json_game_event(eventName);
+                case TimerState.TALKING:
+                    speech_state = System.String.Format("Talking for {0:0.##}", talk_timer - Time.time);
+                    if (Time.time > talk_timer)
+                    {
+                        dialogueState = TimerState.WAITING;
+                        handle_thoughts(current_event.choices); //trigger non-interrupt choices
+                    }
+                    break;
+
+                case TimerState.WAITING:
+                    speech_state = System.String.Format("Waiting for {0:0.##}", wait_timer - Time.time);
+
+                    if (Time.time > wait_timer)
+                    {
+                        dialogueState = TimerState.CHOOSING;
+                    }
+                    break;
+
+                case TimerState.CHOOSING:
+                    speech_state = System.String.Format("Choosing for {0:0.##}", choice_timer - Time.time);
+
+                    if (Time.time > choice_timer)
+                    {
+                        start_fade();
+                        dialogueState = TimerState.FADING;
+                    }
+                    break;
+
+                case TimerState.FADING:
+                    speech_state = System.String.Format("Fading for {0:0.##}", fade_timer - Time.time);
+                    if (Time.time > fade_timer)
+                    {
+                        string eventName = get_next_event_string();
+                        if (eventName == "endgame" || eventName == "2_opening") //TODO remove 2_opening here to play next section
+                        {
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+                        }
+                        else
+                        {
+                            process_json_game_event(eventName);
+                        }
+                    }
+                    break;
+                default:
+                    Debug.LogError("Invalid TimerState");
+                    break;
+
             }
         }
-        else if(Time.time > fade_timer){
-            start_fade();
-        }
+
 
         Text debugInfo = DebugInfo.GetComponent<Text>();
         if (!debugInfo.text.Contains("Invalid") && !debugInfo.text.Contains("Error"))
         {
-            debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}\nScript={3}\nMusic={4}",
-                awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"), current_event_name, music.getMusicPlaying());
+            debugInfo.text = System.String.Format("Debug info:\nAwkward={0}\nTension={1}\nResolution={2}\nScript={3}\nMusic={4}\n{5}",
+                awkward.ToString("F1"), tension.ToString("F1"), resolution.ToString("F1"), current_event_name, music.getMusicPlaying(), speech_state);
         }
 
     }
@@ -110,6 +240,11 @@ public class display_state_controller : MonoBehaviour
     // recursive checks that all script paths are valid
     void validate_scripts(string script, Hashtable seen)
     {
+        if (script == "endgame")
+        {
+            return; //good!
+        }
+
         if (seen.Contains(script))
         {
             Debug.Log("--- WARNING: Script reachable from multiple paths: " + script);
@@ -127,7 +262,7 @@ public class display_state_controller : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.Log("---------- ERROR: INVALID JSON SCRIPT: " + script);
+            Debug.LogError("---------- ERROR: INVALID JSON SCRIPT: " + script);
             Debug.Log(e);
             return;
         }
@@ -182,10 +317,19 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_event(GameEvent game_event){
-        fade_timer = Time.time + game_event.wait_time + (text_to_time_ratio * Mathf.Max(game_event.dialogue.Length, min_speech_length));
-        next_event_timer = fade_timer + fade_time;
-        //Debug.Log("Fade timer: " + (fade_timer - Time.time).ToString());
-        //Debug.Log("next event: " + (next_event_timer - Time.time).ToString());
+        talk_timer = Time.time + (text_to_time_ratio * Mathf.Max(game_event.dialogue.Length, min_speech_length));
+        wait_timer = talk_timer + game_event.wait_time + global_wait_time;
+        choice_timer = wait_timer;
+        if (!game_event.is_interrupt && game_event.choices != null && game_event.choices.Length > 1)
+        {
+            choice_timer += global_choice_time;
+            fade_timer = choice_timer + fade_time_with_choice;
+        }
+        else
+        {
+            fade_timer = choice_timer + fade_time;
+        }
+        dialogueState = TimerState.TALKING;
         handle_display(game_event.display_state, game_event.dialogue, game_event.text_speed);
         handle_thoughts(game_event.choices);
         handle_effects(game_event.effects);
@@ -200,19 +344,32 @@ public class display_state_controller : MonoBehaviour
     		}
     		handle_music();
     	}
+
+
+        //awkward decays over time
+        awkward = Mathf.Max(0, awkward - 0.2f);
     }
 
+#pragma warning disable CS0472
     void handle_effect(EffectJSON effect){
-    	if(effect.awkward != null){
-    		awkward += effect.awkward;
-    	}
-    	if(effect.tension != null){
+        if (effect.awkward != null)
+        {
+            awkward += effect.awkward;
+        }
+
+        if (effect.tension != null){
     		tension += effect.tension;
     	}
-    	if(effect.resolution != null){
-    		resolution += effect.resolution;
+
+
+        // The result of the expression is always the same since a value of this type is never equal to 'null'
+        if (effect.resolution != null)
+        {
+            // The result of the expression is always the same since a value of this type is never equal to 'null'
+            resolution += effect.resolution;
     	}
     }
+#pragma warning restore CS0472
 
     void handle_display(DisplayState maybe_display_state, string dialogue, float text_speed){
         DisplayState display_state = maybe_display_state;
@@ -236,6 +393,14 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_thoughts(string[] choices){
+
+        if (dialogueState == TimerState.TALKING && !current_event.is_interrupt
+            || dialogueState == TimerState.WAITING && current_event.is_interrupt
+            )
+        {
+            return;
+        }
+
         if(choices==null){
             foreach(GameObject thought in thoughts){
                 hide_thought(thought);
@@ -248,6 +413,15 @@ public class display_state_controller : MonoBehaviour
                     {
                         set_thought(thoughts[i], choices[i]);
                         show_thought(thoughts[i]);
+
+                        if (current_event.is_interrupt)
+                        {
+                            thoughts[i].GetComponent<Image>().color = new Color(interrupt_color[0], interrupt_color[1], interrupt_color[2], 1.0f);
+                        }
+                        else
+                        {
+                            thoughts[i].GetComponent<Image>().color = new Color(thought_color[0], thought_color[1], thought_color[2], 1.0f);
+                        }
                     }
                 }
                 else{
