@@ -18,6 +18,8 @@
 	"Are you...?"
 	],
 	
+	"tutorial": "Saying nothing can be a good move!",
+	
 	"wait_time":1
 
 }

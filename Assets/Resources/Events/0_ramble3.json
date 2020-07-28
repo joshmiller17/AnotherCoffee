@@ -19,6 +19,8 @@
 	],
 	
 	"text_speed":1.35,
+	
+	"tutorial": "Sometimes interrupting is the only way forward.",
 
 	
 	"is_interrupt":true,

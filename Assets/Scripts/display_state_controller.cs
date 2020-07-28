@@ -18,6 +18,9 @@ public class display_state_controller : MonoBehaviour
     public GameObject DebugInfo;
     public GameObject OptionsMenu;
     public GameObject textSpeedButton;
+    public GameObject TutorialTipBox;
+    public GameObject TutorialTipI;
+    public GameObject TutorialTipText;
     public string opening_script;
     public float[] thought_color; //FFE7C9
     public float[] interrupt_color; //FD8B8C
@@ -251,7 +254,7 @@ public class display_state_controller : MonoBehaviour
 
         if (seen.Contains(script))
         {
-            Debug.Log("--- WARNING: Script reachable from multiple paths: " + script);
+            Debug.LogWarning("WARNING: Script reachable from multiple paths: " + script);
             return;
         }
 
@@ -266,7 +269,7 @@ public class display_state_controller : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError("---------- ERROR: INVALID JSON SCRIPT: " + script);
+            Debug.LogError("ERROR: INVALID JSON SCRIPT: " + script);
             Debug.Log(e);
             return;
         }
@@ -320,7 +323,25 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
+    void handle_tutorial_event(GameEvent game_event)
+    {
+        if (game_event.tutorial != "")
+        {
+            TutorialTipBox.GetComponent<Image>().CrossFadeAlpha(1f, 0f, false);
+            TutorialTipI.GetComponent<Image>().CrossFadeAlpha(1f, 0f, false);
+            TutorialTipText.GetComponent<Text>().CrossFadeAlpha(1f, 0f, false);
+            TutorialTipText.GetComponent<Text>().text = game_event.tutorial;
+        }
+        else
+        {
+            TutorialTipBox.GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
+            TutorialTipI.GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
+            TutorialTipText.GetComponent<Text>().CrossFadeAlpha(0f, 1f, false);
+        }
+    }
+
     void handle_event(GameEvent game_event){
+        handle_tutorial_event(game_event);
         talk_timer = Time.time + (text_to_time_ratio * Mathf.Max(game_event.dialogue.Length, min_speech_length));
         wait_timer = talk_timer + game_event.wait_time + global_wait_time;
         choice_timer = wait_timer;
@@ -581,6 +602,7 @@ public class GameEvent{
     public string[] choices;
 	public float text_speed;
 	public string dialogue;
+    public string tutorial = "";
 	public bool is_interrupt;
 	public int wait_time;
 	public EffectJSON[] effects;
@@ -594,6 +616,10 @@ public class GameEvent{
             text_speed = 1;
 		}
 		dialogue = js.dialogue;
+        if (js.tutorial != null)
+        {
+            tutorial = js.tutorial;
+        }
 		display_state = new DisplayState(js.display_state);
 		is_interrupt = js.is_interrupt;
 		if(is_interrupt == null){
@@ -633,5 +659,6 @@ public class GameEventJSON
 	public int wait_time;
 	public bool is_interrupt;
     public bool interrupted;
+    public string tutorial;
     public float text_speed;
 }

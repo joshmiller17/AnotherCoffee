@@ -22,6 +22,8 @@
 	
 	"is_interrupt":true,
 	
+	"tutorial": "Red thoughts will interrupt him.",
+	
 	"choices":[
 		"Oh no, he's rambling again.",
 		"This won't end unless I say something."
