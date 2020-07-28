@@ -41,9 +41,9 @@ public class display_state_controller : MonoBehaviour
     enum TextSpeed { SLOW, NORMAL, FAST };
     private TextSpeed textSpeed = TextSpeed.NORMAL;
     private double text_to_time_ratio = 1.0 / 15.0;
-    private static double slow_text_speed = 1.0 / 30.0;
+    private static double slow_text_speed = 1.0 / 7.5;
     private static double normal_text_speed = 1.0 / 15.0;
-    private static double fast_text_speed = 1.0 / 5.0;
+    private static double fast_text_speed = 1.0 / 45.0;
     private static int min_speech_length = 10;
     private double global_wait_time = 1.25;
     private static double global_choice_time = 4.0;
@@ -56,6 +56,7 @@ public class display_state_controller : MonoBehaviour
 
     private enum TimerState { TALKING, WAITING, CHOOSING, FADING };
     private TimerState dialogueState = TimerState.TALKING;
+    private float text_speed_multiplier = 1f;
 
 
     private bool debug_verbose = false;
@@ -72,19 +73,22 @@ public class display_state_controller : MonoBehaviour
                 textSpeed = TextSpeed.NORMAL;
                 textSpeedButton.GetComponent<Text>().text = "Text Speed NORMAL";
                 text_to_time_ratio = normal_text_speed;
-                global_wait_time -= 0.3;
+                global_wait_time -= 0.6;
+                text_speed_multiplier = 1.0f;
                 break;
             case TextSpeed.NORMAL:
                 textSpeed = TextSpeed.FAST;
                 textSpeedButton.GetComponent<Text>().text = "Text Speed FAST";
                 text_to_time_ratio = fast_text_speed;
-                global_wait_time -= 0.3;
+                global_wait_time -= 0.6;
+                text_speed_multiplier = 3.0f;
                 break;
             case TextSpeed.FAST:
                 textSpeed = TextSpeed.SLOW;
                 textSpeedButton.GetComponent<Text>().text = "Text Speed SLOW";
                 text_to_time_ratio = slow_text_speed;
-                global_wait_time += 0.6;
+                text_speed_multiplier = 0.5f;
+                global_wait_time += 1.2;
                 break;
             default:
                 textSpeed = TextSpeed.NORMAL;
@@ -330,7 +334,8 @@ public class display_state_controller : MonoBehaviour
             fade_timer = choice_timer + fade_time;
         }
         dialogueState = TimerState.TALKING;
-        handle_display(game_event.display_state, game_event.dialogue, game_event.text_speed);
+        float text_speed = game_event.text_speed * text_speed_multiplier;
+        handle_display(game_event.display_state, game_event.dialogue, text_speed);
         handle_thoughts(game_event.choices);
         handle_effects(game_event.effects);
     }
