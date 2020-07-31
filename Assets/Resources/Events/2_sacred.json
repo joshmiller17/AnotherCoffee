@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "What, you don't trust me? I've been the keeper of the sacred tome for like a decade and nothing bad has happened to it yet.",
+	
+		"effects":[{
+	"tension":-0.5
+	}],
+	
+	"next_event":[
+		"2_yet"
+	]
+
+	
+}

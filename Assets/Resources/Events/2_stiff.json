@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Ugh, dude... When did you get so stiff and stale?",
+	
+	
+	"next_event":[
+		"2_angry_rant",
+		"2_excuse",
+		"2_distance"
+	]
+
+	"choices":[
+		"??!!",
+		"This is why I wanted distance"
+	]
+
+	
+}

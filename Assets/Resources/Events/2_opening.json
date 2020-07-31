@@ -1,13 +1,13 @@
 {
 "display_state":{
-		"talking":"realist",
+		"talking":"dreamer",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
+		"dreamer_animation":"awkward",
 		"realist_animation":"normal"
 	},
 
 
-	"dialogue": "I don’t know if you care, but, I actually brought the comic book we made in high school.",
+	"dialogue": "I don’t know if you care, but, I actually brought the comic book we made in college...",
 	
 	"next_event":[
 		"2_opening_wait",
@@ -16,8 +16,8 @@
 	]
 	
 	"choices":[
-	"Wow, you still have that old thing?",
-	"Ha! I can't believe you still think about that."
+	"Did it mean that much to you?",
+	"That's in the past."
 	]
 
 }

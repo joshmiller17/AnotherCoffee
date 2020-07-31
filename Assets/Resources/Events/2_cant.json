@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I can't. I have a job already as a graphic designer for Twimblr.",
+	
+	"effects":[{
+	"tension":0.3
+	}],
+	
+	
+	"next_event":[
+		"2_twimblr"
+	]
+	
+
+}

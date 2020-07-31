@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Oh, grow up! Haha, it's an old piece of junk, no one cares about it.",
+	
+		"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_stiff"
+	]
+
+	
+}

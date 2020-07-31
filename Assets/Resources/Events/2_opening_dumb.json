@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Ha! I can't believe you still think about that.",
+	
+	"next_event":[
+		"2_everything"
+	]
+	
+
+}

@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "I want to but... it's unrealistic. It just wouldn't sell.",
+	
+	"effects":[{
+	"tension":0.4
+	}],
+	
+	
+	"next_event":[
+		"2_selling"
+	]
+	
+	
+}

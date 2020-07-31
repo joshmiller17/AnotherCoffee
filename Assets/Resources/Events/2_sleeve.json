@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Haha, then you better be careful! I spent hours drawing that cover. Why isn't it in a sleeve?",
+	
+		"effects":[{
+	"tension":-0.5
+	}],
+	
+	
+	"next_event":[
+		"2_sacred"
+	]
+
+	
+}

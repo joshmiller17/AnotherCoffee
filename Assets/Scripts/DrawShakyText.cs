@@ -13,6 +13,7 @@ public class DrawShakyText : MonoBehaviour
     public float shift_intensity;   /* How far things will get displaced by the shader, should be changed if there are significant changes to text size */
     public bool easy_mode; /*Turn on for a simpler font rendering*/
     public bool shaky_enabled;
+    public float wobble; /* bonus wobbly */
 
     private float timer = 0.0f;
     private float seed = 0.0f;
@@ -50,7 +51,7 @@ public class DrawShakyText : MonoBehaviour
             /* Set values to the shader/material at run-time */
             text_material.SetFloat("_DisplacementSeed", seed);
             text_material.SetFloat("_OffsetAmount", offset_amount);
-            text_material.SetFloat("_ShiftIntensity", shift_intensity);
+            text_material.SetFloat("_ShiftIntensity", shift_intensity * wobble);
             text_material.SetFloat("_SafeMode", (easy_mode == true ? 1.0f : 0.0f));
         }
         else

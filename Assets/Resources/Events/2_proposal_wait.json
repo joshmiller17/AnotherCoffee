@@ -1,0 +1,28 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"awkward",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "... ... ...",
+	
+	"effects":[{
+	"awkward":1
+	}],
+	
+	
+	"next_event":[
+		"awkward_end",
+		"2_cant",
+		"2_unrealistic"
+	]
+	
+	"choices":[
+		"I have a job already",
+		"It'd never sell"
+	]
+	
+}

@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "Wouldn't sell? Since when do you care what sells? You know what I think?",
+	
+	"effects":[{
+	"tension":0.8
+	}],
+	
+	
+	"next_event":[
+		"2_dontneed"
+	]
+	
+	
+}

@@ -1,0 +1,31 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "You sold out.",
+	
+	"effects":[{
+	"tension":0.5
+	}],
+	
+	
+	"next_event":[
+		"3_tense_exit"
+		"2_fuckyou",
+		"2_fuckthat"
+	]
+	
+	"is_interrupt":true,
+	
+	"choices":[
+		"Fuck you.",
+		"Fuck that."
+	],
+	
+	"wait_time":20
+}

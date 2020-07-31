@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Fun? This was our *everything* in college. Or... it was my everything, anyway... ",
+	
+	"effects":[{
+	"tension":0.6
+	}],
+	
+	"next_event":[
+		"3_opening"
+	]
+	
+}

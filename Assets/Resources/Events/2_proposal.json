@@ -1,0 +1,28 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "So, yeah. I want you to be my artist again. We can keep making Cat Detective like we did in college!",
+	
+	"effects":[{
+	"tension":-0.5
+	}],
+	
+	
+	"next_event":[
+		"2_proposal_wait",
+		"2_cant",
+		"2_unrealistic"
+	]
+	
+	"choices":[
+		"I have a job already",
+		"It'd never sell"
+	]
+	
+}

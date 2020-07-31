@@ -16146,7 +16146,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 0_opening
+  opening_script: 2_old
   thought_color:
   - 1
   - 0.90588236
@@ -16183,6 +16183,7 @@ MonoBehaviour:
   shift_intensity: 0.2
   easy_mode: 0
   shaky_enabled: 1
+  wobble: 1
 --- !u!1 &1006820877
 GameObject:
   m_ObjectHideFlags: 0
@@ -26328,7 +26329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Shaky text enabled
+  m_Text: Shaky text ON
 --- !u!222 &1560463212
 CanvasRenderer:
   m_ObjectHideFlags: 0

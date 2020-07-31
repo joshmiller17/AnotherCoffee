@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Oh yeah, I don't think about that much. That was fun, I guess.",
+	
+		"effects":[{
+	"awkward":0.5,
+	"tension":0.5
+	}],
+	
+	"next_event":[
+		"2_bad"
+	]
+	
+}

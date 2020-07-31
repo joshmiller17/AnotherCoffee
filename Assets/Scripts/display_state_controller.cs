@@ -355,6 +355,7 @@ public class display_state_controller : MonoBehaviour
             fade_timer = choice_timer + fade_time;
         }
         dialogueState = TimerState.TALKING;
+        GetComponent<DrawShakyText>().wobble = game_event.wobble; // set wobble factor
         float text_speed = game_event.text_speed * text_speed_multiplier;
         handle_display(game_event.display_state, game_event.dialogue, text_speed);
         handle_thoughts(game_event.choices);
@@ -419,7 +420,6 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_thoughts(string[] choices){
-
         if (dialogueState == TimerState.TALKING && !current_event.is_interrupt
             || dialogueState == TimerState.WAITING && current_event.is_interrupt
             )
@@ -458,7 +458,7 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_bubbles(Sprite bubble, string talking, string dialogue, float text_speed){
-    	if(talking.Equals("realist")){
+        if (talking.Equals("realist")){
             speech_A.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = realist_talking_speed * text_speed;
             update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
@@ -605,6 +605,7 @@ public class GameEvent{
     public string tutorial = "";
 	public bool is_interrupt;
 	public int wait_time;
+    public float wobble;
 	public EffectJSON[] effects;
 
 	public GameEvent(GameEventJSON js){
@@ -615,6 +616,11 @@ public class GameEvent{
 		if(text_speed == null || text_speed == 0){
             text_speed = 1;
 		}
+        wobble = js.wobble;
+        if (wobble == null || wobble == 0)
+        {
+            wobble = 1f; //multiplier
+        }
 		dialogue = js.dialogue;
         if (js.tutorial != null)
         {
@@ -657,6 +663,7 @@ public class GameEventJSON
     public string[] choices;
 	//public int event_time;
 	public int wait_time;
+    public int wobble;
 	public bool is_interrupt;
     public bool interrupted;
     public string tutorial;
