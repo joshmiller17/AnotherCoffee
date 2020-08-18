@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "*The* Twimblr? The one with the movie? And the bad guy billionaire owner who profits from selling personal data?",
+	
+	"effects":[{
+	"tension":0.3
+	}],
+	
+	
+	"next_event":[
+		"2_twimblr"
+	]
+	
+
+}

@@ -16146,7 +16146,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 2_old
+  opening_script: 0_opening
   thought_color:
   - 1
   - 0.90588236

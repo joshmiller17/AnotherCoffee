@@ -12,10 +12,10 @@
 	"wobble":2,
 	
 	"next_event":[
-		"2_proposal"
+		"2_proposal",
 		"2_sleeve",
 		"2_growup"
-	]
+	],
 	
 	"choices":[
 		"Oh yes it is",

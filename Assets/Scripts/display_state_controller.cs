@@ -159,7 +159,14 @@ public class display_state_controller : MonoBehaviour
     void Start()
     {
         debug_verbose = false;
-        validate_scripts(opening_script, new Hashtable()); //debug only, comment out of final game
+        if (validate_scripts(opening_script, new Hashtable())) //debug only, comment out of final game
+        {
+            Debug.Log("All scripts OK!");
+        }
+        else
+        {
+            Debug.LogError("Script validation failed!");
+        }
         initialize_displays();
         debug_verbose = true;
         process_json_game_event(opening_script);
@@ -217,7 +224,7 @@ public class display_state_controller : MonoBehaviour
                     if (Time.time > fade_timer)
                     {
                         string eventName = get_next_event_string();
-                        if (eventName == "endgame" || eventName == "2_opening") //TODO remove 2_opening here to play next section
+                        if (eventName == "endgame")
                         {
                             UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
                         }
@@ -244,41 +251,53 @@ public class display_state_controller : MonoBehaviour
 
     }
 
-    // recursive checks that all script paths are valid
-    void validate_scripts(string script, Hashtable seen)
+    // recursive checks that all script paths are valid; returns success
+    bool validate_scripts(string script, Hashtable seen)
     {
-        if (script == "endgame")
+        if (script == "endgame" || script == "3_opening") // TODO remove 3_opening to continue
         {
-            return; //good!
+            return true; //good!
         }
 
         if (seen.Contains(script))
         {
-            Debug.LogWarning("WARNING: Script reachable from multiple paths: " + script);
-            return;
+            //Debug.LogWarning("WARNING: Script reachable from multiple paths: " + script);
+            return true;
         }
 
         seen.Add(script, null);
 
         GameEvent gameEvent;
 
+        string jsonData;
         try
         {
-            GameEventJSON gameEventJSON = JsonUtility.FromJson<GameEventJSON>(read_json_file(script));
+           jsonData = read_json_file(script);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error: MISSING script: " + script);
+            return false;
+        }
+        try
+        {
+            GameEventJSON gameEventJSON = JsonUtility.FromJson<GameEventJSON>(jsonData);
             gameEvent = new GameEvent(gameEventJSON);
         }
         catch (System.Exception e)
         {
-            Debug.LogError("ERROR: INVALID JSON SCRIPT: " + script);
+            Debug.LogError("Error: INVALID script: " + script);
             Debug.Log(e);
-            return;
+            return false;
         }
 
 
+        bool success = true;
         foreach (string s in gameEvent.next_event)
         {
-            validate_scripts(s, seen);
+            success = success && validate_scripts(s, seen);
         }
+        return success;
     }
 
     void handle_music(){
@@ -309,7 +328,7 @@ public class display_state_controller : MonoBehaviour
         try
         {
             GameEventJSON json = JsonUtility.FromJson<GameEventJSON>(read_json_file(path));
-            Debug.Log("game event made: " + json.dialogue);
+            Debug.Log("event: " + json.dialogue);
             current_event = new GameEvent(json);
             handle_event(new GameEvent(json));
         }
@@ -559,7 +578,7 @@ public class display_state_controller : MonoBehaviour
 		TextAsset targetFile = Resources.Load<TextAsset>(filePath);
         if (debug_verbose)
         {
-            Debug.Log(targetFile.text);
+            Debug.Log("Reading " + filePath);
         }
   		return targetFile.text;
    	}
@@ -590,7 +609,6 @@ public class DisplayState{
         dreamer_state = js.dreamer_animation;
         realist_state = js.realist_animation;
         talking = js.talking;
-        Debug.Log("bubble_" + talking + "_" + js.bubble);
 		bubble = load_art("bubble_"+talking+"_"+js.bubble);
 	}
 

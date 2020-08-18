@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "If you're going to start calling me a wet blanket again, I'm going to go.",
+	
+	
+	"next_event":[
+		"2_sorry",
+		"2_stand",
+		"2_sorry"
+	]
+
+	"choices":[
+		"Stand up for yourself",
+		"Go easy on him"
+	]
+
+	
+}
