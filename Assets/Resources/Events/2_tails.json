@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "The tails of mystery!!",
+	
+	
+	"effects":[{
+	"tension":-0.5
+	}],
+	
+	"next_event":[
+		"2_good_oldays"
+	]
+	
+
+}

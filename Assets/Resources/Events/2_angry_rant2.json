@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "Grow up already. There's a real world out there, y'know. Come join us in reality.",
+	
+	
+	"next_event":[
+		"2_sorry"
+	]
+	
+}

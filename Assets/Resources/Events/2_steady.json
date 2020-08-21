@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "Something like a routine? A steady paycheck? Healthcare???",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_steady2"
+	]
+	
+}

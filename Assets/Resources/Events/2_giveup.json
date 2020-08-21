@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I didn't give up. I shifted course. I did what was necessary. If you can't see that now, you never will. We're done here.",
+	
+	"effects":[{
+	"tension":5
+	}],
+	
+	
+	"next_event":[
+		"3_tense_exit"
+	]
+}

@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "It's not how I want to live my life... and it isn't how I need to. My loans are still holding me back, but I can pay them and not have to worry about how much I'll get to eat that week.",
+	
+	"effects":[{
+	"resolution":0.0
+	}],
+	
+	
+	"next_event":[
+		"2_youknow3"
+	]
+	
+}	

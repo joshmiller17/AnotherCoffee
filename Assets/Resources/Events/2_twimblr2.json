@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "And, like, graphic design?? Not even illustrations?",
+	
+	"effects":[{
+	"tension":0.2
+	}],
+	
+	
+	"next_event":[
+		"2_twimblr3"
+	]
+	
+
+}

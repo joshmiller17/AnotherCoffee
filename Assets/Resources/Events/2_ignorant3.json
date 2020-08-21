@@ -1,0 +1,29 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "And because of that... I understand where you're coming from. I do. But I never would have guessed that you of all people would give up.",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_giveup",
+		"2_wantdiff",
+		"2_seediff",
+		"2_giveup"
+	],
+	
+	"choices":[
+	"We want different things",
+	"We see things differently",
+	"Give up???"
+	]
+}

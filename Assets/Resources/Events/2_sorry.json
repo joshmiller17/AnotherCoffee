@@ -7,15 +7,16 @@
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "I'm sorry, I didn't mean it like that... I just...",
 	
 	"effects":[{
-	"tension":0.1
+	"resolution": 0.1,
+	"tension": -0.2
 	}],
 	
+	
 	"next_event":[
-		"2_adventures"
+		"2_sorry2"
 	]
 	
-
 }

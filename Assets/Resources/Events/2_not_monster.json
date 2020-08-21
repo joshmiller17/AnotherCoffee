@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "No, that little jerk deserved it. ... But it is funny how much little things like that matter to kids.",
+	
+	
+	
+	"next_event":[
+		"2_perspective"
+	]
+}

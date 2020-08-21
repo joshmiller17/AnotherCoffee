@@ -3,18 +3,18 @@
 		"talking":"realist",
 		"bubble":"shout",
 		"dreamer_animation":"normal",
-		"realist_animation":"sad"
+		"realist_animation":"angry"
 	},
 
 
-	"dialogue": "We really don't need to do this.",
+	"dialogue": "I knew you'd be weird about this.",
 	
 	"effects":[{
-	"tension":0.2
+	"tension":0.1
 	}],
 	
 	
 	"next_event":[
-		"2_soldout"
+		"2_twimblr4"
 	]
 }

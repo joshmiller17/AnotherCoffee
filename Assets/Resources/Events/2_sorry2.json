@@ -7,15 +7,16 @@
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "I don't know. We used to have so much fun together back in college.",
 	
 	"effects":[{
-	"tension":0.1
+	"resolution":0.0,
+	"tension":-0.1
 	}],
 	
+	
 	"next_event":[
-		"2_adventures"
+		"2_sorry3"
 	]
 	
-
 }

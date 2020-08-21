@@ -1,20 +1,21 @@
 {
 "display_state":{
 		"talking":"realist",
-		"bubble":"shout",
+		"bubble":"normal",
 		"dreamer_animation":"normal",
 		"realist_animation":"sad"
 	},
 
 
-	"dialogue": "We really don't need to do this.",
+	"dialogue": "You know that better than anyone.",
 	
 	"effects":[{
-	"tension":0.2
+	"resolution":0.2
 	}],
 	
 	
 	"next_event":[
-		"2_soldout"
+		"2_youknow2"
 	]
-}
+	
+}	

@@ -1,0 +1,29 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "... So ... That's how we grew apart, I guess...",
+	
+	"effects":[{
+	"resolution":0.0
+	}],
+	
+	
+	"next_event":[
+		"2_ignorant3",
+		"2_wantdiff",
+		"2_seediff"
+	],
+	
+	"choices":[
+	"We want different things.",
+	"We see things differently."
+	],
+	
+	"wait_time":7
+}	

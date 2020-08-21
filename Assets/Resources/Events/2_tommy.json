@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "That was nothing! Remember when Tommy Vasquez stole your sketchbook and ripped out your favorite drawing? So then I stole his homework out of his backpack and threw the ripped up bits over him like confetti?",
+	
+	
+	"effects":[{
+	"tension":-0.4,
+	"resolution":0.1
+	}],
+	
+	"next_event":[
+		"2_brutal"
+	]
+	
+
+}

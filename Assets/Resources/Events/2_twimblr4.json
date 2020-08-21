@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "You used to *beg* me to do the lettering for Cat Detective! You used to scoff at the concept of kerning!! You... you... ",
+	
+	"effects":[{
+	"tension":0.4
+	}],
+	
+	
+	"next_event":[
+		"2_dontneed"
+	]
+}

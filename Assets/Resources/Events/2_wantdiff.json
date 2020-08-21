@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "We're different people now... Our ideals shifted. They used to be so alike, but the older I got the more I understood my priorities.",
+	
+	"effects":[{
+	"resolution":0.2
+	}],
+	
+	
+	"next_event":[
+		"2_wantdiff2"
+	]
+}

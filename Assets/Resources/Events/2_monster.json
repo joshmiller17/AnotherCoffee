@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realsit",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Yeah, but it was exactly the feral energy I needed to learn how to stand up for myself. It's crazy how much little things like that mattered back then, isn't it?",
+	
+	
+	"next_event":[
+		"2_perspective"
+	]
+}

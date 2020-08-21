@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I'm an in-house graphic designer for Twimblr... but I haven't touched a paintbrush in years.",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_twimblr"
+	]
+	
+
+}

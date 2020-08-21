@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "I never wanted to do the freelance thing and you know it. Comics are so competitive. And unstable.",
+	
+	"effects":[{
+	"tension":0.5
+	}],
+	
+	
+	"next_event":[
+		"2_youknow"
+	]
+	
+}	

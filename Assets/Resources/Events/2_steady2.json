@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "And I have loans to pay - not that you would understand what that's like.",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_steady3"
+	]
+	
+}

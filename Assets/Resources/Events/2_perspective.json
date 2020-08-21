@@ -7,15 +7,14 @@
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "Yeah... I guess... Your perspective really changes when you grow up a little.",
 	
-	"effects":[{
-	"tension":0.1
+		"effects":[{
+	"resolution":0.3
 	}],
 	
-	"next_event":[
-		"2_adventures"
-	]
 	
-
+	"next_event":[
+		"2_smile_transition"
+	]
 }

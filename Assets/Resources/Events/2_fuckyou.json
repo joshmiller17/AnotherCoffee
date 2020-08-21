@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "You can't blame me for wanting something more in my life than struggling to keep my head above the water between gigs.",
+	
+	"effects":[{
+	"tension":0.5
+	}],
+	
+	
+	"next_event":[
+		"2_steady"
+	]
+	
+}

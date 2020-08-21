@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "Excuse me??? You're such a... such a.... child!!",
+	
+	
+	"next_event":[
+		"2_angry_rant2"
+	]
+
+}

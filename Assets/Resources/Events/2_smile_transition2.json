@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "  ",
+	
+	
+	"next_event":[
+		"3_opening"
+	],
+	
+	"wait_time":2
+}

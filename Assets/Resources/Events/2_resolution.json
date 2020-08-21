@@ -7,15 +7,16 @@
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "... That's all I really wanted to know. I just wanted to know why.",
 	
 	"effects":[{
-	"tension":0.1
+	"resolution":0.5
 	}],
 	
-	"next_event":[
-		"2_adventures"
-	]
 	
-
+	"next_event":[
+		"2_smile_transition"
+	],
+	
+	"wait_time":5
 }

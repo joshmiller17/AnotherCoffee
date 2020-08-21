@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "I want a family some day, man. How am I supposed to support anyone else in my life if I can't even support myself?",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_steady4"
+	]
+	
+}

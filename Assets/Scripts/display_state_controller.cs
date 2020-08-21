@@ -41,12 +41,13 @@ public class display_state_controller : MonoBehaviour
 
     private DisplayState current_display;
 
-    enum TextSpeed { SLOW, NORMAL, FAST };
+    enum TextSpeed { SLOW, NORMAL, FAST, SKIP };
     private TextSpeed textSpeed = TextSpeed.NORMAL;
     private double text_to_time_ratio = 1.0 / 15.0;
     private static double slow_text_speed = 1.0 / 7.5;
     private static double normal_text_speed = 1.0 / 15.0;
     private static double fast_text_speed = 1.0 / 45.0;
+    private static double skip_text_speed = 1.0 / 90.0;
     private static int min_speech_length = 10;
     private double global_wait_time = 1.25;
     private static double global_choice_time = 4.0;
@@ -61,8 +62,8 @@ public class display_state_controller : MonoBehaviour
     private TimerState dialogueState = TimerState.TALKING;
     private float text_speed_multiplier = 1f;
 
-
     private bool debug_verbose = false;
+    private List<string> previous_events = new List<string>();
 
 	
 
@@ -79,6 +80,7 @@ public class display_state_controller : MonoBehaviour
                 global_wait_time -= 0.6;
                 text_speed_multiplier = 1.0f;
                 break;
+            case TextSpeed.SKIP:
             case TextSpeed.NORMAL:
                 textSpeed = TextSpeed.FAST;
                 textSpeedButton.GetComponent<Text>().text = "Text Speed FAST";
@@ -155,11 +157,22 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
+    public string pop_events(List<string> l)
+    {
+        if (l.Count == 0)
+        {
+            return "0_opening";
+        }
+        string ret = l[l.Count - 1];
+        l.RemoveAt(l.Count - 1);
+        return ret;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         debug_verbose = false;
-        if (validate_scripts(opening_script, new Hashtable())) //debug only, comment out of final game
+        if (validate_scripts(opening_script, "opening script pointer", new Hashtable(), new List<string>())) //debug only, comment out of final game
         {
             Debug.Log("All scripts OK!");
         }
@@ -177,6 +190,44 @@ public class display_state_controller : MonoBehaviour
     void Update()
     {
         string speech_state = "";
+
+
+#if UNITY_EDITOR
+        //CHEAT KEYS, comment out after testing
+        if (Input.GetKeyDown(KeyCode.N)) //next
+        {
+            textSpeed = TextSpeed.SKIP;
+            text_to_time_ratio = skip_text_speed;
+            global_wait_time = 0;
+            text_speed_multiplier = 6.0f;
+        }
+        else if (Input.GetKey(KeyCode.N))
+        {
+            talk_timer -= Time.deltaTime;
+            wait_timer -= Time.deltaTime;
+            choice_timer -= Time.deltaTime;
+            fade_timer -= Time.deltaTime;
+        }
+        else if (Input.GetKeyDown(KeyCode.M)) //superskip, only use when there's no choice to be made
+        {
+            talk_timer = 0;
+            wait_timer = 0;
+            choice_timer = 0;
+            fade_timer = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.B)) //back
+        {
+            foreach (GameObject thought in thoughts)
+            {
+                hide_thought(thought);
+            }
+            process_json_game_event(pop_events(previous_events), true);
+        }
+        else if (Input.GetKeyUp(KeyCode.N))
+        {
+            change_text_speed();
+        }
+#endif
 
 
         if (game_paused)
@@ -252,20 +303,28 @@ public class display_state_controller : MonoBehaviour
     }
 
     // recursive checks that all script paths are valid; returns success
-    bool validate_scripts(string script, Hashtable seen)
+    bool validate_scripts(string script, string calling_script, Hashtable seen, List<string> traversal)
     {
-        if (script == "endgame" || script == "3_opening") // TODO remove 3_opening to continue
+        traversal.Add(script);
+        if (script == "endgame" || script== "" /*dummy*/ || script == "3_opening") // TODO remove 3_opening to continue
         {
             return true; //good!
         }
 
         if (seen.Contains(script))
         {
-            //Debug.LogWarning("WARNING: Script reachable from multiple paths: " + script);
-            return true;
+            int count = (int)seen[script];
+            seen[script] = count + 1;
+            return true; //FIXME remove this and fix the test below
+            if (traversal.Count > 100)
+            {
+                Debug.LogWarning("Warning: Potentially infinite loop from scripts: " + string.Join(" -> ", traversal));
+                return false;
+            }   
         }
-
-        seen.Add(script, null);
+        else { 
+            seen.Add(script, 1);
+        }
 
         GameEvent gameEvent;
 
@@ -276,7 +335,7 @@ public class display_state_controller : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError("Error: MISSING script: " + script);
+            Debug.LogError("Error: MISSING script: " + script + " referenced in " + calling_script);
             return false;
         }
         try
@@ -295,7 +354,11 @@ public class display_state_controller : MonoBehaviour
         bool success = true;
         foreach (string s in gameEvent.next_event)
         {
-            success = success && validate_scripts(s, seen);
+            List<string> trav = new List<string>();
+            foreach (string st in traversal){
+                trav.Add(st);
+            }
+            success = success && validate_scripts(s, script, seen, trav);
         }
         return success;
     }
@@ -323,7 +386,11 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
-    void process_json_game_event(string path){
+    void process_json_game_event(string path, bool from_previous=false){
+        if (!from_previous)
+        {
+            previous_events.Add(current_event_name);
+        }
         current_event_name = path;
         try
         {
@@ -337,7 +404,7 @@ public class display_state_controller : MonoBehaviour
             Text debugInfo = DebugInfo.GetComponent<Text>();
             debugInfo.text = "Invalid JSON script: " + path;
             Canvas.ForceUpdateCanvases();
-            Debug.Log(e);
+            Debug.Log("Invalid JSON script: " + e.ToString());
             return;
         }
     }

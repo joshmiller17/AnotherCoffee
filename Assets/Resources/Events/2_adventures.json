@@ -2,19 +2,21 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
-		"dreamer_animation":"normal",
+		"dreamer_animation":"happy",
 		"realist_animation":"normal"
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "'The Adventures of Cat Detective and Kit Wonder!'",
+	
+	"wobble":2,
 	
 	"effects":[{
 	"tension":0.1
 	}],
 	
 	"next_event":[
-		"2_adventures"
+		"2_tails"
 	]
 	
 

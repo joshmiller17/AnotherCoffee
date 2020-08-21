@@ -7,15 +7,15 @@
 	},
 
 
-	"dialogue": "*The* Twimblr? The one with the movie? And the bad guy billionaire owner who profits from selling personal data?",
+	"dialogue": "*The soulless social media company that has single-handedly destroyed our culture?? The* Twimblr? The one with the movie? And the bad guy billionaire owner who profits from selling personal data?",
 	
 	"effects":[{
-	"tension":0.3
+	"tension":0.1
 	}],
 	
 	
 	"next_event":[
-		"2_twimblr"
+		"2_twimblr2"
 	]
 	
 

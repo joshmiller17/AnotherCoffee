@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "...Dude, that was brutal. He might've cried. ... ... ... Was I a monster?",
+	
+	
+	"next_event":[
+		"2_not_monster",
+		"2_not_monster",
+		"2_monster"
+	],
+	
+	"choices":[
+	"No",
+	"Yes"
+	]
+}

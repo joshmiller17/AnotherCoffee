@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Do you think I'm entirely ignorant about the sacrifices I have to make to achieve my dreams? I didn't choose a career in writing to be comfortable!",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_ignorant2"
+	]
+	
+}

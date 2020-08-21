@@ -1,21 +1,21 @@
 {
 "display_state":{
-		"talking":"dreamer",
+		"talking":"realist",
 		"bubble":"normal",
 		"dreamer_animation":"normal",
 		"realist_animation":"normal"
 	},
 
 
-	"dialogue": "Of course I do! You don't? This was our *everything* in college!",
+	"dialogue": "I just want to feel secure. That's my new dream life, and I'm living it.",
 	
 	"effects":[{
-	"tension":0.1
+	"resolution":0.0
 	}],
 	
+	
 	"next_event":[
-		"2_adventures"
+		"2_apart"
 	]
 	
-
-}
+}	

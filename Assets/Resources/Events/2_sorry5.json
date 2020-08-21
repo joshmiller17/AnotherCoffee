@@ -1,0 +1,29 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Have you been making *any* art lately?",
+	
+	"effects":[{
+	"resolution":0.0,
+	"tension":-0.1
+	}],
+	
+	
+	"next_event":[
+		"2_twimblr_opening",
+		"2_twimblr_opening",
+		"2_twimblr_opening"
+	],
+	
+	"choices":[
+	"Ugh, this conversation.",
+	"Ouch. Be honest."
+	]
+	
+}

@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "So. Yeah. It's not what I was dreaming of when I was 19. My career doesn't define my entire existence. And you know what?? I want it that way.",
+	
+	"effects":[{
+	"tension":0.1
+	}],
+	
+	
+	"next_event":[
+		"2_ignorant"
+	]
+	
+}

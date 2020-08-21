@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Ah, the good ol' days. Remember when Devid Snyder said our comic was just furry Batman and you got detention for a week for cussing him out? I thought your mom was going to kill you.",
+	
+	
+	"effects":[{
+	"tension":-0.4,
+	"resolution":0.1
+	}],
+	
+	"next_event":[
+		"2_tommy"
+	]
+	
+
+}
