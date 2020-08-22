@@ -33,6 +33,7 @@ public class display_state_controller : MonoBehaviour
     public float awkward;
     public float tension;
     public float resolution;
+    public float resolution_this_event;
 
     public float realist_talking_speed;
     public float dreamer_talking_speed;
@@ -46,7 +47,7 @@ public class display_state_controller : MonoBehaviour
     private double text_to_time_ratio = 1.0 / 15.0;
     private static double slow_text_speed = 1.0 / 7.5;
     private static double normal_text_speed = 1.0 / 15.0;
-    private static double fast_text_speed = 1.0 / 45.0;
+    private static double fast_text_speed = 1.0 / 40.0;
     private static double skip_text_speed = 1.0 / 90.0;
     private static int min_speech_length = 10;
     private double global_wait_time = 1.25;
@@ -85,8 +86,8 @@ public class display_state_controller : MonoBehaviour
                 textSpeed = TextSpeed.FAST;
                 textSpeedButton.GetComponent<Text>().text = "Text Speed FAST";
                 text_to_time_ratio = fast_text_speed;
-                global_wait_time -= 0.6;
-                text_speed_multiplier = 3.0f;
+                global_wait_time -= 0.4;
+                text_speed_multiplier = 2.5f;
                 break;
             case TextSpeed.FAST:
                 textSpeed = TextSpeed.SLOW;
@@ -370,7 +371,7 @@ public class display_state_controller : MonoBehaviour
     		character = 1;
     	}
     	float temp_tension = (float)(Mathf.Max(tension,0))/2.0f;
-    	float temp_resolution = (float)(Mathf.Max(resolution * 5, 0)) /1.0f;
+    	float temp_resolution = (float)(Mathf.Max(resolution_this_event, 0)) /1.0f;
     	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
     	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
     }
@@ -387,6 +388,11 @@ public class display_state_controller : MonoBehaviour
     }
 
     void process_json_game_event(string path, bool from_previous=false){
+
+        //get rid of old bubbles if they exist
+        hide_bubble(speech_A);
+        hide_bubble(speech_B);
+
         if (!from_previous)
         {
             previous_events.Add(current_event_name);
@@ -449,7 +455,8 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_effects(EffectJSON[] effects){
-    	if(effects != null){
+        resolution_this_event = 0;
+        if (effects != null){
     		foreach(EffectJSON effect in effects){
     			if(effect != null){
     				handle_effect(effect);
@@ -472,15 +479,23 @@ public class display_state_controller : MonoBehaviour
 
         if (effect.tension != null){
     		tension += effect.tension;
-    	}
+            if (effect.tension < 0)
+            {
+                resolution_this_event -= effect.tension;
+            }
+            Debug.Log("Tension is now " + tension.ToString());
 
-
+        }
         // The result of the expression is always the same since a value of this type is never equal to 'null'
         if (effect.resolution != null)
         {
+
             // The result of the expression is always the same since a value of this type is never equal to 'null'
             resolution += effect.resolution;
-    	}
+            resolution_this_event += effect.resolution;
+            Debug.Log("Resolution is now " + resolution.ToString());
+
+        }
     }
 #pragma warning restore CS0472
 
@@ -544,7 +559,7 @@ public class display_state_controller : MonoBehaviour
     }
 
     void handle_bubbles(Sprite bubble, string talking, string dialogue, float text_speed){
-        if (talking.Equals("realist")){
+        if (talking.Equals("realist") && dialogue != ""){
             speech_A.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = realist_talking_speed * text_speed;
             update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
@@ -552,7 +567,8 @@ public class display_state_controller : MonoBehaviour
     		hide_bubble(speech_B);
             SFXSystem.GetComponent<SFX>().playBubbleAppear();
     	}
-        else if(talking.Equals("dreamer")){
+        else if(talking.Equals("dreamer") && dialogue != "")
+        {
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
             update_image(speech_B, bubble);
             set_dialogue(dialogue_B, dialogue);
@@ -561,9 +577,17 @@ public class display_state_controller : MonoBehaviour
             SFXSystem.GetComponent<SFX>().playBubbleAppear();
         }
     	else{
+            if (dialogue == "")
+            {
+                Debug.Log("Warning: dialogue empty");
+            }
+            else
+            {
+                Debug.LogWarning("Warning: neither talking for this bubble: " + dialogue);
+            }
     		hide_bubble(speech_A);
     		hide_bubble(speech_B);
-            SFXSystem.GetComponent<SFX>().playBubbleDisappear();
+            //SFXSystem.GetComponent<SFX>().playBubbleDisappear();
         }
     	
     }
@@ -723,9 +747,9 @@ public class GameEvent{
 [System.Serializable]
 public class EffectJSON
 {
-	public int awkward;
-	public int tension;
-	public int resolution;
+	public float awkward;
+	public float tension;
+	public float resolution;
 }
 
 [System.Serializable]

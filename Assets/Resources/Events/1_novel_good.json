@@ -1,0 +1,14 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy"
+	},
+
+	"dialogue":"That sounds like a huge undertaking, but if anyone can make it happen, it's you.",
+	
+		
+	"next_event":[
+		"1_novel_good2"
+	]
+}

@@ -16146,7 +16146,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 0_opening
+  opening_script: 2_angry_rant
   thought_color:
   - 1
   - 0.90588236
@@ -16162,6 +16162,7 @@ MonoBehaviour:
   awkward: 0
   tension: 0
   resolution: 0
+  resolution_this_event: 0
   realist_talking_speed: 1000
   dreamer_talking_speed: 1200
 --- !u!114 &963120225

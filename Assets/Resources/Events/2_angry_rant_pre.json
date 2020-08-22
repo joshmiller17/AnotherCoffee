@@ -3,20 +3,19 @@
 		"talking":"realist",
 		"bubble":"normal",
 		"dreamer_animation":"normal",
-		"realist_animation":"happy"
+		"realist_animation":"angry"
 	},
 
 
-	"dialogue": "",
+	"dialogue": "Excuse me???",
 	
-	"effects":[{
-	"resolution":0.1
+		"effects":[{
+	"tension":0.2
 	}],
 	
 	
 	"next_event":[
-		"2_smile_transition2"
-	],
-	
-	"wait_time":0.3
+		"2_angry_rant"
+	]
+
 }

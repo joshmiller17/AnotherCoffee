@@ -8,19 +8,19 @@
 	"dialogue":"That... was a joke. Obviously.",
 	
 	"effects":[{
-	"tension":0.2
+	"tension":-0.0
 	}
 	],
 		
 	"next_event":[
 		"1_opening_rent_house4",
-		"",
-		"1_opening_novel2",
+		"1_opening_rent_house4",
+		"1_opening_novel",
 		"1_roommates"
 	],
 	
 	"choices":[
-		"",
+		"...",
 		"Stop talking about his apartment.",
 		"$2000 is way too much for one freelance writer."
 	],

@@ -1,0 +1,14 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"happy",
+		"dreamer_animation":"happy"
+	},
+
+	"dialogue":"You really think so? I mean... that, that means a lot, thanks.",
+	
+		
+	"next_event":[
+		"1_work"
+	]
+}

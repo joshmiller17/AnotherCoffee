@@ -9,7 +9,7 @@
 	"dialogue":"Yeah, actually! I’ve been working on a new novel. I’m really excited about this one!",
 	
 	"effects":[{
-	"tension":-0.2}
+	"tension":-1.0}
 	],
 		
 	"next_event":[

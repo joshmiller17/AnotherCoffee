@@ -9,6 +9,9 @@
 
 	"dialogue": "If you're going to start calling me a wet blanket again, I'm going to go.",
 	
+	"effects":[{
+	"tension":0.2
+	}],
 	
 	"next_event":[
 		"2_sorry",

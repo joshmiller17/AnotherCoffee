@@ -7,8 +7,11 @@
 	},
 
 
-	"dialogue": "Excuse me??? You're such a... such a.... child!!",
+	"dialogue": "You're such a... such a.... child!!",
 	
+	"effects":[{
+	"tension":0.2
+	}],
 	
 	"next_event":[
 		"2_angry_rant2"

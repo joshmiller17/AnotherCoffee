@@ -1,7 +1,7 @@
 {
 "display_state":{
 		"talking":"realist",
-		"bubble":"shout",
+		"bubble":"normal",
 		"dreamer_animation":"normal",
 		"realist_animation":"sad"
 	},
