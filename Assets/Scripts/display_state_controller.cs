@@ -173,14 +173,21 @@ public class display_state_controller : MonoBehaviour
     void Start()
     {
         debug_verbose = false;
-        if (validate_scripts(opening_script, "opening script pointer", new Hashtable(), new List<string>())) //debug only, comment out of final game
+
+        bool do_validation = false; //validate by hand for now
+
+        if (do_validation)
         {
-            Debug.Log("All scripts OK!");
+            if (validate_scripts(opening_script, "opening script pointer", new Hashtable(), new List<string>())) //debug only, comment out of final game
+            {
+                Debug.Log("All scripts OK!");
+            }
+            else
+            {
+                Debug.LogError("Script validation failed!");
+            }
         }
-        else
-        {
-            Debug.LogError("Script validation failed!");
-        }
+
         initialize_displays();
         debug_verbose = true;
         process_json_game_event(opening_script);
@@ -192,11 +199,16 @@ public class display_state_controller : MonoBehaviour
     {
         string speech_state = "";
 
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) //alternatives for pause
+        {
+            toggle_options_menu();
+        }
 
 #if UNITY_EDITOR
-        //CHEAT KEYS, comment out after testing
+        //CHEAT KEYS
         if (Input.GetKeyDown(KeyCode.N)) //next
         {
+            Debug.Log("N");
             textSpeed = TextSpeed.SKIP;
             text_to_time_ratio = skip_text_speed;
             global_wait_time = 0;
@@ -317,11 +329,11 @@ public class display_state_controller : MonoBehaviour
             int count = (int)seen[script];
             seen[script] = count + 1;
             return true; //FIXME remove this and fix the test below
-            if (traversal.Count > 100)
-            {
-                Debug.LogWarning("Warning: Potentially infinite loop from scripts: " + string.Join(" -> ", traversal));
-                return false;
-            }   
+            //if (traversal.Count > 100)
+            //{
+            //    Debug.LogWarning("Warning: Potentially infinite loop from scripts: " + string.Join(" -> ", traversal));
+            //    return false;
+            //}   
         }
         else { 
             seen.Add(script, 1);
@@ -337,6 +349,7 @@ public class display_state_controller : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogError("Error: MISSING script: " + script + " referenced in " + calling_script);
+            Debug.Log(e);
             return false;
         }
         try
@@ -468,6 +481,9 @@ public class display_state_controller : MonoBehaviour
 
         //awkward decays over time
         awkward = Mathf.Max(0, awkward - 0.2f);
+
+        float awkwardVolume = Mathf.Min(1.0f, 0.5f + (awkward / 2.0f));
+        SFXSystem.GetComponent<SFX>().UpdateAmbientVolume(awkwardVolume);
     }
 
 #pragma warning disable CS0472
@@ -570,6 +586,7 @@ public class display_state_controller : MonoBehaviour
         else if(talking.Equals("dreamer") && dialogue != "")
         {
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
+            speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().isDreamer = true;
             update_image(speech_B, bubble);
             set_dialogue(dialogue_B, dialogue);
             show_bubble(speech_B);
@@ -725,7 +742,7 @@ public class GameEvent{
 		if(text_speed == null || text_speed == 0){
             text_speed = 1;
 		}
-        wobble = js.wobble;
+        wobble = js.wobble;  //deprecated DO NOT USE!
         if (wobble == null || wobble == 0)
         {
             wobble = 1f; //multiplier
@@ -772,7 +789,7 @@ public class GameEventJSON
     public string[] choices;
 	//public int event_time;
 	public int wait_time;
-    public int wobble;
+    public int wobble; //deprecated DO NOT USE!
 	public bool is_interrupt;
     public bool interrupted;
     public string tutorial;

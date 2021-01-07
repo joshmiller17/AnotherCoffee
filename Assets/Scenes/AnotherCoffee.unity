@@ -5376,8 +5376,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -10392,6 +10392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SFXSystem: {fileID: 893534116}
+  isDreamer: 0
   characterStartSize: 1
   characterAnimateSpeed: 5
   bubbleBackground: {fileID: 505486213}
@@ -10431,12 +10432,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 75
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 75
+    m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -10524,8 +10525,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -16146,7 +16147,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 2_angry_rant
+  opening_script: 2_opening
   thought_color:
   - 1
   - 0.90588236
@@ -16180,8 +16181,8 @@ MonoBehaviour:
   text_material: {fileID: 2100000, guid: 9f4d825d28346cd47bdde3cb4ef4afce, type: 2}
   shakeToggle: {fileID: 1560463209}
   timer_max: 40
-  offset_amount: 0.3
-  shift_intensity: 0.2
+  offset_amount: 0.2
+  shift_intensity: 0.112
   easy_mode: 0
   shaky_enabled: 1
   wobble: 1
@@ -27042,12 +27043,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 75
+    m_Font: {fileID: 12800000, guid: 4fe00957b63f63242a62645aa86924bd, type: 3}
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 75
+    m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -27076,6 +27077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SFXSystem: {fileID: 893534116}
+  isDreamer: 0
   characterStartSize: 1
   characterAnimateSpeed: 100
   bubbleBackground: {fileID: 276321713}
@@ -27311,8 +27313,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: 41396357164edae45ac6bb3caaf8f541, type: 2}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

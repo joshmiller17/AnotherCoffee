@@ -51,7 +51,7 @@ public class DrawShakyText : MonoBehaviour
             /* Set values to the shader/material at run-time */
             text_material.SetFloat("_DisplacementSeed", seed);
             text_material.SetFloat("_OffsetAmount", offset_amount);
-            text_material.SetFloat("_ShiftIntensity", shift_intensity * wobble);
+            text_material.SetFloat("_ShiftIntensity", shift_intensity * wobble); //increase this for more warbly
             text_material.SetFloat("_SafeMode", (easy_mode == true ? 1.0f : 0.0f));
         }
         else

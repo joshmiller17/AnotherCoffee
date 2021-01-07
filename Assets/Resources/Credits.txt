@@ -1,1 +1,12 @@
+A Team Mouse Pants game
+Josh Aaron Miller - Game Design and Production
+Ailish Shea - Art
+Corvus Prudens - Music
+Paul Cho (lamechips) - Technical Artist
+Josh Aaron Miller, Ailish Shea - Writing
+Aaron Wolff - Sound Effects
+Josh Aaron Miller, Jared Hoffman - Programming
+Maxwell Fortna - Additional Programming
 Info icon by Delapouite under CC BY 3.0
+Made for the 2020 Global Game Jam, "Repair"
+Thanks for playing! <3

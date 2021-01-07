@@ -9,8 +9,6 @@
 
 	"dialogue": "'The Adventures of Cat Detective and Kit Wonder!'",
 	
-	"wobble":2,
-	
 	"effects":[{
 	"tension":0.1
 	}],

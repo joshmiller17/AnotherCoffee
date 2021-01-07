@@ -9,8 +9,6 @@
 
 	"dialogue": "v i n t a g e ! !",
 	
-	"wobble":2,
-	
 	"next_event":[
 		"2_proposal",
 		"2_sleeve",
