@@ -380,12 +380,16 @@ public class display_state_controller : MonoBehaviour
     void handle_music(){
     	int topic = int.Parse(current_event_name.Substring(0,1));
     	int character = 0;
-    	if(current_event.display_state.talking.Equals("dreamer")){
+    	if(current_event.display_state.talking.Equals("realist")){
     		character = 1;
     	}
     	float temp_tension = (float)(Mathf.Max(tension,0))/2.0f;
     	float temp_resolution = (float)(Mathf.Max(resolution_this_event, 0)) /1.0f;
     	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
+        if (temp_awkwardness > 0)
+        {
+            character = Random.Range(0, 1);
+        }
     	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
     }
 
@@ -479,8 +483,9 @@ public class display_state_controller : MonoBehaviour
     				handle_effect(effect);
     			}
     		}
-    		handle_music();
+            //handle_music()
     	}
+        handle_music();
 
 
         //awkward decays over time
@@ -499,6 +504,7 @@ public class display_state_controller : MonoBehaviour
 
         if (effect.tension != null){
     		tension += effect.tension;
+            tension = Mathf.Max(tension, -0.5f); //tension can't go too far below 0
             if (effect.tension < 0)
             {
                 resolution_this_event -= effect.tension;
@@ -548,25 +554,31 @@ public class display_state_controller : MonoBehaviour
             return;
         }
 
-        for(int i=0; i<thoughts.Length; i++){
-            if(i < choices.Length){
-                if (choices[i] != "")
+        if (choices != null)
+        {
+            for (int i = 0; i < thoughts.Length; i++)
+            {
+                if (i < choices.Length)
                 {
-                    set_thought(thoughts[i], choices[i]);
-                    show_thought(thoughts[i]);
+                    if (choices[i] != "")
+                    {
+                        set_thought(thoughts[i], choices[i]);
+                        show_thought(thoughts[i]);
 
-                    if (current_event.is_interrupt)
-                    {
-                        thoughts[i].GetComponent<Image>().color = new Color(interrupt_color[0], interrupt_color[1], interrupt_color[2], 1.0f);
-                    }
-                    else
-                    {
-                        thoughts[i].GetComponent<Image>().color = new Color(thought_color[0], thought_color[1], thought_color[2], 1.0f);
+                        if (current_event.is_interrupt)
+                        {
+                            thoughts[i].GetComponent<Image>().color = new Color(interrupt_color[0], interrupt_color[1], interrupt_color[2], 1.0f);
+                        }
+                        else
+                        {
+                            thoughts[i].GetComponent<Image>().color = new Color(thought_color[0], thought_color[1], thought_color[2], 1.0f);
+                        }
                     }
                 }
-            }
-            else{
-                hide_thought(thoughts[i]);
+                else
+                {
+                    hide_thought(thoughts[i]);
+                }
             }
         }
     }

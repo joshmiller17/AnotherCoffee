@@ -10790,7 +10790,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8382312711435456692, guid: 605b0ca04ce96be4c808312f516124c3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6fa086c749b39be419c19a5f8bf9fb05, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 61040373246dccf41afd26f9f7a026f1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10936,7 +10936,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21d066524880c31499d87afd7e38f0f3, type: 3}
   - {fileID: 8300000, guid: 85ab9f0237a7a0d4b883e0d70ea831a7, type: 3}
   - {fileID: 8300000, guid: d77065e005461194480de12376a95037, type: 3}
-  ambience: {fileID: 8300000, guid: 6fa086c749b39be419c19a5f8bf9fb05, type: 3}
+  ambience: {fileID: 8300000, guid: 61040373246dccf41afd26f9f7a026f1, type: 3}
   ambienceLoud: {fileID: 8300000, guid: 61040373246dccf41afd26f9f7a026f1, type: 3}
   dialogueAppear: {fileID: 8300000, guid: 8dc84e17d21f2434b805e4235454e16c, type: 3}
   dialogueDisappear: {fileID: 8300000, guid: 99c77f1f0b7023545802db43a0b5a900, type: 3}
@@ -10958,7 +10958,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 61040373246dccf41afd26f9f7a026f1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -16147,7 +16147,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 2_vintage
+  opening_script: 0_opening
   thought_color:
   - 1
   - 0.90588236

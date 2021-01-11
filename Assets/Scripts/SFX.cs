@@ -47,7 +47,7 @@ public class SFX : MonoBehaviour
     {
         //DontDestroyOnLoad(this.gameObject);
         ambSource.clip = ambienceLoud;
-        ambSource.volume = 0.5f;
+        ambSource.volume = 1.0f;
         ambSource.Play();
         lettersTilNextDreamerType = dreamerTypingRate;
         lettersTilNextRealistType = realistTypingRate;
@@ -60,7 +60,10 @@ public class SFX : MonoBehaviour
 
     public void UpdateAmbientVolume(float v)
     {
-        ambSource.volume = v;
+        if (soundEnabled)
+        {
+            ambSource.volume = v;
+        }
     }
 
     public void toggleSoundEnabled()
