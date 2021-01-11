@@ -462,6 +462,10 @@ public class display_state_controller : MonoBehaviour
         dialogueState = TimerState.TALKING;
         GetComponent<DrawShakyText>().wobble = game_event.wobble; // set wobble factor
         float text_speed = game_event.text_speed * text_speed_multiplier;
+        foreach (GameObject thought in thoughts)
+        {
+            hide_thought(thought);
+        }
         handle_display(game_event.display_state, game_event.dialogue, text_speed);
         handle_thoughts(game_event.choices);
         handle_effects(game_event.effects);
@@ -544,32 +548,25 @@ public class display_state_controller : MonoBehaviour
             return;
         }
 
-        if(choices==null){
-            foreach(GameObject thought in thoughts){
-                hide_thought(thought);
-            }
-        }
-        else{
-            for(int i=0; i<thoughts.Length; i++){
-                if(i < choices.Length){
-                    if (choices[i] != "")
-                    {
-                        set_thought(thoughts[i], choices[i]);
-                        show_thought(thoughts[i]);
+        for(int i=0; i<thoughts.Length; i++){
+            if(i < choices.Length){
+                if (choices[i] != "")
+                {
+                    set_thought(thoughts[i], choices[i]);
+                    show_thought(thoughts[i]);
 
-                        if (current_event.is_interrupt)
-                        {
-                            thoughts[i].GetComponent<Image>().color = new Color(interrupt_color[0], interrupt_color[1], interrupt_color[2], 1.0f);
-                        }
-                        else
-                        {
-                            thoughts[i].GetComponent<Image>().color = new Color(thought_color[0], thought_color[1], thought_color[2], 1.0f);
-                        }
+                    if (current_event.is_interrupt)
+                    {
+                        thoughts[i].GetComponent<Image>().color = new Color(interrupt_color[0], interrupt_color[1], interrupt_color[2], 1.0f);
+                    }
+                    else
+                    {
+                        thoughts[i].GetComponent<Image>().color = new Color(thought_color[0], thought_color[1], thought_color[2], 1.0f);
                     }
                 }
-                else{
-                    hide_thought(thoughts[i]);
-                }
+            }
+            else{
+                hide_thought(thoughts[i]);
             }
         }
     }
