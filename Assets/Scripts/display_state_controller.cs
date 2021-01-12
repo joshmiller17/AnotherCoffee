@@ -58,6 +58,8 @@ public class display_state_controller : MonoBehaviour
     private double wait_timer; //time at which to waiting finishes
     private double choice_timer; //time at which to choosing finishes
     private double fade_timer; //time at which to fading finishes
+    private static int min_sip_time = 5;
+    private static int max_sip_time = 30;
 
     private enum TimerState { TALKING, WAITING, CHOOSING, FADING };
     private TimerState dialogueState = TimerState.TALKING;
@@ -192,6 +194,16 @@ public class display_state_controller : MonoBehaviour
         debug_verbose = true;
         process_json_game_event(opening_script);
         //DontDestroyOnLoad(this.gameObject);
+
+        StartCoroutine(awkward_sip_timer());
+    }
+
+    private IEnumerator awkward_sip_timer()
+    { 
+        float next_sip = Random.Range(min_sip_time, max_sip_time);
+        yield return new WaitForSeconds(next_sip);
+        do_sip();
+        yield return awkward_sip_timer();
     }
 
     // Update is called once per frame
@@ -449,6 +461,43 @@ public class display_state_controller : MonoBehaviour
         }
     }
 
+    void do_sip()
+    {
+        if (current_event.display_state.talking == "realist" &&
+            current_event.display_state.dreamer_state == "normal")
+        {
+            SFXSystem.GetComponent<SFX>().playSip();
+            update_image(dreamer_animation, load_art("dreamer_awkward"));
+            StartCoroutine(change_dreamer_normal());
+        }
+
+        if (current_event.display_state.talking == "dreamer" &&
+           current_event.display_state.realist_state == "normal")
+        {
+            SFXSystem.GetComponent<SFX>().playSip();
+            update_image(realist_animation, load_art("realist_awkward"));
+            StartCoroutine(change_realist_normal());
+        }
+    }
+
+    private IEnumerator change_dreamer_normal()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (current_event.display_state.dreamer_state == "normal")
+        {
+            update_image(dreamer_animation, load_art("dreamer_normal"));
+        }
+    }
+
+    private IEnumerator change_realist_normal()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (current_event.display_state.realist_state == "normal")
+        {
+            update_image(realist_animation, load_art("realist_normal"));
+        }
+    }
+
     void handle_event(GameEvent game_event){
         handle_tutorial_event(game_event);
         talk_timer = Time.time + (text_to_time_ratio * Mathf.Max(game_event.dialogue.Length, min_speech_length));
@@ -647,6 +696,12 @@ public class display_state_controller : MonoBehaviour
     void hide_bubble_instant(GameObject speech){
         speech.GetComponent<Image>().CrossFadeAlpha(0, 0.0f, false);
         speech.transform.GetChild(0).GetComponent<Text>().CrossFadeAlpha(0, 0.0f, false);
+    }
+
+    static Sprite load_art(string path)
+    {
+        string filePath = "Art/" + path.Replace(".jpg", "").Replace(".png", "");
+        return Resources.Load<Sprite>(filePath);
     }
 
     void start_fade(){
