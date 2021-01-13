@@ -392,17 +392,21 @@ public class display_state_controller : MonoBehaviour
     void handle_music(){
     	int topic = int.Parse(current_event_name.Substring(0,1));
     	int character = 0;
-    	if(current_event.display_state.talking.Equals("realist")){
+    	if(current_event.display_state.talking.Equals("realist")
+            || current_event.effects != null)
+        {
     		character = 1;
     	}
-    	float temp_tension = (float)(Mathf.Max(tension,0))/2.0f;
+    	float temp_tension = (float)(Mathf.Max(tension - resolution_this_event, 0))/2.0f;
     	float temp_resolution = (float)(Mathf.Max(resolution_this_event, 0)) /1.0f;
     	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
         if (temp_awkwardness > 0)
         {
             character = Random.Range(0, 1);
         }
-    	music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt);
+        Debug.Log("Music params: " + temp_tension.ToString() + " " 
+            + temp_resolution.ToString() + " " + temp_awkwardness.ToString() + " " + current_event.is_interrupt.ToString());
+        music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt && choice_selected != 0);
     }
 
     string get_next_event_string(){
@@ -554,10 +558,7 @@ public class display_state_controller : MonoBehaviour
         if (effect.tension != null){
     		tension += effect.tension;
             tension = Mathf.Max(tension, -0.5f); //tension can't go too far below 0
-            if (effect.tension < 0)
-            {
-                resolution_this_event -= effect.tension;
-            }
+            resolution_this_event -= effect.tension;
             Debug.Log("Tension is now " + tension.ToString());
 
         }

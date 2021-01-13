@@ -9,6 +9,9 @@
 
 	"dialogue": "Ugh, dude... When did you get so stiff and stale?",
 	
+	"effects":[{
+	"tension":0.5
+	}],
 	
 	"next_event":[
 		"2_angry_rant_pre",

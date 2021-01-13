@@ -17,7 +17,9 @@ public class music_system : MonoBehaviour
 
     List<float[]> parameters = new List<float[]>();
 
-    float[] phraseLen = { 6.99F, 6.99F }; //this determines how long the tracks run for each phrase
+    private static float PHRASE_LEN = 6.99F;
+
+    float[] phraseLen = { PHRASE_LEN, PHRASE_LEN }; //this determines how long the tracks run for each phrase
     float phraseNum = 0;
     int prevSource = 1;
     // 0 = dreamer
@@ -85,6 +87,7 @@ public class music_system : MonoBehaviour
             });
 
         interrupt = newInterrupt;
+        Debug.Log("Param list " + parameters.Count.ToString()); // test
     }
 
     public string getMusicPlaying()
@@ -150,13 +153,17 @@ public class music_system : MonoBehaviour
     void Update() {
 
         float delay = 1.2F;
+        while (parameters.Count > 2)
+        {
+            parameters.RemoveAt(1); // skip ahead to the most recent cue
+        }
         if (parameters.Count > 0){
             if (interrupt){
                 int currentSource = (int)parameters[parameters.Count - 1][0];
                 int tempIndex = fetchCue(parameters[parameters.Count - 1]);
                 audiosources[currentSource].clip = stingers[tempIndex];
                 audiosources[currentSource].PlayDelayed(3);
-                audiosources[prevSource].Stop();
+                // audiosources[prevSource].Stop();
                 prevSource = currentSource;
                 parameters.Clear();
                 interrupt = false;
@@ -168,7 +175,9 @@ public class music_system : MonoBehaviour
                 if (Time.time - prevTime >= phraseLen[prevSource] - delay){
                     int currentSource = (int)parameters[0][0];
                     int currentClip = fetchCue(parameters[0]);
-                    if (currentSource == prevSource && currentClip == prevClip){
+                    if (currentSource == prevSource && 
+                            (currentSource == 0 && currentClip == prevClip)
+                            || (currentSource == 1)){ //stay on realist longer
                         prevTime = Time.time;
                         parameters.RemoveAt(0);
                     }else{
@@ -189,7 +198,7 @@ public class music_system : MonoBehaviour
             }
         }else{
             if (Time.time - prevTime >= phraseLen[prevSource] - delay){
-                MasterMixer.FindSnapshot("noMusic").TransitionTo(delay);
+                MasterMixer.FindSnapshot("harmony").TransitionTo(delay);
             }
         }
     }
