@@ -61,6 +61,9 @@ public class display_state_controller : MonoBehaviour
     private static int min_sip_time = 5;
     private static int max_sip_time = 30;
 
+    private int last_dreamer_talk_length = 0;
+    private int last_realist_talk_length = 0;
+
     private enum TimerState { TALKING, WAITING, CHOOSING, FADING };
     private TimerState dialogueState = TimerState.TALKING;
     private float text_speed_multiplier = 1f;
@@ -393,7 +396,7 @@ public class display_state_controller : MonoBehaviour
     	int topic = int.Parse(current_event_name.Substring(0,1));
     	int character = 0;
     	if(current_event.display_state.talking.Equals("realist")
-            || current_event.effects != null)
+            || (last_realist_talk_length > last_dreamer_talk_length))
         {
     		character = 1;
     	}
@@ -404,7 +407,7 @@ public class display_state_controller : MonoBehaviour
         {
             character = Random.Range(0, 1);
         }
-        Debug.Log("Music params: " + temp_tension.ToString() + " " 
+        Debug.Log("Music params: " + character.ToString() + " " + topic.ToString() + " " + temp_tension.ToString() + " " 
             + temp_resolution.ToString() + " " + temp_awkwardness.ToString() + " " + current_event.is_interrupt.ToString());
         music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt && choice_selected != 0);
     }
@@ -635,6 +638,7 @@ public class display_state_controller : MonoBehaviour
 
     void handle_bubbles(Sprite bubble, string talking, string dialogue, float text_speed){
         if (talking.Equals("realist") && dialogue != ""){
+            last_realist_talk_length = dialogue.Length;
             speech_A.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = realist_talking_speed * text_speed;
             update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
@@ -644,6 +648,7 @@ public class display_state_controller : MonoBehaviour
     	}
         else if(talking.Equals("dreamer") && dialogue != "")
         {
+            last_dreamer_talk_length = dialogue.Length;
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().isDreamer = true;
             update_image(speech_B, bubble);
