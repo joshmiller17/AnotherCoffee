@@ -10,9 +10,9 @@
 	"dialogue": "I mean, our definitions of happy are pretty different, and I find your definition of happy to be *extremely* stressful, but... You know what I mean.",
 	
 	"effects":[{
-	"resolution":0.1
+	"resolution":0.1,
+	"tension":-0.3
 	}],
-	
 	
 	"next_event":[
 		"2_resolution"

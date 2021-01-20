@@ -10,7 +10,7 @@
 	"dialogue": "",
 	
 	"effects":[{
-	"resolution":0.1
+	"resolution":0.5
 	}],
 	
 	
@@ -18,5 +18,5 @@
 		"3_opening"
 	],
 	
-	"wait_time":0.3
+	"wait_time":1.5
 }

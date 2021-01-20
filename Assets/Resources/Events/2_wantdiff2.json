@@ -10,7 +10,8 @@
 	"dialogue": "I can't live like you do. And I knew that you wanted me by your side in it, but... It's just not for me.",
 	
 	"effects":[{
-	"resolution":0.1
+	"resolution":0.1,
+	"tension":-0.3
 	}],
 	
 	

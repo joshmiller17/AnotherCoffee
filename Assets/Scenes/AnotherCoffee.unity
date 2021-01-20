@@ -5388,7 +5388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: placehold
+  m_Text: 
 --- !u!222 &525072608
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10444,7 +10444,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: placeholder
+  m_Text: 
 --- !u!222 &606556683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10537,7 +10537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: placehold
+  m_Text: 
 --- !u!222 &675338067
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16147,7 +16147,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 0_opening
+  opening_script: 2_wantdiff
   thought_color:
   - 1
   - 0.90588236
@@ -26857,7 +26857,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a31359810beba164688e715e07a2f5d3, type: 3}
   - {fileID: 8300000, guid: 516fcee1e1e8d02468b724409edd0f65, type: 3}
   - {fileID: 8300000, guid: 516fcee1e1e8d02468b724409edd0f65, type: 3}
-  - {fileID: 8300000, guid: d84aa8dfc8046fc4288b4a10fc65aa4b, type: 3}
+  - {fileID: 8300000, guid: a8b2672f7ea11c14183b7b1933dfdd03, type: 3}
   - {fileID: 8300000, guid: 1505af9baee33bc43be5aad6f2a37e3b, type: 3}
   - {fileID: 8300000, guid: 4f39ad17bb028a34eafa084c4d23729e, type: 3}
   - {fileID: 8300000, guid: 4f39ad17bb028a34eafa084c4d23729e, type: 3}
@@ -26890,7 +26890,7 @@ MonoBehaviour:
   - 15 Dreamer Resolved Relationships
   - 16 Realist Neutral Intro
   - 17 Realist Neutral Intro
-  - 18 Realist Resolved Childhood
+  - 18 Realist Neutral Childhood
   - 19 Realist Neutral Relationships
   - 20 Realist Tense Intro
   - 21 Realist Tense Intro
@@ -27055,7 +27055,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: placeholder
+  m_Text: 
 --- !u!222 &1817217982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27325,7 +27325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: placehold
+  m_Text: 
 --- !u!222 &1852984983
 CanvasRenderer:
   m_ObjectHideFlags: 0

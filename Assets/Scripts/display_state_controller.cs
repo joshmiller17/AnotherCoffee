@@ -63,6 +63,7 @@ public class display_state_controller : MonoBehaviour
 
     private int last_dreamer_talk_length = 0;
     private int last_realist_talk_length = 0;
+    private string last_speaker = "";
 
     private enum TimerState { TALKING, WAITING, CHOOSING, FADING };
     private TimerState dialogueState = TimerState.TALKING;
@@ -400,15 +401,15 @@ public class display_state_controller : MonoBehaviour
         {
     		character = 1;
     	}
-    	float temp_tension = (float)(Mathf.Max(tension - resolution_this_event, 0))/2.0f;
+    	float temp_tension = (float)(Mathf.Max(tension - resolution_this_event, 0))/1.0f;
     	float temp_resolution = (float)(Mathf.Max(resolution_this_event, 0)) /1.0f;
     	float temp_awkwardness = (float)(Mathf.Max(awkward, 0)) /1.0f;
         if (temp_awkwardness > 0)
         {
             character = Random.Range(0, 1);
         }
-        Debug.Log("Music params: " + character.ToString() + " " + topic.ToString() + " " + temp_tension.ToString() + " " 
-            + temp_resolution.ToString() + " " + temp_awkwardness.ToString() + " " + current_event.is_interrupt.ToString());
+        Debug.Log("Music params: char " + character.ToString() + " topic " + topic.ToString() + " tension " + temp_tension.ToString() + " resolution " 
+            + temp_resolution.ToString() + " awkward " + temp_awkwardness.ToString() + " " + current_event.is_interrupt.ToString());
         music.updateMusic(character, topic, temp_tension, temp_awkwardness, temp_resolution, current_event.is_interrupt && choice_selected != 0);
     }
 
@@ -638,7 +639,16 @@ public class display_state_controller : MonoBehaviour
 
     void handle_bubbles(Sprite bubble, string talking, string dialogue, float text_speed){
         if (talking.Equals("realist") && dialogue != ""){
-            last_realist_talk_length = dialogue.Length;
+            
+            if (last_speaker == "realist")
+            {
+                last_realist_talk_length += dialogue.Length;
+            }
+            else
+            {
+                last_realist_talk_length = dialogue.Length;
+            }
+            last_speaker = "realist";
             speech_A.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = realist_talking_speed * text_speed;
             update_image(speech_A, bubble);
             set_dialogue(dialogue_A, dialogue);
@@ -648,7 +658,15 @@ public class display_state_controller : MonoBehaviour
     	}
         else if(talking.Equals("dreamer") && dialogue != "")
         {
-            last_dreamer_talk_length = dialogue.Length;
+            if (last_speaker == "dreamer")
+            {
+                last_dreamer_talk_length += dialogue.Length;
+            }
+            else
+            {
+                last_dreamer_talk_length = dialogue.Length;
+            }
+            last_speaker = "dreamer";
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().characterAnimateSpeed = dreamer_talking_speed * text_speed;
             speech_B.transform.GetChild(0).GetComponent<FancySpeechBubble>().isDreamer = true;
             update_image(speech_B, bubble);

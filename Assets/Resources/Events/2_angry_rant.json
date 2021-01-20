@@ -10,7 +10,7 @@
 	"dialogue": "You're such a... such a.... child!!",
 	
 	"effects":[{
-	"tension":0.2
+	"tension":0.5
 	}],
 	
 	"next_event":[

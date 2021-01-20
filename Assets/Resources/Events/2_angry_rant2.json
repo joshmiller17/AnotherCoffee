@@ -9,6 +9,9 @@
 
 	"dialogue": "Grow up already. There's a real world out there, y'know. Come join us in reality.",
 	
+	"effects":[{
+	"tension":0.2
+	}],
 	
 	"next_event":[
 		"2_sorry"

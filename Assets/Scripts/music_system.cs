@@ -99,7 +99,7 @@ public class music_system : MonoBehaviour
 
     int fetchCue(float[] newParams) {
         int index = 0;
-        index += (int)newParams[0]*16;
+        index += (int)newParams[0]*16; //character
         float biggest = 0;
         int tempIndex = 0;
         for (int i = 0; i < 3; i++){
@@ -109,12 +109,12 @@ public class music_system : MonoBehaviour
             }
         }
 
-        if (newParams[tempIndex + 2] >= 1){
+        if (newParams[tempIndex + 2] >= 0.5){ //threshold to change tone
             index += (int)(tempIndex + 1)*4;
         }
 
-        index += (int)newParams[1];
-        Debug.Log("Queued track: " + index.ToString());
+        index += (int)newParams[1]; //topic
+        Debug.Log("Considered queueing track: " + index.ToString());
         return index;
     }
 
@@ -158,7 +158,17 @@ public class music_system : MonoBehaviour
             Debug.Log("Too many music cues, paring down");
             parameters.RemoveAt(1); // skip ahead to the most recent cue
         }
-        if (parameters.Count > 0){
+        if (parameters.Count > 0 || phraseNum < 4){ //added phrasenum < 4, continue existing track
+            if (parameters.Count == 0)
+            {
+                //continue track
+                if (Time.time - prevTime >= phraseLen[prevSource] - delay)
+                {
+                    prevTime = Time.time;
+                    phraseNum = (phraseNum + 1) % 4;
+                }
+                return;
+            }
             if (interrupt) {
                 int currentSource = (int)parameters[parameters.Count - 1][0];
                 currentIndex = fetchCue(parameters[parameters.Count - 1]);
@@ -174,21 +184,23 @@ public class music_system : MonoBehaviour
                 //if the previous cue is at the end of its phrase
 
                 if (Time.time - prevTime >= phraseLen[prevSource] - delay) {
+                    Debug.Log("Prev clip is " + prevClip.ToString());
                     int currentSource = (int)parameters[0][0];
                     twoCipsAgo = prevClip;
                     prevClip = currentIndex;
                     currentIndex = fetchCue(parameters[0]);
-                    MasterMixer.FindSnapshot(snapshots[currentSource]).TransitionTo(delay);
 
-                    if (currentSource == prevSource && currentIndex == prevClip
-                        || (System.Array.IndexOf(new int[] { 0, 1, 16, 17 }, currentIndex) != -1 &&
-                            System.Array.IndexOf(new int[] { 0, 1, 16, 17 }, prevClip) == -1
-                        )) // don't switch to neutral intro if something better is going on
+                    if (currentSource == prevSource && (currentIndex == prevClip
+                        || (System.Array.IndexOf(new int[] {0, 1}, currentIndex) != -1 &&
+                            System.Array.IndexOf(new int[] {0, 1}, prevClip) == -1
+                        ))) // don't switch to neutral intro if something better is going on
                     {
+                        Debug.Log("Continuing current track");
                         prevTime = Time.time;
                         parameters.RemoveAt(0);
                     }
                     else {
+                        MasterMixer.FindSnapshot(snapshots[currentSource]).TransitionTo(delay);
                         audiosources[currentSource].clip = stingers[currentIndex];
                         float tempTime = (phraseLen[currentSource]*phraseNum) - delay;
                         if (tempTime < 0){
@@ -206,7 +218,7 @@ public class music_system : MonoBehaviour
             }
         }else{
             if (Time.time - prevTime >= phraseLen[prevSource] - delay){
-                MasterMixer.FindSnapshot("harmony").TransitionTo(delay);
+                MasterMixer.FindSnapshot("fade").TransitionTo(delay * 3); //added * 3 for slow fade
                 prevClip = -1;
             }
         }

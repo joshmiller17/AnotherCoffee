@@ -10,7 +10,8 @@
 	"dialogue": "... That's all I really wanted to know. I just wanted to know why.",
 	
 	"effects":[{
-	"resolution":0.5
+	"resolution":0.5,
+	"tension":-0.5
 	}],
 	
 	
