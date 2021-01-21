@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Isn't that incredible? I'm going to be a mom!!",
+	
+	
+	"next_event":[
+		"3_long6"
+	]
+	
+}

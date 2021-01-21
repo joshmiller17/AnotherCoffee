@@ -9,7 +9,7 @@
 	"dialogue": "... ... ...",
 		
 	"next_event":[
-		"endgame",
+		"awkward_end",
 		"0_thanks"
 	],
 	

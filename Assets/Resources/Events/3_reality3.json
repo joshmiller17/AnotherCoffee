@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Thanks.",
+	
+	"next_event":[
+		"endsplitter"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}],
+	
+	"wait_time":3
+
+}

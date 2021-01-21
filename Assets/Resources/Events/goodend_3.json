@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "I remember who you used to be so well. Could I get to know the new you too?",
+	
+	"next_event":[
+		"goodend_4"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}]
+
+}

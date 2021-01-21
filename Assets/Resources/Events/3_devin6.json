@@ -1,0 +1,22 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"sad"
+	},
+
+
+	"dialogue": "That's more than you ever did.",
+
+	
+	"next_event":[
+		"3_devin7",
+		"3_leave"
+	],
+	
+	"choices":[
+		"Leave him"
+	]
+	
+}

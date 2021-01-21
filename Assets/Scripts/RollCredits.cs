@@ -12,7 +12,6 @@ public class RollCredits : MonoBehaviour
     private float cycle_time_left = 6.75f;
     private const float FADE_TIME = 0.5f;
     private const float BLACK_SCREEN_TIME = 1.0f;
-    private bool fadingIn = true;
     private int state = 0; // fading in -> on screen -> fading out -> black -> repeat
 
     private string[] credits_list;

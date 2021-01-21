@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Oh, already? This was... nice.",
+	
+	"next_event":[
+		"neutralend_3"
+	],
+	
+	"effects":[{
+	"resolution":0.1
+	}]
+	
+	"wait_time":3
+}

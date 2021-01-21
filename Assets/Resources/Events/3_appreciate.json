@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I appreciate your concern, but I'm fine. Really.",
+	
+	"effects":[{
+	"tension":-0.5
+	}],
+	
+	"next_event":[
+		"3_graduation"
+	]
+	
+}

@@ -16147,7 +16147,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 2_wantdiff
+  opening_script: 3_opening
   thought_color:
   - 1
   - 0.90588236
@@ -16166,6 +16166,7 @@ MonoBehaviour:
   resolution_this_event: 0
   realist_talking_speed: 1000
   dreamer_talking_speed: 1200
+  RESOLUTION_TO_WIN: 3
 --- !u!114 &963120225
 MonoBehaviour:
   m_ObjectHideFlags: 0

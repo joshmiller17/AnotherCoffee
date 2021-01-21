@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "We're actually getting married soon! Isn't that incredible?",
+	
+	
+	"next_event":[
+		"3_long6"
+	]
+}

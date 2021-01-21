@@ -1,0 +1,26 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"awkward",
+		"realist_animation":"awkward"
+	},
+
+
+	"dialogue": "You don't have to tell me if you don't want to. I mean, I'm not gonna pry or anything.",
+	
+	"effects":[{
+		"awkward":0.7
+	}],
+	
+	"next_event":[
+		"3_devin",
+		"3_long",
+		"3_short"
+	],
+	
+	"choices":[
+	"The long answer",
+	"The short answer"
+	]
+}

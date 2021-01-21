@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "I'd that like. Want to get another coffee some time?",
+	
+	"next_event":[
+		"endgame"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}]
+
+}

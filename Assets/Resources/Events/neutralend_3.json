@@ -1,0 +1,21 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"awkward",
+		"realist_animation":"awkward"
+	},
+
+
+	"dialogue": "aYep~...",
+	
+	"next_event":[
+		"neutralend_4"
+	],
+	
+	"effects":[{
+	"awkward":1.0
+	}]
+	
+	"wait_time":3
+}

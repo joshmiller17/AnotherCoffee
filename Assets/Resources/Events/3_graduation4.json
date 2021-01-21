@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I don't know. You were such a big force in my life and then you just... faded away. It's like this thing came between us. It's like... like...",
+	
+	"next_event":[
+		"3_dunno",
+		"3_grew",
+		"3_reality"
+	],
+	
+	"choices":[
+		"Like I grew up.",
+		"Like reality hit."
+	],
+	
+	"wait_time":5
+
+}

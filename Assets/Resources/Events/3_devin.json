@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"awkward",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Well, me, I've been seeing Devin on and off.",
+	
+	
+	"next_event":[
+		"3_devin2"
+	]
+	
+}

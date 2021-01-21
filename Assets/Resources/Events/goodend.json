@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Catching up like this has really meant a lot to me. I'm so glad we did this.",
+	
+	"next_event":[
+		"goodend_2"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}]
+
+}

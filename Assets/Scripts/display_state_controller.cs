@@ -37,6 +37,8 @@ public class display_state_controller : MonoBehaviour
 
     public float realist_talking_speed;
     public float dreamer_talking_speed;
+    public int RESOLUTION_TO_WIN;
+
 
     public GameEvent current_event;
 
@@ -283,6 +285,12 @@ public class display_state_controller : MonoBehaviour
                 case TimerState.WAITING:
                     speech_state = System.String.Format("Waiting for {0:0.##}", wait_timer - Time.time);
 
+                    if (resolution <= 0 && current_event_name == "3_graduation4")
+                    {
+                        choose(0); // dreamer interrupts
+                        return;
+                    }
+
                     if (Time.time > wait_timer)
                     {
                         dialogueState = TimerState.CHOOSING;
@@ -307,6 +315,21 @@ public class display_state_controller : MonoBehaviour
                         if (eventName == "endgame")
                         {
                             UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+                        }
+                        else if (resolution <= 0 && eventName == "3_dunno" || eventName == "3_grew" || eventName == "3_reality")
+                        {
+                            process_json_game_event("badend");
+                        }
+                        else if (eventName == "endsplitter")
+                        {
+                            if (resolution > RESOLUTION_TO_WIN)
+                            {
+                                process_json_game_event("goodend");
+                            }
+                            else
+                            {
+                                process_json_game_event("neutralend");
+                            }
                         }
                         else
                         {

@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "It's like we had less and less to say to each other until we just stopped... How does that even happen?",
+	
+	"next_event":[
+		"3_graduation4"
+	]
+
+}

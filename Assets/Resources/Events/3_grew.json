@@ -1,0 +1,15 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Like I grew up. I have bills to pay now, I can't just sit around drawing whatever I want to. I have to be in the real world.",
+	
+	"next_event":[
+		"3_reality2"
+	]
+}

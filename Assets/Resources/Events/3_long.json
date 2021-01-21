@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Yeah, actually. His name is Elliot, he's really sweet.",
+	
+	
+	"next_event":[
+		"3_long2"
+	]
+	
+}

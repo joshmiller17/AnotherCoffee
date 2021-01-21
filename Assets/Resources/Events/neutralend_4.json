@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I still have a couple of things I didn't really get to say... Would you want to get another coffee some time?",
+	
+	"next_event":[
+		"neutralend_5"
+	],
+	
+}

@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Like reality hit. As much as I wanted to be an artist with my own creative freedom, I'm living in the real world now.",
+	
+	"next_event":[
+		"3_reality2"
+	]
+
+}

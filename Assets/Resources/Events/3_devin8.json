@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"awkward"
+	},
+
+
+	"dialogue": "Yeah, I didn't think you'd have anything to say about that. You never understood my need for a muse.",
+	
+	"next_event":[
+		"3_leave",
+		"3_fickle",
+		"3_bad"
+	],
+	
+	"choices":[
+		"Your 'muse' is fickle",
+		"Your 'muse' has bad friends"
+	]
+	
+}

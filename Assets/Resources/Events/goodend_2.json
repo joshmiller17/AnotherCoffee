@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "You know what? I am too... Even if things are different now.",
+	
+	"next_event":[
+		"goodend_3"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}]
+
+}

@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "And, long story short, we've been together for five years now! We've actually been looking into adoption recently.",
+	
+	
+	"next_event":[
+		"3_long5"
+	]
+	
+}

@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "So... are you... seeing anyone?",
+	
+	
+	"next_event":[
+		"3_opening_wait",
+		"3_long",
+		"3_short"
+	],
+	
+	"choices":[
+	"The long answer",
+	"The short answer"
+	]
+}

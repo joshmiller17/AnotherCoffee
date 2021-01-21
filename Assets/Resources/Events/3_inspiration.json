@@ -1,0 +1,23 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "He gives me inspiration. He fuels my art! I need him to write better. And if you can't see that... We're done here.",
+	
+	"next_event":[
+		"3_tense_exit",
+		"3_graduation",
+		"3_tense_exit"
+	],
+	
+	"choices":[
+		"Change the subject",
+		"Let him storm out"
+	]
+
+}

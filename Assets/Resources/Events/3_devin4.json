@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "He never treated you right.",
+
+	
+	"next_event":[
+		"3_devin5"
+	]
+	
+}

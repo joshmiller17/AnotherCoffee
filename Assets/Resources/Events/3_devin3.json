@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "Yeah, why?",
+
+	
+	"next_event":[
+		"3_devin4"
+	]
+	
+}

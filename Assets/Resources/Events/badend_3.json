@@ -1,0 +1,19 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "No! That's not what I wanted! I wanted to know why you disappeared from my life. But you know what? I'm starting to think that was for the best.",
+	
+		"effects":[{
+	"tension":0.5
+	}],
+	
+	"next_event":[
+		"badend_4"
+	]
+}

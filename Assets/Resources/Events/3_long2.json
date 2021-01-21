@@ -1,0 +1,17 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "I actually, uhm, met him at a coffee shop when I, um, kinda, ...",
+	
+	
+	"next_event":[
+		"3_long3"
+	]
+	
+}

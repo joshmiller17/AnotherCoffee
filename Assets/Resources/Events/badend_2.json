@@ -1,0 +1,19 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "So that's it? That's why you wanted me to come here? So you could chastise me for not wanting the same life as you?",
+	
+		"effects":[{
+	"tension":0.5
+	}],
+	
+	"next_event":[
+		"badend_3"
+	]
+}

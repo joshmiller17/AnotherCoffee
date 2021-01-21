@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "He's going to leave you. And then what? Why do you even still care about him?",
+	
+	"next_event":[
+		"3_inspiration"
+	]
+
+}

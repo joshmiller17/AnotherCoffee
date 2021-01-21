@@ -1,0 +1,18 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"shout",
+		"dreamer_animation":"angry",
+		"realist_animation":"angry"
+	},
+
+	"dialogue": "Get over yourself. We're never having another coffee again.",
+	
+	"effects":[{
+	"tension":0.5
+	}],
+	
+	"next_event":[
+		"endgame"
+	]
+}

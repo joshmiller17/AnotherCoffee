@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I'm not really sure what my schedule looks like, but I'll let you know, okay?",
+	
+	"next_event":[
+		"neutralend_6"
+	],
+	
+}

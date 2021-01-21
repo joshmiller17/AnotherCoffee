@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"awkward"
+	},
+
+
+	"dialogue": "...",
+
+"effects":[{
+	"awkward":0.5
+	}],
+	
+	"next_event":[
+		"3_devin8"
+	]
+	
+}

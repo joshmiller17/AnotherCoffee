@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"happy",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "We're doing really good. We've been together five years now.",
+	
+	
+	"next_event":[
+		"3_long7"
+	]
+}

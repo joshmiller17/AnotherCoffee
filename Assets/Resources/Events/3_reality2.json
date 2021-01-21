@@ -1,0 +1,19 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "And maybe that's not who you are. Maybe you're happier still striving to be who you want to be. I guess... if that's what you want to do... I understand.",
+	
+	"next_event":[
+		"3_reality3"
+	],
+	
+	"effects":[{
+	"resolution":0.5
+	}],
+}

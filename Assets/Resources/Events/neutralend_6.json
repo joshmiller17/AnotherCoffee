@@ -2,10 +2,15 @@
 "display_state":{
 		"talking":"dreamer",
 		"bubble":"normal",
+		"dreamer_animation":"sad",
 		"realist_animation":"normal"
 	},
 
-	"dialogue": "...kthnxbai"
-		
 
+	"dialogue": "Oh... Yeah, okay.",
+	
+	"next_event":[
+		"endgame"
+	],
+	
 }

@@ -1,0 +1,16 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "I... I don't know. Right after graduation, we kinda just stopped seeing each other as much. I know life gets in the way or whatever, but...",
+	
+	"next_event":[
+		"3_graduation3"
+	]
+
+}

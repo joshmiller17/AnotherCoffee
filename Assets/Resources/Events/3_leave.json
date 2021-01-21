@@ -1,0 +1,24 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"sad",
+		"realist_animation":"angry"
+	},
+
+
+	"dialogue": "I don't approve of him. You shouldn't be in that relationship.",
+
+	
+	"next_event":[
+		"3_inspiration",
+		"3_fickle",
+		"3_bad"
+	],
+	
+	"choices":[
+		"He's fickle",
+		"He has bad friends"
+	]
+	
+}

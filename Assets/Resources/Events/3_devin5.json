@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"dreamer",
+		"bubble":"normal",
+		"dreamer_animation":"angry",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Like you care. He gives me something to write about and he keeps me warm at night.",
+
+	"effects":[{
+	"tension":0.5
+	}],
+	
+	"next_event":[
+		"3_devin6"
+	]
+	
+}

@@ -1,0 +1,20 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"normal"
+	},
+
+
+	"dialogue": "Well hey, I have to get going but I appreciate catching up with you.",
+	
+	"next_event":[
+		"neutralend_2"
+	],
+	
+	"effects":[{
+	"resolution":0.1
+	}]
+
+}

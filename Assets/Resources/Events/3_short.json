@@ -1,0 +1,25 @@
+{
+"display_state":{
+		"talking":"realist",
+		"bubble":"normal",
+		"dreamer_animation":"normal",
+		"realist_animation":"happy"
+	},
+
+
+	"dialogue": "Yeah, his name's Elliot.",
+	
+	
+	"next_event":[
+		"3_good",
+		"3_good",
+		"3_married",
+		"3_adoption"
+	],
+	
+	"choices":[
+	"We're doing good"
+	"We're getting married",
+	"We're considering adoption"
+	]
+}
