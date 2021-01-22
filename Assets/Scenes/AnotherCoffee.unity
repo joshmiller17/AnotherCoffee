@@ -16147,7 +16147,7 @@ MonoBehaviour:
   TutorialTipBox: {fileID: 1591955445}
   TutorialTipI: {fileID: 80223165}
   TutorialTipText: {fileID: 1832243408}
-  opening_script: 3_opening
+  opening_script: 0_opening
   thought_color:
   - 1
   - 0.90588236
@@ -26871,7 +26871,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ed74de92f5ec4e4987654f896dbbd88, type: 3}
   - {fileID: 8300000, guid: 6ed74de92f5ec4e4987654f896dbbd88, type: 3}
   - {fileID: 8300000, guid: d84aa8dfc8046fc4288b4a10fc65aa4b, type: 3}
-  - {fileID: 8300000, guid: a31359810beba164688e715e07a2f5d3, type: 3}
+  - {fileID: 8300000, guid: d84aa8dfc8046fc4288b4a10fc65aa4b, type: 3}
   MusicNames:
   - 0 Dreamer Neutral Intro
   - 1 Dreamer Neutral Intro

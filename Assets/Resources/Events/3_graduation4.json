@@ -9,6 +9,10 @@
 
 	"dialogue": "I don't know. You were such a big force in my life and then you just... faded away. It's like this thing came between us. It's like... like...",
 	
+		"effects":[{
+	"tension":-2.0
+	}],
+	
 	"next_event":[
 		"3_dunno",
 		"3_grew",

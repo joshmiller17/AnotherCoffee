@@ -18,8 +18,10 @@
 	],
 	
 	"choices":[
-	"We're doing good"
+	"We're doing good",
 	"We're getting married",
 	"We're considering adoption"
-	]
+	],
+	
+	"wait_time":3
 }

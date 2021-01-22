@@ -287,7 +287,16 @@ public class display_state_controller : MonoBehaviour
 
                     if (resolution <= 0 && current_event_name == "3_graduation4")
                     {
-                        choose(0); // dreamer interrupts
+                        //dreamer interrupts
+                        game_paused = false;
+                        OptionsMenu.SetActive(false);
+
+                        foreach (GameObject thought in thoughts)
+                        {
+                            hide_thought(thought);
+                        }
+                        SFXSystem.GetComponent<SFX>().playInterrupt();
+                        process_json_game_event("3_badend");
                         return;
                     }
 
@@ -316,19 +325,19 @@ public class display_state_controller : MonoBehaviour
                         {
                             UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
                         }
-                        else if (resolution <= 0 && eventName == "3_dunno" || eventName == "3_grew" || eventName == "3_reality")
+                        else if (resolution <= 0 && (eventName == "3_dunno" || eventName == "3_grew" || eventName == "3_reality"))
                         {
-                            process_json_game_event("badend");
+                            process_json_game_event("3_badend");
                         }
                         else if (eventName == "endsplitter")
                         {
                             if (resolution > RESOLUTION_TO_WIN)
                             {
-                                process_json_game_event("goodend");
+                                process_json_game_event("3_goodend");
                             }
                             else
                             {
-                                process_json_game_event("neutralend");
+                                process_json_game_event("3_neutralend_1");
                             }
                         }
                         else
@@ -358,7 +367,7 @@ public class display_state_controller : MonoBehaviour
     bool validate_scripts(string script, string calling_script, Hashtable seen, List<string> traversal)
     {
         traversal.Add(script);
-        if (script == "endgame" || script== "" /*dummy*/ || script == "3_opening") // TODO remove 3_opening to continue
+        if (script == "endgame" || script== "" /*dummy*/)
         {
             return true; //good!
         }
@@ -583,7 +592,11 @@ public class display_state_controller : MonoBehaviour
         }
 
         if (effect.tension != null){
-    		tension += effect.tension;
+            if (effect.tension < 0)
+            {
+                effect.tension *= 2; // extra backoff
+            }
+                tension += effect.tension;
             tension = Mathf.Max(tension, -0.5f); //tension can't go too far below 0
             resolution_this_event -= effect.tension;
             Debug.Log("Tension is now " + tension.ToString());
@@ -595,6 +608,10 @@ public class display_state_controller : MonoBehaviour
 
             // The result of the expression is always the same since a value of this type is never equal to 'null'
             resolution += effect.resolution;
+            if (resolution > 0)
+            {
+                tension = -0.5f; //reset tension
+            }
             resolution_this_event += effect.resolution;
             Debug.Log("Resolution is now " + resolution.ToString());
 

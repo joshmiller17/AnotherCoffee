@@ -10,12 +10,12 @@
 	"dialogue": "Oh, already? This was... nice.",
 	
 	"next_event":[
-		"neutralend_3"
+		"3_neutralend_3"
 	],
 	
 	"effects":[{
 	"resolution":0.1
-	}]
+	}],
 	
 	"wait_time":3
 }

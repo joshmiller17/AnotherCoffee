@@ -17,6 +17,8 @@
 	
 	"choices":[
 		"Leave him"
-	]
+	],
+	
+	"wait_time":2
 	
 }

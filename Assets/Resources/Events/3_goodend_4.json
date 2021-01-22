@@ -1,20 +1,22 @@
 {
 "display_state":{
-		"talking":"dreamer",
+		"talking":"realist",
 		"bubble":"normal",
 		"dreamer_animation":"happy",
 		"realist_animation":"happy"
 	},
 
 
-	"dialogue": "I remember who you used to be so well. Could I get to know the new you too?",
+	"dialogue": "I'd that like. Want to get another coffee some time?",
 	
 	"next_event":[
-		"goodend_4"
+		"endgame"
 	],
 	
 	"effects":[{
 	"resolution":0.5
-	}]
+	}],
+	
+	"wait_time":3
 
 }

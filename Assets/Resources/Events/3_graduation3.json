@@ -9,6 +9,10 @@
 
 	"dialogue": "It's like we had less and less to say to each other until we just stopped... How does that even happen?",
 	
+		"effects":[{
+	"tension":-2.0
+	}],
+	
 	"next_event":[
 		"3_graduation4"
 	]

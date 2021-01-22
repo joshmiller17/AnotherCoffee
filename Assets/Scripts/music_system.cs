@@ -218,7 +218,7 @@ public class music_system : MonoBehaviour
             }
         }else{
             if (Time.time - prevTime >= phraseLen[prevSource] - delay){
-                MasterMixer.FindSnapshot("fade").TransitionTo(delay * 3); //added * 3 for slow fade
+                MasterMixer.FindSnapshot("fade").TransitionTo(delay);
                 prevClip = -1;
             }
         }

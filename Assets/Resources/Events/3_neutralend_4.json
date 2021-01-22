@@ -10,7 +10,7 @@
 	"dialogue": "I still have a couple of things I didn't really get to say... Would you want to get another coffee some time?",
 	
 	"next_event":[
-		"neutralend_5"
-	],
+		"3_neutralend_5"
+	]
 	
 }

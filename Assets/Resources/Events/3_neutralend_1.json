@@ -7,10 +7,14 @@
 	},
 
 
-	"dialogue": "I'm not really sure what my schedule looks like, but I'll let you know, okay?",
+	"dialogue": "Well hey, I have to get going but I appreciate catching up with you.",
 	
 	"next_event":[
-		"neutralend_6"
+		"3_neutralend_2"
 	],
 	
+	"effects":[{
+	"resolution":0.1
+	}]
+
 }

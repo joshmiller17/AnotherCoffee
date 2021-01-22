@@ -1,0 +1,23 @@
+{
+	"display_state": {
+		"talking": "dreamer",
+		"bubble": "shout",
+		"dreamer_animation": "angry",
+		"realist_animation": "normal"
+	},
+
+
+	"dialogue": "You know what? I don't care why you split off and ignored me. I want to know why the fuck you think you're better than me for killing your dreams and going to the ~~real world~~!",
+
+	"effects": [{
+			"tension":2.0
+		},
+		{
+			"resolution":-1.0
+		}
+	],
+
+	"next_event": [
+		"3_badend_2"
+	]
+}

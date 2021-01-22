@@ -10,12 +10,12 @@
 	"dialogue": "aYep~...",
 	
 	"next_event":[
-		"neutralend_4"
+		"3_neutralend_4"
 	],
 	
 	"effects":[{
 	"awkward":1.0
-	}]
+	}],
 	
 	"wait_time":3
 }

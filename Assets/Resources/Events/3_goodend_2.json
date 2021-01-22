@@ -10,7 +10,7 @@
 	"dialogue": "You know what? I am too... Even if things are different now.",
 	
 	"next_event":[
-		"goodend_3"
+		"3_goodend_3"
 	],
 	
 	"effects":[{

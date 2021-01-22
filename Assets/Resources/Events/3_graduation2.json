@@ -9,6 +9,10 @@
 
 	"dialogue": "I... I don't know. Right after graduation, we kinda just stopped seeing each other as much. I know life gets in the way or whatever, but...",
 	
+	"effects":[{
+	"tension":-2.0
+	}],
+	
 	"next_event":[
 		"3_graduation3"
 	]

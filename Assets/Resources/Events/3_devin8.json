@@ -10,7 +10,7 @@
 	"dialogue": "Yeah, I didn't think you'd have anything to say about that. You never understood my need for a muse.",
 	
 	"next_event":[
-		"3_leave",
+		"3_inspiration",
 		"3_fickle",
 		"3_bad"
 	],

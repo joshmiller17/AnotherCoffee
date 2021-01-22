@@ -10,7 +10,7 @@
 	"dialogue": "What happened to us? We used to be so close.",
 	
 	"effects":[{
-	"tension":-0.5
+	"tension":-2.0
 	}],
 	
 	"next_event":[
