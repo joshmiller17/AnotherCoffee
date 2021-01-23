@@ -9,6 +9,10 @@
 
 	"dialogue": "He hangs around a bad crowd. I don't want you getting involved with drugs or anything like that.",
 	
+	"effects":[{
+	"resolution":-0.2}
+	],
+	
 	"next_event":[
 		"3_appreciate"
 	]

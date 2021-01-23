@@ -10751,7 +10751,7 @@ RectTransform:
   - {fileID: 2111965624}
   - {fileID: 1006820878}
   m_Father: {fileID: 963120223}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -16101,10 +16101,10 @@ RectTransform:
   - {fileID: 276321715}
   - {fileID: 505486212}
   - {fileID: 1252527466}
-  - {fileID: 857445358}
   - {fileID: 2067539627}
   - {fileID: 1116100824}
   - {fileID: 1745515230}
+  - {fileID: 857445358}
   - {fileID: 546704779}
   - {fileID: 1252259311}
   - {fileID: 157610816}
@@ -16166,7 +16166,8 @@ MonoBehaviour:
   resolution_this_event: 0
   realist_talking_speed: 1000
   dreamer_talking_speed: 1200
-  RESOLUTION_TO_WIN: 3
+  RESOLUTION_TO_WIN: 7
+  RESOLUTION_TO_LOSE: 0
 --- !u!114 &963120225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16484,7 +16485,7 @@ Transform:
   - {fileID: 80223166}
   - {fileID: 1832243409}
   m_Father: {fileID: 963120223}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127251487
 GameObject:
@@ -26501,7 +26502,7 @@ RectTransform:
   m_Children:
   - {fileID: 1817103355}
   m_Father: {fileID: 963120223}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26964,8 +26965,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
-    m_FontSize: 100
+    m_Font: {fileID: 12800000, guid: 4fe00957b63f63242a62645aa86924bd, type: 3}
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -27221,7 +27222,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: efc14cdfaaae1a945bcb6cd6ce6e192b, type: 3}
+    m_Font: {fileID: 12800000, guid: 4fe00957b63f63242a62645aa86924bd, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -32120,7 +32121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2067539625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32174,7 +32175,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963120223}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

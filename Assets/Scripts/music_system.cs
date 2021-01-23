@@ -114,6 +114,15 @@ public class music_system : MonoBehaviour
         }
 
         index += (int)newParams[1]; //topic
+
+        if (index == currentIndex + 16 || index == currentIndex - 16)
+        {
+            if (Random.Range(0, 10) < 5)
+            {
+                index = currentIndex; // half the time, don't switch just to play the other character; be more consistent
+            }
+        }
+
         Debug.Log("Considered queueing track: " + index.ToString());
         return index;
     }

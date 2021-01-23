@@ -8,6 +8,9 @@
 
 	"dialogue":"I’m glad to hear that you’re still chugging away at the whole writing thing, but... What did you want to talk about?",
 	
+	"effects":[{
+	"awkward":0.5}
+	],
 			
 	"next_event":[
 		"1_business2"

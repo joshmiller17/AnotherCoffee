@@ -9,6 +9,9 @@
 
 	"dialogue": "I don't approve of him. You shouldn't be in that relationship.",
 
+	"effects":[{
+	"tension":0.5}
+	],
 	
 	"next_event":[
 		"3_inspiration",

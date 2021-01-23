@@ -37,7 +37,8 @@ public class display_state_controller : MonoBehaviour
 
     public float realist_talking_speed;
     public float dreamer_talking_speed;
-    public int RESOLUTION_TO_WIN;
+    public float RESOLUTION_TO_WIN;
+    public float RESOLUTION_TO_LOSE;
 
 
     public GameEvent current_event;
@@ -285,7 +286,7 @@ public class display_state_controller : MonoBehaviour
                 case TimerState.WAITING:
                     speech_state = System.String.Format("Waiting for {0:0.##}", wait_timer - Time.time);
 
-                    if (resolution <= 0 && current_event_name == "3_graduation4")
+                    if (resolution <= RESOLUTION_TO_LOSE && current_event_name == "3_graduation4")
                     {
                         //dreamer interrupts
                         game_paused = false;
@@ -325,7 +326,7 @@ public class display_state_controller : MonoBehaviour
                         {
                             UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
                         }
-                        else if (resolution <= 0 && (eventName == "3_dunno" || eventName == "3_grew" || eventName == "3_reality"))
+                        else if (resolution <= RESOLUTION_TO_LOSE && (eventName == "3_dunno" || eventName == "3_grew" || eventName == "3_reality"))
                         {
                             process_json_game_event("3_badend");
                         }
@@ -577,8 +578,9 @@ public class display_state_controller : MonoBehaviour
         handle_music();
 
 
-        //awkward decays over time
+        //decay bad feelings over time
         awkward = Mathf.Max(0, awkward - 0.2f);
+        tension = Mathf.Max(0, tension - 0.2f);
 
         float awkwardVolume = Mathf.Min(1.0f, 0.5f + (awkward / 2.0f));
         SFXSystem.GetComponent<SFX>().UpdateAmbientVolume(awkwardVolume);
@@ -589,15 +591,28 @@ public class display_state_controller : MonoBehaviour
         if (effect.awkward != null)
         {
             awkward += effect.awkward;
+            if (effect.awkward > 0)
+            {
+                resolution -= 0.1f;
+            }
+            else if (effect.awkward < 0)
+            {
+                resolution += 0.1f;
+            }
         }
 
         if (effect.tension != null){
-            if (effect.tension < 0)
+            tension += effect.tension;
+            tension = Mathf.Max(tension, 0);
+            if (effect.tension > 0)
             {
-                effect.tension *= 2; // extra backoff
+                resolution -= effect.tension / 2;
             }
-                tension += effect.tension;
-            tension = Mathf.Max(tension, -0.5f); //tension can't go too far below 0
+            else if (effect.tension < 0)
+            {
+                resolution += 0.2f;
+                tension = tension / 2;
+            }
             resolution_this_event -= effect.tension;
             Debug.Log("Tension is now " + tension.ToString());
 
@@ -607,12 +622,12 @@ public class display_state_controller : MonoBehaviour
         {
 
             // The result of the expression is always the same since a value of this type is never equal to 'null'
-            resolution += effect.resolution;
+            resolution += (2 * effect.resolution);
             if (resolution > 0)
             {
-                tension = -0.5f; //reset tension
+                tension = 0f; //reset tension
             }
-            resolution_this_event += effect.resolution;
+            resolution_this_event += (2 * effect.resolution);
             Debug.Log("Resolution is now " + resolution.ToString());
 
         }
