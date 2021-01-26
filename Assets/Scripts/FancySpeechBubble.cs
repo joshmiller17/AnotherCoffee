@@ -14,6 +14,7 @@ public class FancySpeechBubble : MonoBehaviour {
     const int NORMAL_HEIGHT = 250;
     const int FONT_SIZE_BIG = 80;
     const int FONT_SIZE_NORMAL = 50;
+    const int FONT_SIZE_SMALL = 30;
     const int DREAMER_FONT_INCREASE = 20;
 
     public bool isDreamer = false;
@@ -104,19 +105,24 @@ public class FancySpeechBubble : MonoBehaviour {
         {
             label.alignment = TextAnchor.UpperCenter;
             label.fontSize = FONT_SIZE_BIG;
-            if (isDreamer)
-            {
-                label.fontSize += DREAMER_FONT_INCREASE;
-            }
+            
+        }
+        else if (_rawText.Length < 100)
+        {
+            label.alignment = TextAnchor.UpperLeft;
+            label.fontSize = FONT_SIZE_NORMAL;
         }
         else
         {
             label.alignment = TextAnchor.UpperLeft;
-            label.fontSize = FONT_SIZE_NORMAL;
-            if (isDreamer)
+            if (isDreamer) //don't make realist text too small
             {
-                label.fontSize += DREAMER_FONT_INCREASE;
+                label.fontSize = FONT_SIZE_SMALL;
             }
+        }
+        if (isDreamer)
+        {
+            label.fontSize += DREAMER_FONT_INCREASE;
         }
 
         Canvas.ForceUpdateCanvases(); //this replaces old need for waiting for end of frame
